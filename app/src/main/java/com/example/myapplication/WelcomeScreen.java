@@ -16,5 +16,10 @@ public class WelcomeScreen extends AppCompatActivity {
 
         Button startButton = findViewById(R.id.startButton);
         Button quitButton = findViewById(R.id.quitButton);
+
+        startButton.setOnClickListener(v -> {
+            Intent intent = new Intent(WelcomeScreen.this, LoginScreen.class);
+            startActivity(intent);
+        });
     }
 }
