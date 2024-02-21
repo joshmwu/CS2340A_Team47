@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,12 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.R;
+
 public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
+        
     }
 }
