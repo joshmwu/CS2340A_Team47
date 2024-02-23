@@ -1,0 +1,10 @@
+#Thu Feb 22 17:08:44 EST 2024
+base.0=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=5/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
