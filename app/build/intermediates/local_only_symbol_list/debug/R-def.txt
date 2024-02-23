@@ -13,10 +13,10 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id HomeScreen
 id createButton
-id exitButton
 id fitnessTimer
 id homeScreenTitle
 id loginButton
+id loginExitButton
 id loginTitle
 id passwordEditText
 id quitButton

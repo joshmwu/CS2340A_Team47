@@ -20,7 +20,7 @@
 15-->[androidx.core:core:1.9.0] /Users/johndoan/.gradle/caches/transforms-3/16088aea6844a21f0ae8707202a192eb/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:5:5-29:19
+17-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:5:5-28:19
 18        android:allowBackup="true"
 18-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -43,28 +43,28 @@
 29        android:theme="@style/Theme.MyApplication" >
 29-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:13:9-51
 30        <activity
-30-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:16:9-24:20
+30-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:16:9-23:20
 31            android:name="com.example.myapplication.views.WelcomeScreen"
 31-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:17:13-48
 32            android:exported="true" >
 32-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:18:13-36
 33            <intent-filter>
-33-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:19:13-23:29
+33-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:19:13-22:29
 34                <action android:name="android.intent.action.MAIN" />
 34-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:17-69
 34-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:25-66
 35
 36                <category android:name="android.intent.category.LAUNCHER" />
-36-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:22:17-77
-36-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:22:27-74
+36-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:17-77
+36-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:27-74
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:25:9-28:20
+39-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:24:9-27:20
 40            android:name="com.example.myapplication.views.LoginScreen"
-40-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:26:13-46
+40-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:25:13-46
 41            android:exported="true" >
-41-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:27:13-36
+41-->/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/src/main/AndroidManifest.xml:26:13-36
 42        </activity>
 43
 44        <provider

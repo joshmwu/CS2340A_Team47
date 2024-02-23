@@ -4,12 +4,12 @@
         "source": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/ic_launcher_background.xml"
-    },
-    {
         "merged": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/ic_launcher_background.xml"
     },
     {
         "merged": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_home_screen.xml.flat",
@@ -30,6 +30,10 @@
     {
         "merged": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "/Users/johndoan/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_login_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/login_screen.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-31:/layout_home_screen.xml.flat",

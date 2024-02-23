@@ -3146,7 +3146,6 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
-id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3205,6 +3204,7 @@ id linear
 id listMode
 id list_item
 id loginButton
+id loginExitButton
 id loginTitle
 id m3_side_sheet
 id marquee
