@@ -17,12 +17,18 @@ public class WelcomeScreen extends AppCompatActivity {
 
         //WelcomeScreenViewModel viewModel = new ViewModelProvider(this).get(WelcomeScreenViewModel.class);
         Button startButton = findViewById(R.id.startButton);
-        Button quitButton = findViewById(R.id.quitButton);
+        Button welcomeQuitButton = findViewById(R.id.quitButton);
 
         startButton.setOnClickListener(v -> {
             Intent intent = new Intent(WelcomeScreen.this, LoginScreen.class);
             startActivity(intent);
         });
 
+        welcomeQuitButton.setOnClickListener(v -> {
+            Intent goHome = new Intent(Intent.ACTION_MAIN);
+            goHome.addCategory(Intent.CATEGORY_HOME);
+            goHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(goHome);
+        });
     }
 }

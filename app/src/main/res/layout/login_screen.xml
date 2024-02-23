@@ -64,7 +64,7 @@
         android:text="@string/create_new_account" />
 
     <Button
-        android:id="@+id/exitButton"
+        android:id="@+id/loginExitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

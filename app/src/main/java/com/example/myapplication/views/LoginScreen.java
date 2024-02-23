@@ -18,6 +18,13 @@ public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
-        
+
+        Button loginQuitButton = findViewById(R.id.loginExitButton);
+        loginQuitButton.setOnClickListener(v -> {
+            Intent goHome = new Intent(Intent.ACTION_MAIN);
+            goHome.addCategory(Intent.CATEGORY_HOME);
+            goHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(goHome);
+        });
     }
 }
