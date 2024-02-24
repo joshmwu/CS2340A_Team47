@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
 
 public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
