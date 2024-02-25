@@ -20,58 +20,58 @@
 15-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/80ecb3125b3fdd8b05d35979627b84fb/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:5:5-32:19
+17-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:5:5-32:19
 18        android:allowBackup="true"
-18-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:6:9-35
+18-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/80ecb3125b3fdd8b05d35979627b84fb/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 20        android:dataExtractionRules="@xml/data_extraction_rules"
-20-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:7:9-65
+20-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:7:9-65
 21        android:debuggable="true"
 22        android:extractNativeLibs="false"
 23        android:fullBackupContent="@xml/backup_rules"
-23-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:8:9-54
+23-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:8:9-54
 24        android:icon="@mipmap/ic_launcher"
-24-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:9:9-43
+24-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:9:9-43
 25        android:label="Food Tracker"
-25-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:10:9-37
+25-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:10:9-37
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:11:9-54
+26-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:11:9-54
 27        android:supportsRtl="true"
-27-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:12:9-35
+27-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:12:9-35
 28        android:testOnly="true"
 29        android:theme="@style/Theme.MyApplication" >
-29-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:13:9-51
+29-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:13:9-51
 30        <activity
-30-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:16:9-23:20
+30-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:16:9-23:20
 31            android:name="com.example.myapplication.views.WelcomeScreen"
-31-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:17:13-48
+31-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:17:13-48
 32            android:exported="true" >
-32-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:18:13-36
+32-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:18:13-36
 33            <intent-filter>
-33-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:19:13-22:29
+33-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:19:13-22:29
 34                <action android:name="android.intent.action.MAIN" />
-34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:20:17-69
-34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:20:25-66
+34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:17-69
+34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:25-66
 35
 36                <category android:name="android.intent.category.LAUNCHER" />
-36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:21:17-77
-36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:21:27-74
+36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:17-77
+36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:27-74
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:24:9-27:20
+39-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:24:9-27:20
 40            android:name="com.example.myapplication.views.LoginScreen"
-40-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:25:13-46
+40-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:25:13-46
 41            android:exported="true" >
-41-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:26:13-36
+41-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:26:13-36
 42        </activity>
 43        <activity
-43-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:28:9-31:20
+43-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:28:9-31:20
 44            android:name="com.example.myapplication.views.HomeScreen"
-44-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:29:13-45
+44-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:29:13-45
 45            android:exported="true" >
-45-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/temp/app/src/main/AndroidManifest.xml:30:13-36
+45-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:30:13-36
 46        </activity>
 47
 48        <provider
