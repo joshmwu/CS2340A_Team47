@@ -1,5 +1,7 @@
 package com.example.myapplication.viewmodels;
 
+import android.text.Editable;
+
 import com.example.myapplication.models.LoginData;
 
 public class LoginScreenViewModel {
@@ -24,4 +26,15 @@ public class LoginScreenViewModel {
 
     // update methods for username, password ?
 
+    //returns true if its not whitespace, null, or empty
+    public void updateLoginData(String user, String pass) {
+        this.loginData.setUsername(user);
+        this.loginData.setPassword(pass);
+    }
+    public boolean checkNoInput(Editable input) {
+        return input.toString().isEmpty();
+    }
+    public boolean checkWhitespace(Editable input) {
+        return !input.toString().isEmpty() && input.toString().contains(" ");
+    }
 }
