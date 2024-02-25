@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Thu Feb 22 17:08:44 EST 2024
 base.0=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
@@ -8,3 +9,21 @@ path.2=5/classes.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
 renamed.2=classes3.dex
+=======
+#Fri Feb 23 00:41:49 EST 2024
+base.0=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+base.4=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=11/classes.dex
+path.3=4/classes.dex
+path.4=5/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
+renamed.4=classes5.dex
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3

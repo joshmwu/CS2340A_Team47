@@ -1,6 +1,10 @@
 R_DEF: Internal format may change without notice
 local
 color black
+<<<<<<< HEAD
+=======
+color green
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 color orange
 color purple_200
 color purple_500
@@ -10,18 +14,31 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+<<<<<<< HEAD
 id createButton
 id exitButton
 id fitnessTimer
 id inputMealScreenTitle
 id loginButton
+=======
+id HomeScreen
+id createButton
+id fitnessTimer
+id homeScreenTitle
+id loginButton
+id loginExitButton
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 id loginTitle
 id passwordEditText
 id quitButton
 id startButton
 id usernameEditText
 id welcomeScreenTitle
+<<<<<<< HEAD
 layout input_meal_screen
+=======
+layout home_screen
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 layout login_screen
 layout welcome_screen
 mipmap ic_launcher

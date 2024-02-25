@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+<<<<<<< HEAD
+=======
+    <color name="green">#91eda9</color>
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
     <color name="orange">#F1B98F</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

@@ -1325,6 +1325,10 @@ int color error_color_material_dark 0x7f050058
 int color error_color_material_light 0x7f050059
 int color foreground_material_dark 0x7f05005a
 int color foreground_material_light 0x7f05005b
+<<<<<<< HEAD
+=======
+int color green 0x7f050308
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int color highlighted_text_material_dark 0x7f05005c
 int color highlighted_text_material_light 0x7f05005d
 int color m3_appbar_overlay_color 0x7f05005e
@@ -2992,6 +2996,10 @@ int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
 int id FUNCTION 0x7f080004
+<<<<<<< HEAD
+=======
+int id HomeScreen 0x7f0801ca
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
 int id SHIFT 0x7f080007
@@ -3143,7 +3151,10 @@ int id end 0x7f080098
 int id endToStart 0x7f080099
 int id enterAlways 0x7f08009a
 int id enterAlwaysCollapsed 0x7f08009b
+<<<<<<< HEAD
 int id exitButton 0x7f08009c
+=======
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int id exitUntilCollapsed 0x7f08009d
 int id expand_activities_button 0x7f08009e
 int id expanded_menu 0x7f08009f
@@ -3175,6 +3186,10 @@ int id header_title 0x7f0800b8
 int id hideable 0x7f0800b9
 int id home 0x7f0800ba
 int id homeAsUp 0x7f0800bb
+<<<<<<< HEAD
+=======
+int id homeScreenTitle 0x7f0801c9
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int id honorRequest 0x7f0800bc
 int id icon 0x7f0800bd
 int id icon_group 0x7f0800be
@@ -3184,7 +3199,10 @@ int id ignoreRequest 0x7f0800c1
 int id image 0x7f0800c2
 int id indeterminate 0x7f0800c3
 int id info 0x7f0800c4
+<<<<<<< HEAD
 int id inputMealScreenTitle 0x7f0801c9
+=======
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int id invisible 0x7f0800c5
 int id inward 0x7f0800c6
 int id italic 0x7f0800c7
@@ -3202,6 +3220,10 @@ int id linear 0x7f0800d2
 int id listMode 0x7f0800d3
 int id list_item 0x7f0800d4
 int id loginButton 0x7f0800d5
+<<<<<<< HEAD
+=======
+int id loginExitButton 0x7f0801cb
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int id loginTitle 0x7f0800d6
 int id m3_side_sheet 0x7f0800d7
 int id marquee 0x7f0800d8
@@ -3575,7 +3597,11 @@ int layout design_navigation_menu 0x7f0b0028
 int layout design_navigation_menu_item 0x7f0b0029
 int layout design_text_input_end_icon 0x7f0b002a
 int layout design_text_input_start_icon 0x7f0b002b
+<<<<<<< HEAD
 int layout input_meal_screen 0x7f0b006b
+=======
+int layout home_screen 0x7f0b006b
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
 int layout login_screen 0x7f0b002c
 int layout m3_alert_dialog 0x7f0b002d
 int layout m3_alert_dialog_actions 0x7f0b002e

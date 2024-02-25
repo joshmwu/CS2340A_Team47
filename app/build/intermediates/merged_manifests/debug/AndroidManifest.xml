@@ -28,7 +28,11 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
+<<<<<<< HEAD
             android:name="com.example.myapplication.WelcomeScreen"
+=======
+            android:name="com.example.myapplication.views.WelcomeScreen"
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +41,11 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name="com.example.myapplication.LoginScreen"
+=======
+            android:name="com.example.myapplication.views.LoginScreen"
+>>>>>>> 34847a4086bc6f838dd1d3c4ead0dc8ba746c5a3
             android:exported="true" >
         </activity>
 
