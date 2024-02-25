@@ -1,11 +1,11 @@
 package com.example.myapplication.viewmodels;
-
 import com.example.myapplication.models.LoginData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreenViewModel {
-
     private static LoginScreenViewModel instance;
-    final private LoginData loginData;
+    private final  LoginData loginData;
 
     public LoginScreenViewModel() {
         loginData = new LoginData();
