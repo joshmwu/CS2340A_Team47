@@ -21,7 +21,6 @@ public class LoginScreen extends AppCompatActivity {
     private EditText usernameET;
     private EditText passwordET;
     private TextView warningMessage;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
@@ -29,7 +28,6 @@ public class LoginScreen extends AppCompatActivity {
         usernameET = findViewById(R.id.usernameEditText);
         passwordET = findViewById(R.id.passwordEditText);
         warningMessage = findViewById(R.id.loginMessage);
-
 
         Button loginQuitButton = findViewById(R.id.loginExitButton);
         loginQuitButton.setOnClickListener(v -> {
@@ -49,11 +47,9 @@ public class LoginScreen extends AppCompatActivity {
                 warningMessage.setText("Invalid credentials, please try again");
             } else {
                 loginVM.updateLoginData(usernameET.getText().toString(), passwordET.getText().toString());
-                //change this to homescreen once its made
-                Intent toAppHomeScreen = new Intent(LoginScreen.this, WelcomeScreen.class);
+                Intent toAppHomeScreen = new Intent(LoginScreen.this, HomeScreen.class);
                 startActivity(toAppHomeScreen);
             }
         });
-
     }
 }
