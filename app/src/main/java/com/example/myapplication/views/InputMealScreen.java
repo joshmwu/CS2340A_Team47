@@ -1,8 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.views;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 public class InputMealScreen extends AppCompatActivity {
 
