@@ -85,8 +85,6 @@ public class LoginScreen extends AppCompatActivity {
                     warningMessage.setText("Please enter a valid password");
                 } else if (loginVM.checkWhitespace(usernameET.getText()) || loginVM.checkWhitespace(passwordET.getText())) {
                     warningMessage.setText("Please check to ensure you have no whitespace");
-                } else if (false/*invalid login, needs firebase functionality*/) {
-                    warningMessage.setText("Invalid credentials, please try again");
                 }
             }
             else {
@@ -94,22 +92,13 @@ public class LoginScreen extends AppCompatActivity {
                 username = String.valueOf(usernameET.getText());
                 password = String.valueOf(passwordET.getText());
                 String usernameToken = username + "@fakemail.com";
-                if (username.isEmpty()) {
-                    Toast.makeText(LoginScreen.this, "enter username", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (password.isEmpty()) {
-                    Toast.makeText(LoginScreen.this, "enter password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 mAuth.signInWithEmailAndPassword(usernameToken, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginScreen.this, "Authentication Successful.",
-                                    Toast.LENGTH_SHORT).show();
+                            warningMessage.setText("Authentification successful");
 
                             data.setLoggedIn(true);
                             data.setUsername(username);
@@ -121,8 +110,7 @@ public class LoginScreen extends AppCompatActivity {
                             //finish();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginScreen.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            warningMessage.setText("Authentification failed");
                             return;
                         }
                     }

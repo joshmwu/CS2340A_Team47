@@ -3666,7 +3666,6 @@ layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
 layout home_screen
-layout input_meal_screen
 layout login_screen
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

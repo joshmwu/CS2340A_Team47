@@ -53,7 +53,6 @@ layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
 layout home_screen
-layout input_meal_screen
 layout login_screen
 layout main_activity
 layout register_screen
