@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_add_home_24"
+        android:id="@+id/Home"
+        android:title="Home" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/meal1"
+        android:id="@+id/Meal"
+        android:title="Meal" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/recipe"
+        android:id="@+id/Recipe"
+        android:title="Recipe" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ingredients"
+        android:id="@+id/Ingredients"
+        android:title="Ingredients" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/shopping"
+        android:id="@+id/Shopping"
+        android:title="Shopping" />
+</menu>
