@@ -9,157 +9,178 @@
 9        android:targetSdkVersion="34" />
 10
 11    <permission
-11-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+11-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
 12        android:name="com.example.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-12-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+12-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
 13        android:protectionLevel="signature" />
-13-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+13-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 14
 15    <uses-permission android:name="com.example.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-15-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
-15-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+15-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:5:5-43:19
+17-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:5:5-56:19
 18        android:allowBackup="true"
-18-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:6:9-35
+18-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.9.0] /Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+19-->[androidx.core:core:1.9.0] /Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 20        android:dataExtractionRules="@xml/data_extraction_rules"
-20-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:7:9-65
+20-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:7:9-65
 21        android:debuggable="true"
 22        android:extractNativeLibs="false"
 23        android:fullBackupContent="@xml/backup_rules"
-23-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:8:9-54
+23-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:8:9-54
 24        android:icon="@mipmap/ic_launcher"
-24-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:9:9-43
+24-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:9:9-43
 25        android:label="Food Tracker"
-25-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:10:9-37
+25-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:10:9-37
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:11:9-54
+26-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:11:9-54
 27        android:supportsRtl="true"
-27-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:12:9-35
+27-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:12:9-35
 28        android:testOnly="true"
 29        android:theme="@style/Theme.MyApplication" >
-29-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:13:9-51
+29-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:13:9-51
 30        <activity
-30-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:16:9-23:20
+30-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:16:9-23:20
 31            android:name="com.example.myapplication.views.SplashScreen"
-31-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:17:13-47
+31-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:17:13-47
 32            android:exported="true" >
-32-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:18:13-36
+32-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:18:13-36
 33            <intent-filter>
-33-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:19:13-22:29
+33-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:19:13-22:29
 34                <action android:name="android.intent.action.MAIN" />
-34-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:17-69
-34-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:25-66
+34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:17-69
+34-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:20:25-66
 35
 36                <category android:name="android.intent.category.LAUNCHER" />
-36-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:17-77
-36-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:27-74
+36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:17-77
+36-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:21:27-74
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:24:9-27:20
+39-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:24:9-27:20
 40            android:name="com.example.myapplication.views.LoginScreen"
-40-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:25:13-46
+40-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:25:13-46
 41            android:exported="true" >
-41-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:26:13-36
+41-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:26:13-36
 42        </activity>
 43        <activity
-43-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:28:9-31:20
+43-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:28:9-31:20
 44            android:name="com.example.myapplication.views.HomeScreen"
-44-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:29:13-45
+44-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:29:13-45
 45            android:exported="true" >
-45-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:30:13-36
+45-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:30:13-36
 46        </activity>
 47        <activity
-47-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:32:9-34:20
+47-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:32:9-34:20
 48            android:name="com.example.myapplication.views.HomeFragment"
-48-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:32:19-53
+48-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:32:19-53
 49            android:exported="true" >
-49-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:33:13-36
+49-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:33:13-36
 50        </activity>
 51        <activity
-51-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:35:9-38:20
+51-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:35:9-38:20
 52            android:name="com.example.myapplication.views.WelcomeScreen"
-52-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:36:13-48
+52-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:36:13-48
 53            android:exported="true" >
-53-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:37:13-36
+53-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:37:13-36
 54        </activity>
 55        <activity
-55-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:39:9-42:20
+55-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:39:9-42:20
 56            android:name="com.example.myapplication.views.InputMealScreenFrag"
-56-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:40:13-54
+56-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:40:13-54
 57            android:exported="true" >
-57-->/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/AndroidManifest.xml:41:13-36
+57-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:41:13-36
 58        </activity>
-59
-60        <provider
-60-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-61            android:name="androidx.startup.InitializationProvider"
-61-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
-62            android:authorities="com.example.myapplication.androidx-startup"
-62-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
-63            android:exported="false" >
-63-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
-64            <meta-data
-64-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-65                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-65-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
-66                android:value="androidx.startup" />
-66-->[androidx.emoji2:emoji2:1.2.0] /Users/joshmwu/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
-67            <meta-data
-67-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/joshmwu/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
-68                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-68-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/joshmwu/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
-69                android:value="androidx.startup" />
-69-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/joshmwu/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
-70            <meta-data
-70-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-71                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-71-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-72                android:value="androidx.startup" />
-72-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-73        </provider>
-74
-75        <receiver
-75-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-76            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-76-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-77            android:directBootAware="false"
-77-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-78            android:enabled="true"
-78-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-79            android:exported="true"
-79-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-80            android:permission="android.permission.DUMP" >
-80-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-81            <intent-filter>
-81-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-82                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-83            </intent-filter>
-84            <intent-filter>
-84-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-85                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-85-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-85-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-86            </intent-filter>
-87            <intent-filter>
-87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-88                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-89            </intent-filter>
-90            <intent-filter>
-90-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-91                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/joshmwu/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-92            </intent-filter>
-93        </receiver>
-94    </application>
-95
-96</manifest>
+59        <activity
+59-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:43:9-46:20
+60            android:name="com.example.myapplication.views.ShoppingListScreenFrag"
+60-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:44:13-57
+61            android:exported="true" >
+61-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:45:13-36
+62        </activity>
+63        <activity
+63-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:47:9-50:20
+64            android:name="com.example.myapplication.views.RecipeScreenFrag"
+64-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:48:13-51
+65            android:exported="true" >
+65-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:49:13-36
+66        </activity>
+67        <activity
+67-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:51:9-54:20
+68            android:name="com.example.myapplication.views.IngredientsScreenFrag"
+68-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:52:13-56
+69            android:exported="true" >
+69-->/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/AndroidManifest.xml:53:13-36
+70        </activity>
+71
+72        <provider
+72-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+73            android:name="androidx.startup.InitializationProvider"
+73-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+74            android:authorities="com.example.myapplication.androidx-startup"
+74-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+75            android:exported="false" >
+75-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+76            <meta-data
+76-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+77                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+77-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+78                android:value="androidx.startup" />
+78-->[androidx.emoji2:emoji2:1.2.0] /Users/StevenLi/.gradle/caches/transforms-3/70145bbbde0c2efc56f871bf5a5b1060/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+79            <meta-data
+79-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/StevenLi/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+80                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+80-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/StevenLi/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+81                android:value="androidx.startup" />
+81-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/StevenLi/.gradle/caches/transforms-3/8c09915ed6a0dc01715a9483156714de/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+82            <meta-data
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+83                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+84                android:value="androidx.startup" />
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+85        </provider>
+86
+87        <receiver
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+88            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+89            android:directBootAware="false"
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+90            android:enabled="true"
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+91            android:exported="true"
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+92            android:permission="android.permission.DUMP" >
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+93            <intent-filter>
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+94                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+95            </intent-filter>
+96            <intent-filter>
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+97                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+98            </intent-filter>
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+100                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+101            </intent-filter>
+102            <intent-filter>
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+103                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/StevenLi/.gradle/caches/transforms-3/0e99719c1721f1142b26db9093362a76/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+104            </intent-filter>
+105        </receiver>
+106    </application>
+107
+108</manifest>

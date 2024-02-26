@@ -3001,17 +3001,22 @@ id CTRL
 id FUNCTION
 id Home
 id HomeScreen
+id HomeScreenTitle
+id HomeTitle
 id Ingredients
+id IngredientsTitle
 id META
 id Meal
 id NO_DEBUG
 id Recipe
+id RecipeScreenTitle
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
 id Shopping
+id ShoppingListTitle
 id TOP_END
 id TOP_START
 id accelerate
@@ -3176,7 +3181,6 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
-id fragment_home
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
@@ -3189,7 +3193,6 @@ id header_title
 id hideable
 id home
 id homeAsUp
-id homeScreenTitle
 id honorRequest
 id icon
 id icon_group
@@ -3199,7 +3202,6 @@ id ignoreRequest
 id image
 id indeterminate
 id info
-id ingredientScreenTitle
 id inputMealScreenTitle
 id invisible
 id inward
@@ -3597,6 +3599,8 @@ layout design_text_input_start_icon
 layout fragment_home
 layout fragment_ingredients_screen
 layout fragment_input_meal_screen
+layout fragment_recipe_screen
+layout fragment_shopping_list_screen
 layout home_screen
 layout input_meal_screen
 layout login_screen

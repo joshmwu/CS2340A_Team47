@@ -56,6 +56,10 @@
         "source": "com.example.myapplication.app-main-33:/mipmap-hdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_shopping_list_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/fragment_shopping_list_screen.xml"
+    },
+    {
         "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -102,6 +106,10 @@
     {
         "merged": "com.example.myapplication.app-merged_res-31:/xml_backup_rules.xml.flat",
         "source": "com.example.myapplication.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_recipe_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/fragment_recipe_screen.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",

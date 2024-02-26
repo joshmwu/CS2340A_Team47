@@ -56,6 +56,18 @@
             android:name="com.example.myapplication.views.InputMealScreenFrag"
             android:exported="true" >
         </activity>
+        <activity
+            android:name="com.example.myapplication.views.ShoppingListScreenFrag"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name="com.example.myapplication.views.RecipeScreenFrag"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name="com.example.myapplication.views.IngredientsScreenFrag"
+            android:exported="true" >
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
