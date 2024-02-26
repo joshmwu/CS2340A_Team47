@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/registerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:text="@string/register"/>
+
+    <EditText
+        android:id="@+id/RegUsernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:autofillHints="Username"
+        android:hint="@string/username"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/RegPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:autofillHints="Password"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/RegCreateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="@string/create_new_account" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="@string/back" />
+
+</LinearLayout>
