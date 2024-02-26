@@ -39,8 +39,12 @@ public class LoginScreen extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> {
-            if (loginVM.checkNoInput(passwordET.getText()) || loginVM.checkNoInput(passwordET.getText())){
+            if (loginVM.checkNoInput(usernameET.getText()) && loginVM.checkNoInput(passwordET.getText())) {
                 warningMessage.setText("Please enter a valid username and password");
+            } else if (loginVM.checkNoInput(usernameET.getText()) && !loginVM.checkNoInput(passwordET.getText())) {
+                warningMessage.setText("Please enter a valid username");
+            } else if (!loginVM.checkNoInput(usernameET.getText()) && loginVM.checkNoInput(passwordET.getText())) {
+                warningMessage.setText("Please enter a valid password");
             } else if (loginVM.checkWhitespace(usernameET.getText()) || loginVM.checkWhitespace(passwordET.getText())) {
                 warningMessage.setText("Please check to ensure you have no whitespace");
             } else if (false/*invalid login, needs firebase functionality*/){
