@@ -5,9 +5,13 @@
             "map": [
                 {
 <<<<<<< HEAD
+                    "source": "/Users/joshmwu/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+=======
+<<<<<<< HEAD
                     "source": "/Users/StevenLi/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
 =======
                     "source": "/Users/christinashih/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+>>>>>>> main
 >>>>>>> main
                     "from": {
                         "startLines": "2,3",

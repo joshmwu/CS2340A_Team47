@@ -5,6 +5,9 @@
             "map": [
                 {
 <<<<<<< HEAD
+                    "source": "/Users/joshmwu/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
+=======
+<<<<<<< HEAD
                     "source": "/Users/StevenLi/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
 =======
                     "source": "/Users/christinashih/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/res/values-v16/values-v16.xml",
@@ -18,6 +21,7 @@
                 },
                 {
                     "source": "/Users/christinashih/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
+>>>>>>> main
 >>>>>>> main
                     "from": {
                         "startLines": "2",
@@ -38,7 +42,11 @@
 <<<<<<< HEAD
                 },
                 {
+<<<<<<< HEAD
+                    "source": "/Users/joshmwu/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/res/values-v16/values-v16.xml",
+=======
                     "source": "/Users/StevenLi/.gradle/caches/transforms-3/a309491863f1cad1388d82071cb60f8c/transformed/core-1.9.0/res/values-v16/values-v16.xml",
+>>>>>>> main
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

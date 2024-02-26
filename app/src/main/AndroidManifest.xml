@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".views.WelcomeScreen"
+            android:name=".views.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,11 @@
         <activity android:name=".views.HomeFragment"
             android:exported="true">
         </activity>
+<<<<<<< HEAD
+        <activity android:name=".views.WelcomeScreen"
+=======
         <activity android:name=".views.InputMealScreenFrag"
+>>>>>>> main
             android:exported="true">
         </activity>
     </application>
