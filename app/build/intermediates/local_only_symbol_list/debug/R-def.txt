@@ -24,7 +24,8 @@ id Recipe
 id Shopping
 id createButton
 id fitnessTimer
-id frame_layout
+id flFragment
+id fragment_home
 id homeScreenTitle
 id inputMealScreenTitle
 id loginButton
@@ -42,6 +43,7 @@ layout fragment_input_meal_screen
 layout home_screen
 layout input_meal_screen
 layout login_screen
+layout splash_screen
 layout welcome_screen
 menu navigationbar
 mipmap ic_launcher

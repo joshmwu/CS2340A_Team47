@@ -14,13 +14,13 @@
         android:layout_weight="100"
         android:gravity="center"
         android:padding="20dp"
-        android:text="Hello Screen"
         android:textSize="35sp"
         android:textStyle="bold" />
 
     <FrameLayout
+        android:id="@+id/flFragment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
@@ -33,6 +33,5 @@
             app:menu="@menu/navigationbar">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </FrameLayout>
 
 </LinearLayout>

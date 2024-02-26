@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
+import java.io.*;
 
 public class InputMealScreenFrag extends Fragment {
+    public InputMealScreenFrag() {}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

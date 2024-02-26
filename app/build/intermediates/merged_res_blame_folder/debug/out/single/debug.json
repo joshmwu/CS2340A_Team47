@@ -1,59 +1,76 @@
 [
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_meal1.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/meal1.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/menu_navigationbar.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/menu/navigationbar.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_ingredients.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/ingredients.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_welcome_screen.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/welcome_screen.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_welcome_screen.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/welcome_screen.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_meals.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/meals.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/xml/data_extraction_rules.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_home_screen.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/home_screen.xml"
+    },
+    {
+<<<<<<< HEAD
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_splash_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/splash_screen.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+=======
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+>>>>>>> main
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_shopping.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/shopping.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_ingredients.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/ingredients.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_login_screen.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/login_screen.xml"
+    },
+    {
+<<<<<<< HEAD
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/xml_backup_rules.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/xml/backup_rules.xml"
+=======
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_input_meal_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/fragment_input_meal_screen.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_input_meal_screen.xml.flat",
@@ -62,57 +79,66 @@
     {
         "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+>>>>>>> main
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_baseline_add_home_24.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/baseline_add_home_24.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_login_screen.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/login_screen.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_meal1.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/meal1.xml"
+    },
+    {
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-31:/layout_home_screen.xml.flat",
         "source": "com.example.myapplication.app-main-33:/layout/home_screen.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_input_meal_screen.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/input_meal_screen.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_fragment_input_meal_screen.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/fragment_input_meal_screen.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_home.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/fragment_home.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_recipe.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/recipe.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_shopping.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/shopping.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_recipe.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/recipe.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/xml_backup_rules.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/xml/backup_rules.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_input_meal_screen.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/input_meal_screen.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/menu_navigationbar.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/menu/navigationbar.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_baseline_add_home_24.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/baseline_add_home_24.xml"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/drawable_meals.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/drawable/meals.xml"
+    },
+    {
+        "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/layout_fragment_home.xml.flat",
+        "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/fragment_home.xml"
     }
 ]

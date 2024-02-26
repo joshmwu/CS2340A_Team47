@@ -3171,11 +3171,12 @@ id fitToContents
 id fitXY
 id fitnessTimer
 id fixed
+id flFragment
 id flip
 id floating
 id forever
 id fragment_container_view_tag
-id frame_layout
+id fragment_home
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
@@ -3657,6 +3658,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout splash_screen
 layout support_simple_spinner_dropdown_item
 layout welcome_screen
 menu navigationbar
