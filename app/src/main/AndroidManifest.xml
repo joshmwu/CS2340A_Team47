@@ -32,13 +32,27 @@
         <activity android:name=".views.HomeFragment"
             android:exported="true">
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".views.WelcomeScreen"
-=======
-        <activity android:name=".views.InputMealScreenFrag"
->>>>>>> main
+        <activity
+            android:name=".views.WelcomeScreen"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".views.InputMealScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.ShoppingListScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.RecipeScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.IngredientsScreenFrag"
+            android:exported="true">
+        </activity>
+        
     </application>
 
 </manifest>
