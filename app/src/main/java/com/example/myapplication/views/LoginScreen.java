@@ -60,8 +60,8 @@ public class LoginScreen extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         registerButton = findViewById(R.id.LogCreateButton);
         LoginData data = loginVM.getLoginData();
-
         Button loginQuitButton = findViewById(R.id.loginExitButton);
+
         loginQuitButton.setOnClickListener(v -> {
             Intent goHome = new Intent(Intent.ACTION_MAIN);
             goHome.addCategory(Intent.CATEGORY_HOME);
@@ -77,12 +77,19 @@ public class LoginScreen extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> {
             if (loginVM.checkNoInput(passwordET.getText()) || loginVM.checkNoInput(passwordET.getText())) {
-                warningMessage.setText("Please enter a valid username and password");
-            } else if (loginVM.checkWhitespace(usernameET.getText()) || loginVM.checkWhitespace(passwordET.getText())) {
-                warningMessage.setText("Please check to ensure you have no whitespace");
-            } else if (false/*invalid login, needs firebase functionality*/) {
-                warningMessage.setText("Invalid credentials, please try again");
-            } else {
+                if (loginVM.checkNoInput(usernameET.getText()) && loginVM.checkNoInput(passwordET.getText())) {
+                    warningMessage.setText("Please enter a valid username and password");
+                } else if (loginVM.checkNoInput(usernameET.getText()) && !loginVM.checkNoInput(passwordET.getText())) {
+                    warningMessage.setText("Please enter a valid username");
+                } else if (!loginVM.checkNoInput(usernameET.getText()) && loginVM.checkNoInput(passwordET.getText())) {
+                    warningMessage.setText("Please enter a valid password");
+                } else if (loginVM.checkWhitespace(usernameET.getText()) || loginVM.checkWhitespace(passwordET.getText())) {
+                    warningMessage.setText("Please check to ensure you have no whitespace");
+                } else if (false/*invalid login, needs firebase functionality*/) {
+                    warningMessage.setText("Invalid credentials, please try again");
+                }
+            }
+            else {
                 String username, password;
                 username = String.valueOf(usernameET.getText());
                 password = String.valueOf(passwordET.getText());
