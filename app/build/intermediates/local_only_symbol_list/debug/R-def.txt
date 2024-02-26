@@ -27,6 +27,7 @@ id fitnessTimer
 id flFragment
 id fragment_home
 id homeScreenTitle
+id ingredientScreenTitle
 id inputMealScreenTitle
 id loginButton
 id loginExitButton
@@ -39,6 +40,7 @@ id startButton
 id usernameEditText
 id welcomeScreenTitle
 layout fragment_home
+layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout home_screen
 layout input_meal_screen
