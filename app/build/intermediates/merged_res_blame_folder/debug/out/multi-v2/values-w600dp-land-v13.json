@@ -4,7 +4,11 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-37:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "/Users/jasonlai150/.gradle/caches/transforms-3/83301f4d28e49f9240d7dddd0001b08f/transformed/material-1.11.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+=======
+                    "source": "/Users/joshmwu/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+>>>>>>> main
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
