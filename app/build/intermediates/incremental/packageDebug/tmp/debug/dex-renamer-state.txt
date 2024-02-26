@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+#Sun Feb 25 20:26:49 EST 2024
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Sun Feb 25 12:12:05 EST 2024
 base.0=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
@@ -8,6 +11,7 @@ base.3=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/
 base.4=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
 =======
 #Sun Feb 25 04:58:24 EST 2024
+>>>>>>> main
 base.0=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
