@@ -1,7 +1,6 @@
 R_DEF: Internal format may change without notice
 local
 color black
-color green
 color orange
 color purple_200
 color purple_500
@@ -15,8 +14,10 @@ id HomeScreen
 id createButton
 id fitnessTimer
 id homeScreenTitle
+id inputMealScreenTitle
 id loginButton
 id loginExitButton
+id loginMessage
 id loginTitle
 id passwordEditText
 id quitButton
@@ -24,6 +25,7 @@ id startButton
 id usernameEditText
 id welcomeScreenTitle
 layout home_screen
+layout input_meal_screen
 layout login_screen
 layout welcome_screen
 mipmap ic_launcher

@@ -1326,7 +1326,6 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
-color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -3187,6 +3186,7 @@ id ignoreRequest
 id image
 id indeterminate
 id info
+id inputMealScreenTitle
 id invisible
 id inward
 id italic
@@ -3205,6 +3205,7 @@ id listMode
 id list_item
 id loginButton
 id loginExitButton
+id loginMessage
 id loginTitle
 id m3_side_sheet
 id marquee
@@ -3579,6 +3580,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout home_screen
+layout input_meal_screen
 layout login_screen
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
