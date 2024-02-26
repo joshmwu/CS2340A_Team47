@@ -3048,24 +3048,18 @@ id HomeScreen
 id HomeScreenTitle
 id HomeTitle
 id Ingredients
-<<<<<<< HEAD
 id IngredientsTitle
-=======
 id LogCreateButton
 id LogPasswordEditText
 id LogUsernameEditText
->>>>>>> main
 id META
 id Meal
 id NO_DEBUG
 id Recipe
 id RecipeScreenTitle
-<<<<<<< HEAD
-=======
 id RegCreateButton
 id RegPasswordEditText
 id RegUsernameEditText
->>>>>>> main
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -3185,7 +3179,6 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
-id createButton
 id custom
 id customPanel
 id cut
@@ -3388,7 +3381,6 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
-id passwordEditText
 id password_toggle
 id path
 id pathRelative
@@ -3520,7 +3512,6 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id usernameEditText
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
@@ -3672,10 +3663,7 @@ layout fragment_home
 layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
-<<<<<<< HEAD
 layout fragment_shopping_list_screen
-=======
->>>>>>> main
 layout home_screen
 layout login_screen
 layout m3_alert_dialog
@@ -3748,6 +3736,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
+string Ingredients
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

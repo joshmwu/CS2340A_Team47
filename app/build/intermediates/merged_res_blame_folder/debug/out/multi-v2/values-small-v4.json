@@ -4,11 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-37:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-<<<<<<< HEAD
-                    "source": "/Users/StevenLi/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-small-v4/values-small-v4.xml",
-=======
-                    "source": "/Users/jasonlai150/.gradle/caches/transforms-3/83301f4d28e49f9240d7dddd0001b08f/transformed/material-1.11.0/res/values-small-v4/values-small-v4.xml",
->>>>>>> main
+                    "source": "/Users/StevenLi/.gradle/caches/transforms-3/83301f4d28e49f9240d7dddd0001b08f/transformed/material-1.11.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

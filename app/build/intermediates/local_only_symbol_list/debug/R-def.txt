@@ -21,14 +21,7 @@ id HomeScreen
 id HomeScreenTitle
 id HomeTitle
 id Ingredients
-<<<<<<< HEAD
 id IngredientsTitle
-id Meal
-id Recipe
-id RecipeScreenTitle
-id Shopping
-id ShoppingListTitle
-=======
 id LogCreateButton
 id LogPasswordEditText
 id LogUsernameEditText
@@ -39,9 +32,8 @@ id RegCreateButton
 id RegPasswordEditText
 id RegUsernameEditText
 id Shopping
+id ShoppingListTitle
 id backButton
->>>>>>> main
-id createButton
 id fitnessTimer
 id flFragment
 id inputMealScreenTitle
@@ -50,20 +42,15 @@ id loginExitButton
 id loginMessage
 id loginTitle
 id navigationbar
-id passwordEditText
 id quitButton
 id registerTitle
 id startButton
-id usernameEditText
 id welcomeScreenTitle
 layout fragment_home
 layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
-<<<<<<< HEAD
 layout fragment_shopping_list_screen
-=======
->>>>>>> main
 layout home_screen
 layout login_screen
 layout main_activity
@@ -73,6 +60,7 @@ layout welcome_screen
 menu navigationbar
 mipmap ic_launcher
 mipmap ic_launcher_round
+string Ingredients
 string app_name
 string back
 string create_new_account

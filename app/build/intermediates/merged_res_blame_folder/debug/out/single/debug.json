@@ -56,17 +56,8 @@
         "source": "com.example.myapplication.app-main-41:/menu/navigationbar.xml"
     },
     {
-<<<<<<< HEAD
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_shopping_list_screen.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/fragment_shopping_list_screen.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
-=======
         "merged": "com.example.myapplication.app-merged_res-39:/xml_data_extraction_rules.xml.flat",
         "source": "com.example.myapplication.app-main-41:/xml/data_extraction_rules.xml"
->>>>>>> main
     },
     {
         "merged": "com.example.myapplication.app-merged_res-39:/drawable_shopping.xml.flat",
@@ -75,6 +66,10 @@
     {
         "merged": "com.example.myapplication.app-merged_res-39:/layout_login_screen.xml.flat",
         "source": "com.example.myapplication.app-main-41:/layout/login_screen.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-39:/layout_fragment_shopping_list_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-41:/layout/fragment_shopping_list_screen.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-39:/drawable_ic_launcher_background.xml.flat",
@@ -113,17 +108,8 @@
         "source": "com.example.myapplication.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-<<<<<<< HEAD
-        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_recipe_screen.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/fragment_recipe_screen.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/drawable/ic_launcher_foreground.xml"
-=======
         "merged": "com.example.myapplication.app-merged_res-39:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.myapplication.app-main-41:/mipmap-xxhdpi/ic_launcher_round.webp"
->>>>>>> main
     },
     {
         "merged": "com.example.myapplication.app-merged_res-39:/mipmap-xxhdpi_ic_launcher.webp.flat",
