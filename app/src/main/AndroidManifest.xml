@@ -40,6 +40,18 @@
             android:name=".views.InputMealScreenFrag"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".views.ShoppingListScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.RecipeScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.IngredientsScreenFrag"
+            android:exported="true">
+        </activity>
         
     </application>
 
