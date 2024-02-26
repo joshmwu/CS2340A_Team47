@@ -24,7 +24,8 @@ id Recipe
 id Shopping
 id createButton
 id fitnessTimer
-id frame_layout
+id flFragment
+id fragment_home
 id homeScreenTitle
 id inputMealScreenTitle
 id loginButton

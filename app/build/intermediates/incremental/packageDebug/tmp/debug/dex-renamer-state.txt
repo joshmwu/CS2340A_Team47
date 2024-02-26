@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+#Sun Feb 25 21:58:22 EST 2024
+base.0=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
+base.4=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+base.5=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+=======
 #Sun Feb 25 21:41:52 EST 2024
 base.0=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
@@ -5,6 +14,7 @@ base.2=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/interme
 base.3=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
 base.4=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
 base.5=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+>>>>>>> main
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex
