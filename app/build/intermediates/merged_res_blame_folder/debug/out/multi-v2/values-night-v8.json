@@ -4,6 +4,7 @@
             "outputFile": "com.example.myapplication.app-mergeDebugResources-29:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "/Users/joshmwu/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
@@ -22,6 +23,36 @@
                 },
                 {
                     "source": "/Users/joshmwu/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-night-v8/values-night-v8.xml",
+=======
+<<<<<<< HEAD
+                    "source": "/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/src/main/res/values-night/themes.xml",
+=======
+                    "source": "/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/src/main/res/values-night/themes.xml",
+>>>>>>> main
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endLines": "14",
+                        "endColumns": "12",
+                        "endOffsets": "802"
+                    },
+                    "to": {
+                        "startLines": "34",
+                        "startColumns": "4",
+                        "startOffsets": "3448",
+                        "endLines": "46",
+                        "endColumns": "12",
+                        "endOffsets": "4029"
+                    }
+                },
+                {
+<<<<<<< HEAD
+                    "source": "/Users/StevenLi/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-night-v8/values-night-v8.xml",
+=======
+                    "source": "/Users/christinashih/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/res/values-night-v8/values-night-v8.xml",
+>>>>>>> main
+>>>>>>> main
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,6 +69,7 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "/Users/joshmwu/Desktop/Freshman_Year/Spring_2024/CS2340/Project/CS2340A_Team47/app/src/main/res/values-night/themes.xml",
                     "from": {
                         "startLines": "2",
@@ -54,6 +86,26 @@
                         "endLines": "46",
                         "endColumns": "12",
                         "endOffsets": "4029"
+=======
+<<<<<<< HEAD
+                    "source": "/Users/StevenLi/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
+=======
+                    "source": "/Users/christinashih/.gradle/caches/transforms-3/60f9bab79c5ba5b4c82ae8c6a17130c1/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
+>>>>>>> main
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,47",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,4034",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,4118"
+>>>>>>> main
                     }
                 }
             ]
