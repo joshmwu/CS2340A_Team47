@@ -29,15 +29,17 @@
             android:name=".views.HomeScreen"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".views.RegisterScreen"
+            android:exported="true">
+        </activity>
         <activity android:name=".views.HomeFragment"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".views.WelcomeScreen"
+        <activity android:name=".views.WelcomeScreen"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".views.InputMealScreenFrag"
+        <activity android:name=".views.InputMealScreenFrag"
             android:exported="true">
         </activity>
         <activity

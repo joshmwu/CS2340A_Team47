@@ -9,11 +9,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">My Application</string>
+    <string name="back">back</string>
     <string name="create_new_account">Create New Account</string>
     <string name="exit">exit</string>
+    <string name="firebase_database_url" translatable="false">https://cs2340project-83f99-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">544025296909</string>
+    <string name="google_api_key" translatable="false">AIzaSyBJuORZqFSOYd1qD4CqsS88__JXieC3bGw</string>
+    <string name="google_app_id" translatable="false">1:544025296909:android:f66820072d1bdd6fd39544</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBJuORZqFSOYd1qD4CqsS88__JXieC3bGw</string>
+    <string name="google_storage_bucket" translatable="false">cs2340project-83f99.appspot.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="project_id" translatable="false">cs2340project-83f99</string>
+    <string name="register">Register</string>
     <string name="username">Username</string>
     <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
