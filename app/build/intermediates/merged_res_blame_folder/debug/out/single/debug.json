@@ -56,8 +56,17 @@
         "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/layout/login_screen.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/xml_backup_rules.xml.flat",
         "source": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-main-33:/xml/backup_rules.xml"
+=======
+        "merged": "com.example.myapplication.app-merged_res-31:/layout_fragment_input_meal_screen.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/fragment_input_meal_screen.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+>>>>>>> main
     },
     {
         "merged": "/Users/StevenLi/.gradle/daemon/8.2/com.example.myapplication.app-merged_res-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
