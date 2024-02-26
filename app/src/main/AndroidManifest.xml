@@ -29,6 +29,9 @@
             android:name=".views.HomeScreen"
             android:exported="true">
         </activity>
+        <activity android:name=".views.HomeFragment"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

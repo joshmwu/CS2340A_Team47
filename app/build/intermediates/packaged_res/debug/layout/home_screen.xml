@@ -2,19 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/orange"
     android:orientation="vertical"
-    android:padding="16dp"
     android:id="@+id/HomeScreen">
 
     <TextView
         android:id="@+id/homeScreenTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_weight="100"
         android:gravity="center"
         android:padding="20dp"
-        android:text="Hello!"
+        android:text="Hello Screen"
         android:textSize="35sp"
         android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:id="@+id/navigationbar"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/navigationbar">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </FrameLayout>
+
 </LinearLayout>
