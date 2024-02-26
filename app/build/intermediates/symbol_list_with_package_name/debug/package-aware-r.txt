@@ -3045,24 +3045,34 @@ id CTRL
 id FUNCTION
 id Home
 id HomeScreen
+id HomeScreenTitle
+id HomeTitle
 id Ingredients
+<<<<<<< HEAD
+id IngredientsTitle
+=======
 id LogCreateButton
 id LogPasswordEditText
 id LogUsernameEditText
+>>>>>>> main
 id META
 id Meal
 id NO_DEBUG
 id Recipe
 id RecipeScreenTitle
+<<<<<<< HEAD
+=======
 id RegCreateButton
 id RegPasswordEditText
 id RegUsernameEditText
+>>>>>>> main
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
 id Shopping
+id ShoppingListTitle
 id TOP_END
 id TOP_START
 id accelerate
@@ -3236,7 +3246,6 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
-id fragment_home
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
@@ -3249,7 +3258,6 @@ id header_title
 id hideable
 id home
 id homeAsUp
-id homeScreenTitle
 id honorRequest
 id icon
 id icon_group
@@ -3260,7 +3268,6 @@ id ignoreRequest
 id image
 id indeterminate
 id info
-id ingredientScreenTitle
 id inputMealScreenTitle
 id invisible
 id inward
@@ -3665,6 +3672,10 @@ layout fragment_home
 layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
+<<<<<<< HEAD
+layout fragment_shopping_list_screen
+=======
+>>>>>>> main
 layout home_screen
 layout login_screen
 layout m3_alert_dialog

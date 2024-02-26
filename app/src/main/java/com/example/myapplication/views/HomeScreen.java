@@ -16,11 +16,18 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = HomeScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
         binding.navigationbar.setOnItemSelectedListener(v -> {
             int itemId = v.getItemId();
             if (itemId == R.id.Meal) {
                 replaceFragment(new InputMealScreenFrag());
+            } else if (itemId == R.id.Ingredients) {
+                replaceFragment(new IngredientsScreenFrag());
+            } else if (itemId == R.id.Recipe) {
+                replaceFragment(new RecipeScreenFrag());
             } else if (itemId == R.id.Shopping) {
+                replaceFragment(new ShoppingListScreenFrag());
+            } else if (itemId == R.id.Home) {
                 replaceFragment(new HomeFragment());
             }
             return true;

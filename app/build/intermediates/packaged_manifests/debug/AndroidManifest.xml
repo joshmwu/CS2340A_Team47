@@ -81,6 +81,8 @@
             android:name="com.example.myapplication.views.IngredientsScreenFrag"
             android:exported="true" >
         </activity>
+<<<<<<< HEAD
+=======
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
@@ -179,6 +181,7 @@
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+>>>>>>> main
 
         <provider
             android:name="androidx.startup.InitializationProvider"

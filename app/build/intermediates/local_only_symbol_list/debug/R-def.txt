@@ -18,7 +18,17 @@ drawable recipe
 drawable shopping
 id Home
 id HomeScreen
+id HomeScreenTitle
+id HomeTitle
 id Ingredients
+<<<<<<< HEAD
+id IngredientsTitle
+id Meal
+id Recipe
+id RecipeScreenTitle
+id Shopping
+id ShoppingListTitle
+=======
 id LogCreateButton
 id LogPasswordEditText
 id LogUsernameEditText
@@ -30,12 +40,10 @@ id RegPasswordEditText
 id RegUsernameEditText
 id Shopping
 id backButton
+>>>>>>> main
 id createButton
 id fitnessTimer
 id flFragment
-id fragment_home
-id homeScreenTitle
-id ingredientScreenTitle
 id inputMealScreenTitle
 id loginButton
 id loginExitButton
@@ -52,6 +60,10 @@ layout fragment_home
 layout fragment_ingredients_screen
 layout fragment_input_meal_screen
 layout fragment_recipe_screen
+<<<<<<< HEAD
+layout fragment_shopping_list_screen
+=======
+>>>>>>> main
 layout home_screen
 layout login_screen
 layout main_activity
