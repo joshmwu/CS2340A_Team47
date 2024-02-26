@@ -3593,6 +3593,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_home
+layout fragment_input_meal_screen
 layout home_screen
 layout input_meal_screen
 layout login_screen

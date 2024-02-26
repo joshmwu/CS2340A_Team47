@@ -1,28 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-#Sun Feb 25 12:12:05 EST 2024
-base.0=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
-base.3=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
-base.4=/Users/lilyren/Desktop/cs 2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
-=======
-#Sun Feb 25 04:58:24 EST 2024
-base.0=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
-base.3=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
-base.4=/Users/StevenLi/Desktop/CS2340/FoodProject/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
->>>>>>> main
-=======
-#Sun Feb 25 19:47:35 EST 2024
-base.0=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
-base.3=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
-base.4=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
-base.5=/Users/johndoan/Documents/cs2340/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
->>>>>>> main
+#Sun Feb 25 20:49:07 EST 2024
+base.0=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
+base.4=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+base.5=/Users/christinashih/Documents/cs2340/s1/CS2340A_Team47/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex
