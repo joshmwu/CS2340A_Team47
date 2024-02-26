@@ -44,6 +44,10 @@
             android:name="com.example.myapplication.views.HomeScreen"
             android:exported="true" >
         </activity>
+        <activity
+            android:name="com.example.myapplication.views.HomeFragment"
+            android:exported="true" >
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
