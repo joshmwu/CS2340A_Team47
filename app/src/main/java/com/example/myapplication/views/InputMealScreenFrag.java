@@ -12,7 +12,7 @@ import com.example.myapplication.R;
 import java.io.*;
 
 public class InputMealScreenFrag extends Fragment {
-    public InputMealScreenFrag() {}
+    public InputMealScreenFrag() { }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
