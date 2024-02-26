@@ -6,13 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.HomeScreenBinding;
 
 public class HomeScreen extends AppCompatActivity {
-    HomeScreenBinding binding;
-    protected void onCreate (Bundle savedInstanceState) {
+    private HomeScreenBinding binding;
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = HomeScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
