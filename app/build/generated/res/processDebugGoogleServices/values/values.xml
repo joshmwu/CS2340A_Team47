@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="firebase_database_url" translatable="false">https://cs2340project-83f99-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">544025296909</string>
     <string name="google_api_key" translatable="false">AIzaSyBJuORZqFSOYd1qD4CqsS88__JXieC3bGw</string>
     <string name="google_app_id" translatable="false">1:544025296909:android:f66820072d1bdd6fd39544</string>

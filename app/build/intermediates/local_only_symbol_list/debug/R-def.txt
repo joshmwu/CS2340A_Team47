@@ -41,8 +41,15 @@ string app_name
 string back
 string create_new_account
 string exit
+string firebase_database_url
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string login
 string password
+string project_id
 string register
 string username
 style Theme.MyApplication

@@ -109,8 +109,8 @@ public class LoginScreen extends AppCompatActivity {
                             data.setLoginToken(usernameToken);
 
                             //TODO:move to main activity screen
-                            //Intent intent2= new Intent(LoginScreen.this, MainActivity.class);
-                            //startActivity(intent2);
+                            Intent intent2= new Intent(LoginScreen.this, HomeScreen.class);
+                            startActivity(intent2);
                             //finish();
                         } else {
                             // If sign in fails, display a message to the user.

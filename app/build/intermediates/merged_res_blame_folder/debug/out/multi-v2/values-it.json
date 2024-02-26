@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.myapplication.app-mergeDebugResources-36:/values-it/values-it.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-37:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "/Users/jasonlai150/.gradle/caches/transforms-3/d9f1408602df15d416656c30b99e7681/transformed/material-1.11.0/res/values-it/values-it.xml",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jasonlai150/.gradle/caches/transforms-3/d0fed0d99e04c10f2f4f288c7b2e96ed/transformed/play-services-base-18.0.1/res/values-it/values.xml",
+                    "source": "/Users/jasonlai150/.gradle/caches/transforms-3/8d8db35b68595ed7a67413eb8658385d/transformed/play-services-base-18.1.0/res/values-it/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
