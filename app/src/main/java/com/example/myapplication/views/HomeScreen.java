@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.HomeScreenBinding;
 
@@ -19,19 +19,19 @@ public class HomeScreen extends AppCompatActivity {
         binding.navigationbar.setOnItemSelectedListener(v -> {
             int itemId = v.getItemId();
             if (itemId == R.id.Meal) {
-                replaceFragment(new HomeFragment());
+                replaceFragment(new InputMealScreenFrag());
             } else if (itemId == R.id.Shopping) {
                 replaceFragment(new HomeFragment());
             }
             return true;
         });
-
     }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
         fragmentTransaction.commit();
     }
 }

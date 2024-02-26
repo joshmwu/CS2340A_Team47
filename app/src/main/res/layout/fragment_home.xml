@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    android:id="@+id/frame_layout"
+    android:id="@+id/fragment_home"
     tools:context=".views.HomeFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home Screen"
+        android:text="Home Fragment Screen"
         android:gravity="center"
         android:textSize="30dp"/>
 

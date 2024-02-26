@@ -32,6 +32,9 @@
         <activity android:name=".views.HomeFragment"
             android:exported="true">
         </activity>
+        <activity android:name=".views.InputMealScreenFrag"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
