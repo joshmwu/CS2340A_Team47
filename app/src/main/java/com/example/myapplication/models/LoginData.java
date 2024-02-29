@@ -9,7 +9,7 @@ public class LoginData {
     private String loginToken;
     private boolean loggedIn;
     private FirebaseAuth mAuth;
-    FirebaseUser currUser;
+    private FirebaseUser currUser;
 
     public String getUsername() {
         return username;
@@ -24,16 +24,16 @@ public class LoginData {
         this.password = password;
     }
 
-    public void setLoginToken(String token){
-        loginToken=token;
+    public void setLoginToken(String token) {
+        loginToken = token;
     }
-    public void setLoggedIn(boolean loggedIn){
-        this.loggedIn=loggedIn;
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
-    public boolean getLoggedIn(){
+    public boolean getLoggedIn() {
         return loggedIn;
     }
-    public FirebaseUser getCurrUser(){
+    public FirebaseUser getCurrUser() {
         return currUser;
     }
 }
