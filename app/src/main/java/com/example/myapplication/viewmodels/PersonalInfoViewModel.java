@@ -21,10 +21,11 @@ public class PersonalInfoViewModel {
         return userData;
     }
 
-    public void updateData(int height, int weight, String gender) {
+    public void updateData(int height, int weight, String gender, int calorieGoal) {
         this.userData.setHeight(height);
         this.userData.setWeight(weight);
         this.userData.setGender(gender);
+        this.userData.setCalorieGoal(calorieGoal);
     }
 
 }

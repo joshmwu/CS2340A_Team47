@@ -67,7 +67,7 @@ public class PersonalInfoFragment extends Fragment {
     protected void saveConfigurationData(EditText heightET, EditText weightET, String gender) {
         int height = Integer.parseInt(heightET.getText().toString());
         int weight = Integer.parseInt(weightET.getText().toString());
-        personalInfoViewModel.updateData(height, weight, gender);
+        personalInfoViewModel.updateData(height, weight, gender, 2000);//TODO: CALCULATE CALORIE GOAL
         // Clear the EditText fields
         heightET.setText("");
         weightET.setText("");

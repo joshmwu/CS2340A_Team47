@@ -5,6 +5,8 @@ public class UserData extends LoginData {
     private int weight;
     private String gender;
 
+    private int calorieGoal=2000;//default value
+
     public int getHeight() {
         return height;
     }
@@ -24,5 +26,10 @@ public class UserData extends LoginData {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    public void setCalorieGoal(int calories){
+        this.calorieGoal=calories;
+    }
+    public int getCalorieGoal(){
+        return calorieGoal;
+    }
 }
