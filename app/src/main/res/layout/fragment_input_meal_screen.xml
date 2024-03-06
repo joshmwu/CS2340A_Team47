@@ -7,8 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@color/orange"
-    tools:context=".views.InputMealScreenFrag"
-    >
+    tools:context=".views.InputMealScreenFrag">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,10 +21,9 @@
             android:layout_height="60dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:text="Input Meal Screen"
-            />
+            android:text="Input Meal Screen/>
         <EditText
             android:id="@+id/mealNameEditText"
             android:layout_width="200dp"
@@ -68,6 +66,14 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:id="@+id/piechart"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/linechart"/>
 
     </LinearLayout>
 
