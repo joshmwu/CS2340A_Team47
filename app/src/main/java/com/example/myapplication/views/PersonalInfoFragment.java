@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,9 @@ public class PersonalInfoFragment extends Fragment {
         personalInfoViewModel = PersonalInfoViewModel.getInstance();
         heightET = view.findViewById(R.id.enterHeight);
         weightET = view.findViewById(R.id.enterWeight);
-
+        savedMessage = view.findViewById(R.id.savedMessage);
         saveButton = view.findViewById(R.id.saveButton);
+
         Spinner genderSpinner = view.findViewById(R.id.genderSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.gender_options, android.R.layout.simple_spinner_item);
@@ -51,17 +53,38 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String gender = genderSpinner.getSelectedItem().toString();
-                saveConfigurationData(heightET, weightET, gender);
-                hideKeyboard(v);
-                displayHeight = view.findViewById(R.id.displayHeight);
-                displayWeight = view.findViewById(R.id.displayWeight);
-                String height = "My height: " + personalInfoViewModel.getUserData().getHeight();
-                displayHeight.setText(height);
-                String weight = "My weight: " + personalInfoViewModel.getUserData().getWeight();
-                displayWeight.setText(weight);
+                if (checkValidEditText(heightET) && checkValidEditText(weightET)) {
+                    saveConfigurationData(heightET, weightET, gender);
+                    hideKeyboard(v);
+                    displayHeight = view.findViewById(R.id.displayHeight);
+                    displayWeight = view.findViewById(R.id.displayWeight);
+                    String height = "My height: " + personalInfoViewModel.getUserData().getHeight();
+                    displayHeight.setText(height);
+                    String weight = "My weight: " + personalInfoViewModel.getUserData().getWeight();
+                    displayWeight.setText(weight);
+                    savedMessage.setText("Saved!");
+                }
+                else {
+                    hideKeyboard(v);
+                    savedMessage.setText("Please enter a valid height and weight.");
+                }
+
             }
         });
         return view;
+    }
+
+    private boolean isInteger(String input) {
+        return input.matches("-?\\d+");
+    }
+
+    private boolean checkValidEditText(EditText editText) {
+        String editTextValue = editText.getText().toString().trim();
+        if (!TextUtils.isEmpty(editTextValue) && isInteger(editTextValue)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     protected void saveConfigurationData(EditText heightET, EditText weightET, String gender) {
