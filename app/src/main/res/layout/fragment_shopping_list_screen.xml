@@ -6,11 +6,11 @@
     android:gravity="center|top"
     android:orientation="horizontal"
     android:background="@color/orange"
-    tools:context=".views.IngredientsScreenFrag"
+    tools:context=".views.ShoppingListScreenFrag"
     >
 
     <TextView
-        android:id="@+id/IngredientsTitle"
+        android:id="@+id/ShoppingListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
@@ -18,6 +18,6 @@
         android:padding="30dp"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:text="Ingredients Screen" />
+        android:text="Shopping List Screen" />
 
 </FrameLayout>

@@ -5,9 +5,8 @@ import android.text.Editable;
 import com.example.myapplication.models.LoginData;
 
 public class LoginScreenViewModel {
-
     private static LoginScreenViewModel instance;
-    final private LoginData loginData;
+    private final LoginData loginData;
 
     public LoginScreenViewModel() {
         loginData = new LoginData();

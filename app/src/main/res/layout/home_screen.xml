@@ -1,37 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/orange"
-    android:orientation="vertical"
-    android:id="@+id/HomeScreen">
+    android:background="@color/orange">
 
-    <TextView
-        android:id="@+id/homeScreenTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:gravity="center"
-        android:padding="20dp"
-        android:textSize="35sp"
-        android:textStyle="bold" />
-
+    <!-- FrameLayout to hold fragments -->
     <FrameLayout
         android:id="@+id/flFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
+    <!-- Linear layout for custom navigation -->
+    <LinearLayout
+        android:id="@+id/customNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        android:orientation="horizontal">
+
+        <!-- ImageButton for each navigation item -->
+        <ImageButton
+            android:id="@+id/Home"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:id="@+id/navigationbar"
-            app:fabCradleMargin="10dp"
-            app:fabCradleRoundedCornerRadius="10dp"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/navigationbar">
+            android:layout_weight="1"
+            android:src="@drawable/baseline_add_home_24"
+            android:contentDescription="Home" />
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <ImageButton
+            android:id="@+id/Meal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/meals"
+            android:contentDescription="Meal" />
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/Recipe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/recipe"
+            android:contentDescription="Recipe" />
+
+        <ImageButton
+            android:id="@+id/Ingredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ingredients"
+            android:contentDescription="Ingredients" />
+
+        <ImageButton
+            android:id="@+id/Shopping"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/shopping"
+            android:contentDescription="Shopping" />
+
+        <ImageButton
+            android:id="@+id/PersonalInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/personal_info"
+            android:contentDescription="Me" />
+
+    </LinearLayout>
+
+</RelativeLayout>

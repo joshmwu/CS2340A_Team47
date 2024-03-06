@@ -4,20 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center|top"
-    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     android:background="@color/orange"
     tools:context=".views.InputMealScreenFrag"
     >
 
-    <TextView
-        android:id="@+id/inputMealScreenTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:padding="30dp"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="Input Meal Screen" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/inputMealScreenTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:text="Input Meal Screen"
+            android:layout_weight="10"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/piechart"/>
+
+    </LinearLayout>
 
 </FrameLayout>
