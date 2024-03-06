@@ -23,10 +23,10 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:text="Input Meal Screen"
-            android:layout_weight="10"/>
+            android:layout_weight="1.5"/>
 
         <com.github.mikephil.charting.charts.PieChart
             android:layout_width="match_parent"
@@ -35,6 +35,14 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:id="@+id/piechart"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/linechart"/>
 
     </LinearLayout>
 
