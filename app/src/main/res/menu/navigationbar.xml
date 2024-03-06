@@ -31,4 +31,11 @@
         android:icon="@drawable/shopping"
         android:id="@+id/Shopping"
         android:title="Shopping" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/personal_info"
+        android:id="@+id/PersonalInfo"
+        android:title="PersonalInfo" />
+
 </menu>
