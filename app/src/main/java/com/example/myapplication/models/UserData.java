@@ -5,7 +5,7 @@ public class UserData extends LoginData {
     private int weight;
     private String gender;
 
-    private int calorieGoal=2000;//default value
+    private int calorieGoal = 2000;//default value
 
     public int getHeight() {
         return height;

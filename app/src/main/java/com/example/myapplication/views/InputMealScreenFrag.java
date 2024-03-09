@@ -37,28 +37,36 @@ public class InputMealScreenFrag extends Fragment {
     private EditText mealNameInputET;
     private EditText mealCaloriesInputET;
     private Button submitMealInfoButton;
-    private InputMealViewModel mealVM=InputMealViewModel.getInstance();
+    private Button logMealsButton;
+    private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
 
     private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
     private String mealName = mealVM.getMealName();
     private int mealCalories = mealVM.getMealCalories();
+    private PieChart pieChart;
+    private LineChart lineChart;
     public InputMealScreenFrag() { }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
 
-        PieChart pieChart = (PieChart) root.findViewById(R.id.piechart);
         mealNameInputET = root.findViewById(R.id.mealNameEditText);
         mealCaloriesInputET = root.findViewById(R.id.mealCaloriesEditText);
         submitMealInfoButton = root.findViewById(R.id.submitMealInfoButton);
+        logMealsButton = root.findViewById(R.id.logMealsButton);
 
-        //pieChart.setVisibility(View.INVISIBLE);
-        ArrayList<PieEntry> enters = new ArrayList<>();
-        enters.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-        enters.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
-        redrawChart(enters, pieChart);
+        pieChart = (PieChart) root.findViewById(R.id.piechart);
+        lineChart = (LineChart) root.findViewById(R.id.linechart);
+
+        ArrayList<PieEntry> pieEntries = new ArrayList<>();
+        pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
+        redrawPieChart(pieEntries, pieChart);
+
+        ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
+        redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
             mealName=String.valueOf(mealNameInputET.getText());
@@ -66,21 +74,42 @@ public class InputMealScreenFrag extends Fragment {
             mealVM.setMealData(mealName,mealCalories);
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
-            enters.clear();
-            if(mealCalories<calorieGoal) {
-                enters.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                enters.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            pieEntries.clear();
+            if (mealCalories<calorieGoal) {
+                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            } else {
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-            else{
-                enters.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-                enters.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-            }
-            redrawChart(enters, pieChart);
+            redrawPieChart(pieEntries, pieChart);
         });
 
+        logMealsButton.setOnClickListener(v -> {
+            lineEntries.add(new Entry(mealVM.getDay(), mealCalories));
+            mealVM.setDay(mealVM.getDay() + 1);
+            mealName = null;
+            mealCalories = 0;
+            if (lineEntries.size() >= 15) {
+                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
+            } else if (lineEntries.size() >= 7) {
+                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
+            } else {
+                redrawLineChart(lineEntries, lineChart);
+            }
+            pieEntries.clear();
+            if (mealCalories<calorieGoal) {
+                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            } else {
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+            }
+            redrawPieChart(pieEntries, pieChart);
+        });
         return root;
     }
-    private void redrawChart(ArrayList<PieEntry> enters, PieChart pieChart){
+    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
         PieDataSet pieDataSet = new PieDataSet(enters, "Label");
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
 
@@ -100,22 +129,15 @@ public class InputMealScreenFrag extends Fragment {
         pieData.setValueTextSize(20f);
         pieChart.setTransparentCircleRadius(60f);
     }
-    lineChart = (LineChart) root.findViewById(R.id.linechart);
-    ArrayList<Entry> lineEntries = new ArrayList<>();
-    lineEntries.add(new Entry(1, 2000));
-    lineEntries.add(new Entry(2, 1500));
-    lineEntries.add(new Entry(3, 2200));
-    lineEntries.add(new Entry(4, 2000));
+    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
+        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
+        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
 
-    LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
-    lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+        LineData lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
 
-    LineData lineData = new LineData(lineDataSet);
-    lineChart.setData(lineData);
-
-    lineChart.getDescription().setEnabled(false);
-    lineChart.animateY(1400, Easing.EaseInOutQuad);
-    lineChart.invalidate();
-    // Inflate the layout for this fragment
-    return root;
+        lineChart.getDescription().setEnabled(false);
+        lineChart.animateY(1400, Easing.EaseInOutQuad);
+        lineChart.invalidate();
+    }
 }
