@@ -23,7 +23,34 @@
             android:layout_gravity="center"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:text="Input Meal Screen/>
+            android:text="Input Meal Screen" />
+        <TextView
+            android:id="@+id/userHeightTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Height" />
+        <TextView
+            android:id="@+id/userWeightTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Weight" />
+        <TextView
+            android:id="@+id/userGenderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Gender" />
         <EditText
             android:id="@+id/mealNameEditText"
             android:layout_width="200dp"
@@ -58,6 +85,16 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="@string/submit" />
+        <Button
+            android:id="@+id/logMealsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@string/log" />
 
         <com.github.mikephil.charting.charts.PieChart
             android:layout_width="match_parent"
@@ -74,6 +111,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:id="@+id/linechart"/>
+
 
     </LinearLayout>
 

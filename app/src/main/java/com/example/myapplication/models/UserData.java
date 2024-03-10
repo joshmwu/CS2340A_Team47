@@ -3,9 +3,9 @@ package com.example.myapplication.models;
 public class UserData extends LoginData {
     private int height;
     private int weight;
-    private String gender;
+    private String gender = "No Input";
 
-    private int calorieGoal=2000;//default value
+    private int calorieGoal = 2000;//default value
 
     public int getHeight() {
         return height;
