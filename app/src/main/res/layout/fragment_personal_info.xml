@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Height (inches): "
-        android:padding="20dp"
+        android:padding="15dp"
         android:layout_margin="10dp"/>
 
     <EditText
@@ -33,8 +33,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Weight (lbs): "
-        android:padding="20dp"
+        android:padding="15dp"
         android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/enterAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Age: "
+        android:padding="15dp"
+        android:layout_margin="10dp"/>
+
     <TextView
         android:id="@+id/genderLabel"
         android:layout_width="wrap_content"
@@ -65,23 +74,30 @@
 
     <TextView
         android:id="@+id/savedMessage"
-        android:textSize="15sp"
-        android:padding="15dp"
+        android:textSize="10sp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/displayHeight"
-        android:textSize="20sp"
-        android:padding="20dp"
+        android:textSize="15sp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
     <TextView
         android:id="@+id/displayWeight"
-        android:textSize="20sp"
-        android:padding="20dp"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/displayAge"
+        android:textSize="15sp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
