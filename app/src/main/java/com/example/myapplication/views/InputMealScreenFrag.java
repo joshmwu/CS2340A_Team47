@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -36,6 +37,9 @@ import java.util.ArrayList;
 public class InputMealScreenFrag extends Fragment {
     private EditText mealNameInputET;
     private EditText mealCaloriesInputET;
+    private TextView userHeightTV;
+    private TextView userWeightTV;
+    private TextView userGenderTV;
     private Button submitMealInfoButton;
     private Button logMealsButton;
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
@@ -51,6 +55,14 @@ public class InputMealScreenFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
+
+        userHeightTV = root.findViewById(R.id.userHeightTextView);
+        userWeightTV = root.findViewById(R.id.userWeightTextView);
+        userGenderTV = root.findViewById(R.id.userGenderTextView);
+
+        userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
+        userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
+        userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
 
         mealNameInputET = root.findViewById(R.id.mealNameEditText);
         mealCaloriesInputET = root.findViewById(R.id.mealCaloriesEditText);
