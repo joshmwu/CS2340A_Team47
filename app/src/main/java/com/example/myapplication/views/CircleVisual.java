@@ -45,7 +45,6 @@ public class CircleVisual extends Fragment {
     private String mealName = mealVM.getMealName();
     private int mealCalories = mealVM.getMealCalories();
     private PieChart pieChart;
-    private LineChart lineChart;
 
     public CircleVisual() { }
     @Override
@@ -61,9 +60,6 @@ public class CircleVisual extends Fragment {
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
         redrawPieChart(pieEntries, pieChart);
-
-        ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
-        redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
             mealName=String.valueOf(mealNameInputET.getText());
@@ -83,17 +79,10 @@ public class CircleVisual extends Fragment {
         });
 
         logMealsButton.setOnClickListener(v -> {
-            lineEntries.add(new Entry(mealVM.getDay(), mealCalories));
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
             mealCalories = 0;
-            if (lineEntries.size() >= 15) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
-            } else if (lineEntries.size() >= 7) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
-            } else {
-                redrawLineChart(lineEntries, lineChart);
-            }
+
             pieEntries.clear();
             if (mealCalories<calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
@@ -125,16 +114,5 @@ public class CircleVisual extends Fragment {
         pieData.setValueTextColor(Color.WHITE);
         pieData.setValueTextSize(20f);
         pieChart.setTransparentCircleRadius(60f);
-    }
-    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
-        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
-        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-
-        LineData lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
-
-        lineChart.getDescription().setEnabled(false);
-        lineChart.animateY(1400, Easing.EaseInOutQuad);
-        lineChart.invalidate();
     }
 }
