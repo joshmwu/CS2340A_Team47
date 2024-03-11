@@ -1,7 +1,5 @@
 package com.example.myapplication.views;
 
-import android.app.Person;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -15,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.HomeScreenBinding;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
@@ -31,20 +29,15 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import org.checkerframework.checker.units.qual.A;
-
-import java.io.*;
 import java.util.ArrayList;
 
-public class InputMealScreenFrag extends Fragment {
+public class CircleVisual extends Fragment {
     private EditText mealNameInputET;
     private EditText mealCaloriesInputET;
-    private TextView userHeightTV;
-    private TextView userWeightTV;
-    private TextView userGenderTV;
     private Button submitMealInfoButton;
     private Button logMealsButton;
-    private Button goToPieChart;
+
+    private Button pieChartButton;
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
 
@@ -52,36 +45,21 @@ public class InputMealScreenFrag extends Fragment {
     private String mealName = mealVM.getMealName();
     private int mealCalories = mealVM.getMealCalories();
     private PieChart pieChart;
-    private LineChart lineChart;
-    public InputMealScreenFrag() { }
+
+    public CircleVisual() { }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
 
-        userHeightTV = root.findViewById(R.id.userHeightTextView);
-        userWeightTV = root.findViewById(R.id.userWeightTextView);
-        userGenderTV = root.findViewById(R.id.userGenderTextView);
-
-        userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
-        userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
-        userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
-
-        mealNameInputET = root.findViewById(R.id.mealNameEditText);
-        mealCaloriesInputET = root.findViewById(R.id.mealCaloriesEditText);
-        submitMealInfoButton = root.findViewById(R.id.submitMealInfoButton);
-        logMealsButton = root.findViewById(R.id.logMealsButton);
+        pieChartButton = root.findViewById(R.id.goToPieChart);
 
         pieChart = (PieChart) root.findViewById(R.id.piechart);
-        lineChart = (LineChart) root.findViewById(R.id.linechart);
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
-        // redrawPieChart(pieEntries, pieChart);
-
-        ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
-        redrawLineChart(lineEntries, lineChart);
+        redrawPieChart(pieEntries, pieChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
             mealName=String.valueOf(mealNameInputET.getText());
@@ -97,21 +75,14 @@ public class InputMealScreenFrag extends Fragment {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-           //  redrawPieChart(pieEntries, pieChart);
+            redrawPieChart(pieEntries, pieChart);
         });
 
         logMealsButton.setOnClickListener(v -> {
-            lineEntries.add(new Entry(mealVM.getDay(), mealCalories));
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
             mealCalories = 0;
-            if (lineEntries.size() >= 15) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
-            } else if (lineEntries.size() >= 7) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
-            } else {
-                redrawLineChart(lineEntries, lineChart);
-            }
+
             pieEntries.clear();
             if (mealCalories<calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
@@ -120,33 +91,28 @@ public class InputMealScreenFrag extends Fragment {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-            // redrawPieChart(pieEntries, pieChart);
+            redrawPieChart(pieEntries, pieChart);
         });
-            // trying
-
-//        goToPieChart = root.findViewById(R.id.goToPieChart);
-//        goToPieChart.setOnClickListener(v -> {
-//            // Navigate to CircleVisual fragment
-//            CircleVisual circleVisualFragment = new CircleVisual();
-//            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//            transaction.replace(((ViewGroup)getView().getParent()).getId(), circleVisualFragment);
-//            transaction.addToBackStack(null);
-//            transaction.commit();
-//        });
-
         return root;
     }
+    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
+        PieDataSet pieDataSet = new PieDataSet(enters, "Label");
+        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
 
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
 
-    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
-        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
-        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.invalidate();
 
-        LineData lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
+        //pieChart.setUsePercentValues(true);
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleColor(Color.TRANSPARENT);
 
-        lineChart.getDescription().setEnabled(false);
-        lineChart.animateY(1400, Easing.EaseInOutQuad);
-        lineChart.invalidate();
+        pieDataSet.setSliceSpace(1f);
+        pieData.setValueTextColor(Color.WHITE);
+        pieData.setValueTextSize(20f);
+        pieChart.setTransparentCircleRadius(60f);
     }
 }
