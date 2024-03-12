@@ -64,7 +64,7 @@ public class CircleVisual extends Fragment {
         submitMealInfoButton.setOnClickListener(v -> {
             mealName=String.valueOf(mealNameInputET.getText());
             mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
-            mealVM.setMealData(mealName,mealCalories);
+            mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
             pieEntries.clear();

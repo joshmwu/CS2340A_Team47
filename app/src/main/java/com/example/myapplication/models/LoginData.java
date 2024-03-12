@@ -9,8 +9,6 @@ public class LoginData {
     private String username;
     private String password;
     private boolean loggedIn;
-    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //private DatabaseReference loginRef = database.getReference("Users");
 
     public String getUsername() {
         return username;
@@ -30,8 +28,5 @@ public class LoginData {
     }
     public boolean getLoggedIn() {
         return loggedIn;
-    }
-    public FirebaseDatabase getDBInstance(){
-        return this.database;
     }
 }
