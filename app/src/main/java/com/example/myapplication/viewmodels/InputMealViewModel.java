@@ -13,7 +13,7 @@ public class InputMealViewModel {
     private static InputMealViewModel instance;
     private final MealData mealData;
     private static int day;
-    private final FirebaseService firebaseService;
+    private FirebaseService firebaseService;
     Map<String, Integer> mealMap = new HashMap<>();
 
     private InputMealViewModel() {
