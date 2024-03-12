@@ -87,8 +87,19 @@ public class LoginScreen extends AppCompatActivity {
                 String password;
                 username = String.valueOf(usernameET.getText());
                 password = String.valueOf(passwordET.getText());
-                String usernameToken = username + "@fakemail.com";
-                mAuth.signInWithEmailAndPassword(usernameToken, password)
+
+                loginVM.checkUserValidity(username, password);
+                if(loginVM.getLoginData().getLoggedIn()){
+                    warningMessage.setText("Authentification successful");
+                    Intent intent2 = new Intent(LoginScreen.this, HomeScreen.class);
+                    startActivity(intent2);
+                }
+                else{
+                    warningMessage.setText("Authentification failed");
+                }
+
+                //String usernameToken = username + "@fakemail.com";
+                /*mAuth.signInWithEmailAndPassword(usernameToken, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -111,7 +122,7 @@ public class LoginScreen extends AppCompatActivity {
                                     return;
                                 }
                             }
-                        });
+                        });*/
             }
         });
     }
