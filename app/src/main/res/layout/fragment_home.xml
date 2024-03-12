@@ -3,15 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="horizontal"
     android:background="@color/orange"
-    android:id="@+id/frame_layout"
-    tools:context=".views.HomeFragment">
+    tools:context=".views.HomeFragment"
+    >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home Screen"
+        android:id="@+id/HomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
         android:gravity="center"
-        android:textSize="30dp"/>
+        android:padding="30dp"
+        android:text="Home Screen"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
 </FrameLayout>

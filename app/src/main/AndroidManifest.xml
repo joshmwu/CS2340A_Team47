@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".views.WelcomeScreen"
+            android:name=".views.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,9 +29,36 @@
             android:name=".views.HomeScreen"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".views.RegisterScreen"
+            android:exported="true">
+        </activity>
         <activity android:name=".views.HomeFragment"
             android:exported="true">
         </activity>
+        <activity android:name=".views.WelcomeScreen"
+            android:exported="true">
+        </activity>
+        <activity android:name=".views.InputMealScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.ShoppingListScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.RecipeScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.IngredientsScreenFrag"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".views.PersonalInfoFragment"
+            android:exported="true">
+        </activity>
+        
     </application>
 
 </manifest>
