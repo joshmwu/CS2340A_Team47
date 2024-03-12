@@ -117,37 +117,5 @@
             android:id="@+id/linechart"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/userAccountInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:padding="30dp"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="User Account Information" />
-
-    <TextView
-        android:id="@+id/calculatedCalories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:padding="30dp"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="Calculated Calorie Goal" />
-
-    <TextView
-        android:id="@+id/calorieIntake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:padding="30dp"
-        android:text="Daily Calorie Intake"
-        android:textSize="35sp"
-        android:textStyle="bold" />
 
 </FrameLayout>
