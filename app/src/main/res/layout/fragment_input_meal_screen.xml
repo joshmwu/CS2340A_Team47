@@ -117,4 +117,5 @@
             android:id="@+id/linechart"/>
     </LinearLayout>
 
+
 </FrameLayout>
