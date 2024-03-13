@@ -61,7 +61,8 @@ public class InputMealScreenFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen,
+                container, false);
 
         welcomeUser = root.findViewById(R.id.welcomeUser);
         userHeightTV = root.findViewById(R.id.userHeightTextView);
@@ -100,10 +101,13 @@ public class InputMealScreenFrag extends Fragment {
             pieEntries.clear();
             if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories,
+                        "Remaining Calories"));
             } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal),
+                        "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal,
+                        "Day's Calorie Goal"));
             }
             mealCalories = 0;
            //  redrawPieChart(pieEntries, pieChart);
@@ -116,18 +120,23 @@ public class InputMealScreenFrag extends Fragment {
             mealName = null;
             mealCalories = 0;
             if (lineEntries.size() >= 15) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
+                redrawLineChart((ArrayList<Entry>)
+                        lineEntries.subList(lineEntries.size() - 15, lineEntries.size()),
+                        lineChart);
             } else if (lineEntries.size() >= 7) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
+                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7,
+                        lineEntries.size()), lineChart);
             } else {
                 redrawLineChart(lineEntries, lineChart);
             }
             pieEntries.clear();
             if (mealCalories<calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories,
+                        "Remaining Calories"));
             } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal),
+                        "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
             mealVM.clearMap();
@@ -135,7 +144,8 @@ public class InputMealScreenFrag extends Fragment {
         });
 
         //
-        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual()));
+        root.findViewById(R.id.goToPieChart).setOnClickListener(v ->
+                replaceFragment(new CircleVisual()));
 
         return root;
     }

@@ -51,7 +51,8 @@ public class CircleVisual extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual,
+                container, false);
 
         submitMealInfoButton = root.findViewById(R.id.submitMealInfoButton);
         logMealsButton = root.findViewById(R.id.logMealsButton);
