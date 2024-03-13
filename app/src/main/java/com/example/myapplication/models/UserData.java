@@ -11,7 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 public class UserData extends LoginData {
-    private int height = 13;
+    private int height;
     private int weight;
     private int age;
     private String gender = "No Input";
@@ -93,6 +93,23 @@ public class UserData extends LoginData {
         this.calorieGoal = calories;
     }
     public int getCalorieGoal(){
+        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        final boolean verified;
+        userRef.child(getUsername()).child("calorieGoal").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                Object calorieGoalObj = task.getResult().getValue();
+
+                // Check if the height value exists and is an integer
+                if (calorieGoalObj != null && calorieGoalObj instanceof Long) {
+                    // Convert the height value to an integer
+                    calorieGoal = ((Long) calorieGoalObj).intValue();
+
+                    // Now we have the height value
+                    Log.d("firebase", "Weight: " + weight);
+                }
+            }
+        });
         return calorieGoal;
     }
 }
