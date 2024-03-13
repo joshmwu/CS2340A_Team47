@@ -92,13 +92,13 @@ public class InputMealScreenFrag extends Fragment {
         redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
-            mealName=String.valueOf(mealNameInputET.getText());
-            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
+            mealName = String.valueOf(mealNameInputET.getText());
+            mealCalories = Integer.parseInt(mealCaloriesInputET.getText().toString());
             mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
             pieEntries.clear();
-            if (mealCalories<calorieGoal) {
+            if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
             } else {
@@ -130,6 +130,7 @@ public class InputMealScreenFrag extends Fragment {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
+            mealVM.clearMap();
             // redrawPieChart(pieEntries, pieChart);
         });
 
