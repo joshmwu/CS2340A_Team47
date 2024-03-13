@@ -10,7 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 public class PersonalInfoViewModel {
     private static PersonalInfoViewModel instance;
     private final UserData userData;
-    private FirebaseService firebaseService;
+    private static FirebaseService firebaseService;
 
     public PersonalInfoViewModel() {
         userData = new UserData();
@@ -25,6 +25,10 @@ public class PersonalInfoViewModel {
     }
     public UserData getUserData() {
         return userData;
+    }
+
+    public static FirebaseService getFirebaseService() {
+        return firebaseService;
     }
 
     public void updateData(String username, int height, int weight, int age, String gender, int calorieGoal) {
