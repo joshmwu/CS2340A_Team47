@@ -20,6 +20,7 @@ import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -60,100 +61,45 @@ public class CircleVisual extends Fragment {
 
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
+        pieEntries.add(new PieEntry(mealCalories, "Daily Intake"));
+        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Goal"));
 
-        // redrawPieChart(pieEntries, pieChart);
-
-        submitMealInfoButton.setOnClickListener(v -> {
-            mealName=String.valueOf(mealNameInputET.getText());
-            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
-            mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
-            mealName = mealVM.getMealName();
-            mealCalories = mealVM.getMealCalories();
-            pieEntries.clear();
-            if (mealCalories<calorieGoal) {
-                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-            } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-            }
-            // redrawPieChart(pieEntries, pieChart);
-        });
-
-        logMealsButton.setOnClickListener(v -> {
-            mealVM.setDay(mealVM.getDay() + 1);
-            mealName = null;
-            mealCalories = 0;
-
-            pieEntries.clear();
-            if (mealCalories<calorieGoal) {
-                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-            } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-            }
-            // redrawPieChart(pieEntries, pieChart);
-        });
-
-        // redrawPieChart(pieEntries, pieChart);
-//
-//        submitMealInfoButton.setOnClickListener(v -> {
-//            mealName=String.valueOf(mealNameInputET.getText());
-//            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
-//            mealVM.setMealData(mealName,mealCalories);
-//            mealName = mealVM.getMealName();
-//            mealCalories = mealVM.getMealCalories();
-//            pieEntries.clear();
-//            if (mealCalories<calorieGoal) {
-//                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-//                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-//            } else {
-//                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-//                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-//            }
-//            // redrawPieChart(pieEntries, pieChart);
-//        });
-//
-//        logMealsButton.setOnClickListener(v -> {
-//            mealVM.setDay(mealVM.getDay() + 1);
-//            mealName = null;
-//            mealCalories = 0;
-//
-//            pieEntries.clear();
-//            if (mealCalories<calorieGoal) {
-//                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-//                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-//            } else {
-//                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
-//                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-//            }
-//            // redrawPieChart(pieEntries, pieChart);
-//        });
+        redrawPieChart(pieEntries, pieChart);
+        root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> replaceFragment(new InputMealScreenFrag()));
 
         return root;
     }
-//    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
-//        PieDataSet pieDataSet = new PieDataSet(enters, "Label");
-//        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-//
-//        PieData pieData = new PieData(pieDataSet);
-//        pieChart.setData(pieData);
-//
-//        pieChart.getDescription().setEnabled(false);
-//        pieChart.animateY(1400, Easing.EaseInOutQuad);
-//        pieChart.invalidate();
-//
-//        //pieChart.setUsePercentValues(true);
-//        pieChart.setDrawHoleEnabled(true);
-//        pieChart.setHoleColor(Color.TRANSPARENT);
-//
-//        pieDataSet.setSliceSpace(1f);
-//        pieData.setValueTextColor(Color.WHITE);
-//        pieData.setValueTextSize(20f);
-//        pieChart.setTransparentCircleRadius(60f);
-//    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
+        PieDataSet pieDataSet = new PieDataSet(enters, "Label");
+        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+
+        pieChart.getDescription().setEnabled(false);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.invalidate();
+
+        //pieChart.setUsePercentValues(true);
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+
+        pieDataSet.setSliceSpace(1f);
+        pieData.setValueTextColor(Color.WHITE);
+        pieData.setValueTextSize(20f);
+        pieChart.setTransparentCircleRadius(60f);
+
+        pieChart.getLegend().setTextSize(20f);
+        pieChart.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+    }
 
 }
