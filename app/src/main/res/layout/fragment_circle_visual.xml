@@ -18,31 +18,33 @@
         <TextView
             android:id="@+id/pieChartTitle"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
-            android:textSize="60sp"
+            android:layout_marginTop="25dp"
+            android:textSize="55sp"
             android:textStyle="bold"
-            android:text="Pie Chart" />
+            android:text="Daily Calorie Tracker" />
 
         <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="25dp"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="3"
-            android:id="@+id/piechart"/>
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center" />
 
         <Button
             android:id="@+id/goBackToInputButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="100dp"
+            android:layout_margin="75dp"
             android:layout_gravity="center"
             android:padding="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_weight="0.00001"
             android:text="Go Back" />
 
     </LinearLayout>
