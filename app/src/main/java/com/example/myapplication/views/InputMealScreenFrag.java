@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentInputMealScreenBinding;
+import com.example.myapplication.databinding.HomeScreenBinding;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
@@ -97,7 +99,7 @@ public class InputMealScreenFrag extends Fragment {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-           //  redrawPieChart(pieEntries, pieChart);
+            // redrawLineChart(lineEntries, lineChart);
         });
 
         logMealsButton.setOnClickListener(v -> {
@@ -122,21 +124,41 @@ public class InputMealScreenFrag extends Fragment {
             }
             // redrawPieChart(pieEntries, pieChart);
         });
-            // trying
 
-//        goToPieChart = root.findViewById(R.id.goToPieChart);
-//        goToPieChart.setOnClickListener(v -> {
-//            // Navigate to CircleVisual fragment
-//            CircleVisual circleVisualFragment = new CircleVisual();
-//            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//            transaction.replace(((ViewGroup)getView().getParent()).getId(), circleVisualFragment);
-//            transaction.addToBackStack(null);
-//            transaction.commit();
-//        });
+        //
+        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual()));
 
         return root;
     }
 
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
+        PieDataSet pieDataSet = new PieDataSet(enters, "Label");
+        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+
+        pieChart.getDescription().setEnabled(false);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.invalidate();
+
+        //pieChart.setUsePercentValues(true);
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+
+        pieDataSet.setSliceSpace(1f);
+        pieData.setValueTextColor(Color.WHITE);
+        pieData.setValueTextSize(20f);
+        pieChart.setTransparentCircleRadius(60f);
+    }
 
     private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
         LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
