@@ -9,7 +9,7 @@ import com.example.myapplication.R;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_TIME_OUT = 2000; // 2 sec
+    private static final int SPLASH_TIME_OUT = 1000; // 2 sec
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
