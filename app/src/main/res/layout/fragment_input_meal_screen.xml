@@ -51,6 +51,16 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="Gender" />
+        <TextView
+            android:id="@+id/userGoalTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Calorie Goal"
+            />
         <EditText
             android:id="@+id/mealNameEditText"
             android:layout_width="200dp"

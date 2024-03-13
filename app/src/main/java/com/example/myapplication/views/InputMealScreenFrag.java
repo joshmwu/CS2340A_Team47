@@ -44,6 +44,7 @@ public class InputMealScreenFrag extends Fragment {
     private TextView userHeightTV;
     private TextView userWeightTV;
     private TextView userGenderTV;
+    private TextView userGoalTV;
     private Button submitMealInfoButton;
     private Button logMealsButton;
     private Button goToPieChart;
@@ -64,10 +65,12 @@ public class InputMealScreenFrag extends Fragment {
         userHeightTV = root.findViewById(R.id.userHeightTextView);
         userWeightTV = root.findViewById(R.id.userWeightTextView);
         userGenderTV = root.findViewById(R.id.userGenderTextView);
+        userGoalTV = root.findViewById(R.id.userGoalTextView);
 
         userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
         userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
         userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
+        userGoalTV.setText("Calorie Goal: " + userInfoVM.getUserData().getCalorieGoal());
 
         mealNameInputET = root.findViewById(R.id.mealNameEditText);
         mealCaloriesInputET = root.findViewById(R.id.mealCaloriesEditText);
