@@ -62,6 +62,42 @@ public class CircleVisual extends Fragment {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
+
+        // redrawPieChart(pieEntries, pieChart);
+
+        submitMealInfoButton.setOnClickListener(v -> {
+            mealName=String.valueOf(mealNameInputET.getText());
+            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
+            mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
+            mealName = mealVM.getMealName();
+            mealCalories = mealVM.getMealCalories();
+            pieEntries.clear();
+            if (mealCalories<calorieGoal) {
+                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            } else {
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+            }
+            // redrawPieChart(pieEntries, pieChart);
+        });
+
+        logMealsButton.setOnClickListener(v -> {
+            mealVM.setDay(mealVM.getDay() + 1);
+            mealName = null;
+            mealCalories = 0;
+
+            pieEntries.clear();
+            if (mealCalories<calorieGoal) {
+                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            } else {
+                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+            }
+            // redrawPieChart(pieEntries, pieChart);
+        });
+
         // redrawPieChart(pieEntries, pieChart);
 //
 //        submitMealInfoButton.setOnClickListener(v -> {
@@ -96,6 +132,7 @@ public class CircleVisual extends Fragment {
 //            }
 //            // redrawPieChart(pieEntries, pieChart);
 //        });
+
         return root;
     }
 //    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
