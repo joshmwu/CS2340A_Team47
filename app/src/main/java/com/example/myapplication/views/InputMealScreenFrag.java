@@ -41,6 +41,7 @@ import java.util.ArrayList;
 public class InputMealScreenFrag extends Fragment {
     private EditText mealNameInputET;
     private EditText mealCaloriesInputET;
+    private TextView welcomeUser;
     private TextView userHeightTV;
     private TextView userWeightTV;
     private TextView userGenderTV;
@@ -62,11 +63,13 @@ public class InputMealScreenFrag extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
 
+        welcomeUser = root.findViewById(R.id.welcomeUser);
         userHeightTV = root.findViewById(R.id.userHeightTextView);
         userWeightTV = root.findViewById(R.id.userWeightTextView);
         userGenderTV = root.findViewById(R.id.userGenderTextView);
         userGoalTV = root.findViewById(R.id.userGoalTextView);
 
+        welcomeUser.setText("Welcome, " + userInfoVM.getUserData().getUsername());
         userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
         userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
         userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
