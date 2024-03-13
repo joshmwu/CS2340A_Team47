@@ -32,5 +32,8 @@ public class MealData {
     public int getMealCalories(){
         return this.mealCalories;
     }
+    public void resetMealCalories() {
+        mealCalories = 0;
+    }
 
 }
