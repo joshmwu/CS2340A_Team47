@@ -44,7 +44,7 @@ public class CircleVisual extends Fragment {
 
     private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
     private String mealName = mealVM.getMealName();
-    private int mealCalories = mealVM.getMealCalories();
+    private int totalCalories = mealVM.getTotalDayCalories();
     private PieChart pieChart;
 
     public CircleVisual() { }
@@ -59,11 +59,14 @@ public class CircleVisual extends Fragment {
 
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(mealCalories, "Daily Intake"));
-        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Goal"));
+        pieEntries.add(new PieEntry(totalCalories, "Daily Intake"));
+        pieEntries.add(new PieEntry(calorieGoal-totalCalories, "Goal"));
 
         redrawPieChart(pieEntries, pieChart);
-        root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> replaceFragment(new InputMealScreenFrag()));
+        root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> {
+                replaceFragment(new InputMealScreenFrag());
+                mealVM.resetTotalDayCalories();
+        });
 
         return root;
     }

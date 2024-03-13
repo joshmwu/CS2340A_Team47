@@ -99,7 +99,7 @@ public class InputMealScreenFrag extends Fragment {
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
             pieEntries.clear();
-            if (mealCalories<calorieGoal) {
+            if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
             } else {
