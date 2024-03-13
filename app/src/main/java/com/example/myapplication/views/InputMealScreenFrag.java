@@ -49,6 +49,7 @@ public class InputMealScreenFrag extends Fragment {
     private Button submitMealInfoButton;
     private Button logMealsButton;
     private Button goToPieChart;
+    private Button goToLineChart;
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
 
@@ -89,11 +90,11 @@ public class InputMealScreenFrag extends Fragment {
         // redrawPieChart(pieEntries, pieChart);
 
         ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
-        redrawLineChart(lineEntries, lineChart);
+//        redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
-            mealName=String.valueOf(mealNameInputET.getText());
-            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
+            mealName = String.valueOf(mealNameInputET.getText());
+            mealCalories += Integer.parseInt(mealCaloriesInputET.getText().toString());
             mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
@@ -115,26 +116,27 @@ public class InputMealScreenFrag extends Fragment {
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
             mealCalories = 0;
-            if (lineEntries.size() >= 15) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
-            } else if (lineEntries.size() >= 7) {
-                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
-            } else {
-                redrawLineChart(lineEntries, lineChart);
-            }
+//            if (lineEntries.size() >= 15) {
+//                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
+//            } else if (lineEntries.size() >= 7) {
+//                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
+//            } else {
+//                redrawLineChart(lineEntries, lineChart);
+//            }
             pieEntries.clear();
-            if (mealCalories<calorieGoal) {
+            if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
             } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry((mealCalories - calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-            // redrawPieChart(pieEntries, pieChart);
+            //redrawPieChart(pieEntries, pieChart);
         });
 
         //
         root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual()));
+        root.findViewById(R.id.goToLineChart).setOnClickListener(v -> replaceFragment(new LineVisual()));
 
         return root;
     }
@@ -168,15 +170,15 @@ public class InputMealScreenFrag extends Fragment {
         pieChart.setTransparentCircleRadius(60f);
     }
 
-    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
-        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
-        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-
-        LineData lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
-
-        lineChart.getDescription().setEnabled(false);
-        lineChart.animateY(1400, Easing.EaseInOutQuad);
-        lineChart.invalidate();
-    }
+//    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
+//        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
+//        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+//
+//        LineData lineData = new LineData(lineDataSet);
+//        lineChart.setData(lineData);
+//
+//        lineChart.getDescription().setEnabled(false);
+//        lineChart.animateY(1400, Easing.EaseInOutQuad);
+//        lineChart.invalidate();
+//    }
 }
