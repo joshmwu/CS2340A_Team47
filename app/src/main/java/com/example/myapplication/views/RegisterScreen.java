@@ -44,6 +44,7 @@ public class RegisterScreen extends AppCompatActivity {
         buttonReg = findViewById(R.id.RegCreateButton);
         buttonBack = findViewById(R.id.backButton);
         mAuth = FirebaseAuth.getInstance();
+        vModel=LoginScreenViewModel.getInstance();
 
         buttonBack.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterScreen.this, LoginScreen.class);
@@ -57,8 +58,7 @@ public class RegisterScreen extends AppCompatActivity {
                 String password;
                 username = String.valueOf(editTextUsername.getText());
                 password = String.valueOf(editTextPassword.getText());
-                String usernameToken = username + "@fakemail.com";
-                //NOTE: workaround to use built in email/password functionality in firebase
+
                 if (username.isEmpty()) {
                     Toast.makeText(RegisterScreen.this,
                             "enter username", Toast.LENGTH_SHORT).show();
@@ -69,7 +69,20 @@ public class RegisterScreen extends AppCompatActivity {
                             "enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //NOTE: password needs to be 6 or more characters long
+
+                vModel.addNewUser(username, password);
+                Toast.makeText(RegisterScreen.this,
+                        "Account created, redirecting to login page",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterScreen.this,
+                        LoginScreen.class);
+                startActivity(intent);
+                finish();
+
+                //String usernameToken = username + "@fakemail.com";
+
+                //NOTE: workaround to use built in email/password functionality in firebase
+                /*//NOTE: password needs to be 6 or more characters long
                 mAuth.createUserWithEmailAndPassword(usernameToken, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -97,7 +110,7 @@ public class RegisterScreen extends AppCompatActivity {
                                     }
                                 }
                             }
-                        });
+                        });*/
             }
         });
     }

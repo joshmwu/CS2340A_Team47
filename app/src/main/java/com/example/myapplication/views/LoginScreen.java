@@ -83,12 +83,24 @@ public class LoginScreen extends AppCompatActivity {
                     warningMessage.setText("Please check to ensure you have no whitespace");
                 }
             } else {
-                String username;
-                String password;
-                username = String.valueOf(usernameET.getText());
-                password = String.valueOf(passwordET.getText());
-                String usernameToken = username + "@fakemail.com";
-                mAuth.signInWithEmailAndPassword(usernameToken, password)
+                String usernameLocal;
+                String passwordLocal;
+                usernameLocal = String.valueOf(usernameET.getText());
+                passwordLocal = String.valueOf(passwordET.getText());
+
+                loginVM.checkUserValidity(usernameLocal, passwordLocal);
+                if (loginVM.getLoginData().getLoggedIn()) {
+                    warningMessage.setText("Authentification successful");
+                    Intent intent2 = new Intent(LoginScreen.this, HomeScreen.class);
+                    intent2.putExtra("username", usernameLocal);
+                    startActivity(intent2);
+                }
+                else {
+                    warningMessage.setText("Authentification failed");
+                }
+
+                //String usernameToken = username + "@fakemail.com";
+                /*mAuth.signInWithEmailAndPassword(usernameToken, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -111,7 +123,7 @@ public class LoginScreen extends AppCompatActivity {
                                     return;
                                 }
                             }
-                        });
+                        });*/
             }
         });
     }

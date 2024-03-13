@@ -1,5 +1,6 @@
 package com.example.myapplication.models;
 
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import com.github.mikephil.charting.data.Entry;
@@ -10,9 +11,9 @@ public class MealData {
     private ArrayList<Entry> caloriesByDay = new ArrayList<>();
     private int mealCalories;
 
-    public void setMealData(String name, int calories){
-        this.mealName=name;
-        this.mealCalories=calories;
+    public void setMealData(String name, int calories) {
+        this.mealName = name;
+        this.mealCalories = calories;
         meals.add(name);
     }
     public ArrayList<String> getMeals() {
