@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentInputMealScreenBinding;
+import com.example.myapplication.databinding.HomeScreenBinding;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
@@ -37,11 +41,14 @@ import java.util.ArrayList;
 public class InputMealScreenFrag extends Fragment {
     private EditText mealNameInputET;
     private EditText mealCaloriesInputET;
+    private TextView welcomeUser;
     private TextView userHeightTV;
     private TextView userWeightTV;
     private TextView userGenderTV;
+    private TextView userGoalTV;
     private Button submitMealInfoButton;
     private Button logMealsButton;
+    private Button goToPieChart;
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
 
@@ -56,13 +63,17 @@ public class InputMealScreenFrag extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
 
+        welcomeUser = root.findViewById(R.id.welcomeUser);
         userHeightTV = root.findViewById(R.id.userHeightTextView);
         userWeightTV = root.findViewById(R.id.userWeightTextView);
         userGenderTV = root.findViewById(R.id.userGenderTextView);
+        userGoalTV = root.findViewById(R.id.userGoalTextView);
 
+        welcomeUser.setText("Welcome, " + userInfoVM.getUserData().getUsername());
         userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
         userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
         userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
+        userGoalTV.setText("Calorie Goal: " + userInfoVM.getUserData().getCalorieGoal());
 
         mealNameInputET = root.findViewById(R.id.mealNameEditText);
         mealCaloriesInputET = root.findViewById(R.id.mealCaloriesEditText);
@@ -75,26 +86,28 @@ public class InputMealScreenFrag extends Fragment {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
-        redrawPieChart(pieEntries, pieChart);
+        // redrawPieChart(pieEntries, pieChart);
 
         ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
         redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
-            mealName=String.valueOf(mealNameInputET.getText());
-            mealCalories+=Integer.parseInt(mealCaloriesInputET.getText().toString());
-            mealVM.setMealData(mealName,mealCalories);
+            mealName = String.valueOf(mealNameInputET.getText());
+            mealCalories = Integer.parseInt(mealCaloriesInputET.getText().toString());
+            mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
             mealName = mealVM.getMealName();
             mealCalories = mealVM.getMealCalories();
             pieEntries.clear();
-            if (mealCalories<calorieGoal) {
+            if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
             } else {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-            redrawPieChart(pieEntries, pieChart);
+            mealCalories = 0;
+           //  redrawPieChart(pieEntries, pieChart);
+            // redrawLineChart(lineEntries, lineChart);
         });
 
         logMealsButton.setOnClickListener(v -> {
@@ -117,10 +130,24 @@ public class InputMealScreenFrag extends Fragment {
                 pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
-            redrawPieChart(pieEntries, pieChart);
+            mealVM.clearMap();
+            // redrawPieChart(pieEntries, pieChart);
         });
+
+        //
+        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual()));
+
         return root;
     }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
+        fragmentTransaction.commit();
+    }
+
     private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
         PieDataSet pieDataSet = new PieDataSet(enters, "Label");
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
@@ -141,6 +168,7 @@ public class InputMealScreenFrag extends Fragment {
         pieData.setValueTextSize(20f);
         pieChart.setTransparentCircleRadius(60f);
     }
+
     private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
         LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
         lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);

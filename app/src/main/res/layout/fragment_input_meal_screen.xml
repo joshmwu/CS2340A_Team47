@@ -25,6 +25,15 @@
             android:textStyle="bold"
             android:text="Input Meal Screen" />
         <TextView
+            android:id="@+id/welcomeUser"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Welcome, " />
+        <TextView
             android:id="@+id/userHeightTextView"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -51,6 +60,16 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="Gender" />
+        <TextView
+            android:id="@+id/userGoalTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Calorie Goal"
+            />
         <EditText
             android:id="@+id/mealNameEditText"
             android:layout_width="200dp"
@@ -85,6 +104,7 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="@string/submit" />
+
         <Button
             android:id="@+id/logMealsButton"
             android:layout_width="wrap_content"
@@ -96,23 +116,28 @@
             android:textStyle="bold"
             android:text="@string/log" />
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+        <Button
+            android:id="@+id/goToPieChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:id="@+id/piechart"/>
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Go To Pie Chart" />
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+        <Button
+            android:id="@+id/goToLineChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:id="@+id/linechart"/>
-
-
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Go To Line Chart" />
     </LinearLayout>
+
 
 </FrameLayout>

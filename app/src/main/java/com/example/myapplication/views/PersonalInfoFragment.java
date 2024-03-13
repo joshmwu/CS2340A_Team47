@@ -103,7 +103,7 @@ public class PersonalInfoFragment extends Fragment {
         } else if (gender.equals("Female")) {
             calories = (int) (1.35 * (9.247 * 0.453592  * weight + 3.098 * 2.54 * height - 4.330 * age + 447.593));
         }
-        personalInfoViewModel.updateData(height, weight, age, gender, calories);
+        personalInfoViewModel.updateData(personalInfoViewModel.getUserData().getUsername(), height, weight, age, gender, calories);
         // Clear the EditText fields
         heightET.setText("");
         weightET.setText("");
