@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 public class LoginScreenViewModel {
     private static LoginScreenViewModel instance;
     private final LoginData loginData;
-    private final FirebaseService firebaseService;
+    private FirebaseService firebaseService;
 
     public LoginScreenViewModel() {
         loginData = new LoginData();
@@ -62,8 +62,6 @@ public class LoginScreenViewModel {
                                 }
                                 else {
                                     if(String.valueOf(task.getResult().getValue()).equals(password)) {
-                                        loginData.setUsername("test");
-                                        //updateLoginData(username, password);
                                         Log.e("verified","verified");
                                         loginData.setLoggedIn(true);
                                     }
