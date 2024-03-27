@@ -15,6 +15,7 @@ import android.widget.Button;
 
 public class IngredientsScreenFrag extends Fragment {
     private Button addToPantryButton;
+    private View recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,8 +26,11 @@ public class IngredientsScreenFrag extends Fragment {
         addToPantryButton.setOnClickListener(v -> {
             replaceFragment(new AddIngredientsScreenFrag());
         });
+        recyclerView = root.findViewById(R.id.ingredientsRecyclerView);
+        recyclerView.setNestedScrollingEnabled(false);
 
 
+        //TODO write items in the pantry from the database to the recycler view
 
 
         return root;
