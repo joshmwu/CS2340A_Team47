@@ -3,7 +3,9 @@ package com.example.myapplication.viewmodels;
 import com.example.myapplication.models.FirebaseService;
 import com.example.myapplication.models.RecipeData;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class InputRecipeViewModel {
     private FirebaseService firebaseService;
@@ -21,11 +23,11 @@ public class InputRecipeViewModel {
         }
         return instance;
     }
-    public String getRecipeName() {
-        return recipeData.getRecipeName();
+    public Map<String, ArrayList<String>> getRecipeMap() {
+        return recipeData.getRecipeMap();
     }
 
-    public void storeRecipe(String recipeName, List<String> ingredientEntries) {
+    public void storeRecipe(Map<String, ArrayList<String>> recipeMap) {
         //store into database
     }
 }
