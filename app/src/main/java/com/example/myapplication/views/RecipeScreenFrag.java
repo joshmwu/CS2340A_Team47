@@ -9,7 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.InputRecipeViewModel;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +26,7 @@ public class RecipeScreenFrag extends Fragment {
     private Button submitRecipeButton;
     private RecyclerView selectedIngredientsRecyclerView;
     private IngredientAdapter adapter;
+    private InputRecipeViewModel vModel = InputRecipeViewModel.getInstance();
     private List<String> ingredientEntries = new ArrayList<>();
 
     @Override
@@ -41,7 +47,7 @@ public class RecipeScreenFrag extends Fragment {
         addIngredientButton.setOnClickListener(v -> {
             String ingredient = ingredientEditText.getText().toString().trim();
             String quantity = quantityEditText.getText().toString().trim();
-            if (!ingredient.isEmpty() && !quantity.isEmpty()) {
+            if (!ingredient.isEmpty() && !quantity.isEmpty() && !ingredient.contains("-")) {
                 String ingredientEntry = ingredient + " - " + quantity;
                 ingredientEntries.add(ingredientEntry);
                 adapter.notifyDataSetChanged();
@@ -51,8 +57,18 @@ public class RecipeScreenFrag extends Fragment {
             }
         });
 
-        submitRecipeButton.setOnClickListener(v -> {
-            // Implement submit logic here
+        submitRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ingredientEntries.clear();
+                adapter.notifyDataSetChanged();
+                recipeNameEditText.setText("");
+                ingredientEditText.setText("");
+                quantityEditText.setText("");
+                vModel.storeRecipe(vModel.getRecipeName(), ingredientEntries);
+                Toast.makeText(getContext(), "submitted", Toast.LENGTH_SHORT).show();
+                //still need to figure out how to store data into database
+            }
         });
 
         return view;
