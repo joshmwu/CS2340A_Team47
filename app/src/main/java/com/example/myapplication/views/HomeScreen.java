@@ -28,7 +28,6 @@ public class HomeScreen extends AppCompatActivity {
             String usernameHome = intent2.getStringExtra("username");
             userInfoVM.getUserData().setUsername(usernameHome);
             DatabaseReference userRef = PersonalInfoViewModel.getFirebaseService().getFirebaseDatabase().getReference("Users");
-
         }
         replaceFragment(new HomeFragment());
         findViewById(R.id.Home).setOnClickListener(v -> replaceFragment(new HomeFragment()));

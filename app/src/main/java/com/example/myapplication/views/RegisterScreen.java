@@ -44,7 +44,7 @@ public class RegisterScreen extends AppCompatActivity {
         buttonReg = findViewById(R.id.RegCreateButton);
         buttonBack = findViewById(R.id.backButton);
         mAuth = FirebaseAuth.getInstance();
-        vModel=LoginScreenViewModel.getInstance();
+        vModel = LoginScreenViewModel.getInstance();
 
         buttonBack.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterScreen.this, LoginScreen.class);

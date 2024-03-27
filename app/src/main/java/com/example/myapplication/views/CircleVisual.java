@@ -54,9 +54,6 @@ public class CircleVisual extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual,
                 container, false);
 
-        submitMealInfoButton = root.findViewById(R.id.submitMealInfoButton);
-        logMealsButton = root.findViewById(R.id.logMealsButton);
-
         pieChartButton = root.findViewById(R.id.goToPieChart);
 
         pieChart = (PieChart) root.findViewById(R.id.piechart);

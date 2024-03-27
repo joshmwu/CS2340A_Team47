@@ -35,14 +35,15 @@
             android:id="@+id/linechart"/>
 
         <Button
-            android:id="@+id/goBackToInputButton"
+            android:id="@+id/goBackToInputButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="75dp"
             android:layout_gravity="center"
             android:padding="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_weight="0.00000001"
             android:text="Go Back" />
 
     </LinearLayout>
