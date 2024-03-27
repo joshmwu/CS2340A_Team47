@@ -65,7 +65,7 @@ public class RecipeScreenFrag extends Fragment {
                 recipeNameEditText.setText("");
                 ingredientEditText.setText("");
                 quantityEditText.setText("");
-                vModel.storeRecipe(vModel.getRecipeName(), ingredientEntries);
+                vModel.storeRecipe(vModel.getRecipeMap());
                 Toast.makeText(getContext(), "submitted", Toast.LENGTH_SHORT).show();
                 //still need to figure out how to store data into database
             }
