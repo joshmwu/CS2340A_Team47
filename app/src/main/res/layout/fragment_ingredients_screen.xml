@@ -20,4 +20,15 @@
         android:textStyle="bold"
         android:text="Ingredients Screen" />
 
+    <Button
+        android:id="@+id/addToPantryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="@string/AddIngredient" />
+
 </FrameLayout>
