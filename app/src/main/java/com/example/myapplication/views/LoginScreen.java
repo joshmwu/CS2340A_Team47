@@ -34,8 +34,6 @@ public class LoginScreen extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             int i = 0;
-            //Intent intent= new Intent(LoginScreen.this, MainActivity.class);
-            //startActivity(intent);
         }
     }
 
@@ -43,6 +41,7 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
+        // set buttons and text
         loginVM = LoginScreenViewModel.getInstance();
         usernameET = findViewById(R.id.LogUsernameEditText);
         passwordET = findViewById(R.id.LogPasswordEditText);
@@ -59,6 +58,7 @@ public class LoginScreen extends AppCompatActivity {
             goHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(goHome);
         });
+
         registerButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginScreen.this, RegisterScreen.class);
             startActivity(intent);
@@ -98,32 +98,6 @@ public class LoginScreen extends AppCompatActivity {
                 else {
                     warningMessage.setText("Authentification failed");
                 }
-
-                //String usernameToken = username + "@fakemail.com";
-                /*mAuth.signInWithEmailAndPassword(usernameToken, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's
-                                    // information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    warningMessage.setText("Authentification successful");
-
-                                    data.setLoggedIn(true);
-                                    data.setUsername(username);
-                                    data.setLoginToken(usernameToken);
-
-                                    Intent intent2 = new Intent(LoginScreen.this, HomeScreen.class);
-                                    startActivity(intent2);
-                                    //finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    warningMessage.setText("Authentification failed");
-                                    return;
-                                }
-                            }
-                        });*/
             }
         });
     }
