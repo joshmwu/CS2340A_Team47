@@ -19,22 +19,6 @@ import com.example.myapplication.views.LoginScreen;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-//    @Test
-//    public void unitTest() {
-//        WellnessViewModel viewModel = new WellnessViewModel();
-//        int sleep = 8;
-//        int fitnessMinutes = 60;
-//
-//        viewModel.updateData(6, 30);
-//
-//        if (viewModel.getWellnessData().getSleepHours() != 6) {
-//            throw new RuntimeException("Sleep hours were not updated correctly.");
-//        }
-//
-//        if (viewModel.getWellnessData().getFitnessMinutes() != 30) {
-//            throw new RuntimeException("Fitness Minutes were not updated correctly.");
-//        }
-//    }
 
     @Test
     public void usernameWorks() {
@@ -58,7 +42,7 @@ public class ExampleUnitTest {
     public void resetCalories() {
         InputMealViewModel a = InputMealViewModel.getInstance();
         a.getMealData().resetMealCalories();
-        if (a.getTotalDayCalories() != 0)) {
+        if (a.getTotalDayCalories() != 0) {
             throw new RuntimeException("Doesnt work!");
         }
     }
