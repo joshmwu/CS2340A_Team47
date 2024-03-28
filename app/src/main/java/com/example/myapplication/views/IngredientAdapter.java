@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
 
     private List<String> ingredientEntries;
+    private List<String> filteredIngredientEntries;
 
     public IngredientAdapter(List<String> ingredientEntries) {
         this.ingredientEntries = ingredientEntries;
+        this.filteredIngredientEntries = new ArrayList<>(ingredientEntries);
     }
 
     @NonNull
@@ -28,13 +31,28 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String ingredientEntry = ingredientEntries.get(position);
+        // String ingredientEntry = ingredientEntries.get(position);
+        // String ingredientEntry = filteredIngredientEntries.get(position);
+        // holder.bind(ingredientEntry);
+        String ingredientEntry;
+        if (filteredIngredientEntries.isEmpty()) {
+            ingredientEntry = ingredientEntries.get(position);
+        } else {
+            ingredientEntry = filteredIngredientEntries.get(position);
+        }
         holder.bind(ingredientEntry);
     }
 
     @Override
     public int getItemCount() {
-        return ingredientEntries.size();
+        // return ingredientEntries.size();
+        return filteredIngredientEntries.size();
+    }
+
+    public void setFilter(List<String> filteredList) {
+        filteredIngredientEntries.clear(); // Clear current filtered list
+        filteredIngredientEntries.addAll(filteredList); // Add all items from the new filtered list
+        notifyDataSetChanged(); // Notify adapter about data change
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

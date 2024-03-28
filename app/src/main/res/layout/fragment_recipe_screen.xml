@@ -68,6 +68,15 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipeListSearchView"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/IngredientName">
+    </SearchView>
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="100dp"
