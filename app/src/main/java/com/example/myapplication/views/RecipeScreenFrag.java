@@ -16,6 +16,7 @@ import com.example.myapplication.viewmodels.InputRecipeViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RecipeScreenFrag extends Fragment {
@@ -24,10 +25,12 @@ public class RecipeScreenFrag extends Fragment {
     private EditText quantityEditText;
     private Button addIngredientButton;
     private Button submitRecipeButton;
+    private Button seeAllRecipesButton;
     private RecyclerView selectedIngredientsRecyclerView;
     private IngredientAdapter adapter;
-    private InputRecipeViewModel vModel = InputRecipeViewModel.getInstance();
-    private List<String> ingredientEntries = new ArrayList<>();
+    private InputRecipeViewModel recipeViewModel = InputRecipeViewModel.getInstance();
+    private List<String> ingredientEntries = new ArrayList<>(); // used for display purposes
+    private HashMap<String, Integer> ingredientMap = new HashMap<>(); // used for database
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +41,7 @@ public class RecipeScreenFrag extends Fragment {
         quantityEditText = view.findViewById(R.id.quantityEditText);
         addIngredientButton = view.findViewById(R.id.addIngredientButton);
         submitRecipeButton = view.findViewById(R.id.submitRecipeButton);
+        seeAllRecipesButton = view.findViewById(R.id.seeAllRecipesButton);
 
         selectedIngredientsRecyclerView = view.findViewById(R.id.selectedIngredientsRecyclerView);
         adapter = new IngredientAdapter(ingredientEntries);
@@ -51,23 +55,37 @@ public class RecipeScreenFrag extends Fragment {
                 String ingredientEntry = ingredient + " - " + quantity;
                 ingredientEntries.add(ingredientEntry);
                 adapter.notifyDataSetChanged();
+                // add to hashmap
+                ingredientMap.put(ingredient, Integer.valueOf(quantity));
                 // Clear EditText fields after adding ingredient
                 ingredientEditText.setText("");
                 quantityEditText.setText("");
+            } else {
+                Toast.makeText(getContext(), "Please enter a valid name and quantity.", Toast.LENGTH_SHORT).show();
             }
         });
 
         submitRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ingredientEntries.clear();
-                adapter.notifyDataSetChanged();
-                recipeNameEditText.setText("");
-                ingredientEditText.setText("");
-                quantityEditText.setText("");
-                vModel.storeRecipe(vModel.getRecipeName(), ingredientEntries);
-                Toast.makeText(getContext(), "submitted", Toast.LENGTH_SHORT).show();
-                //still need to figure out how to store data into database
+                String recipeName = recipeNameEditText.getText().toString().trim();
+                if (!recipeName.isEmpty()) {
+                    ingredientEntries.clear();
+                    adapter.notifyDataSetChanged();
+                    recipeNameEditText.setText("");
+                    ingredientEditText.setText("");
+                    quantityEditText.setText("");
+                    recipeViewModel.addNewRecipe(recipeName, ingredientMap);
+                    Toast.makeText(getContext(), "Submitted!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Please enter a name for your recipe.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        seeAllRecipesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // go to screen that shows all the recipes
             }
         });
 
