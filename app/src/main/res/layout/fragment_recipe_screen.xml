@@ -68,11 +68,19 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selectedIngredientsRecyclerView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:layout_marginBottom="50dp" >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectedIngredientsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp" />
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/submitRecipeButton"
@@ -80,7 +88,8 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"/>
 
     <Button
         android:id="@+id/seeAllRecipesButton"
@@ -88,6 +97,7 @@
         android:layout_height="wrap_content"
         android:text="See All Recipes"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="-45dp"
+        android:layout_marginBottom="100dp"/>
 
 </LinearLayout>

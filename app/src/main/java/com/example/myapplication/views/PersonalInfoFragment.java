@@ -56,7 +56,8 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String gender = genderSpinner.getSelectedItem().toString();
-                if (checkValidEditText(heightET) && checkValidEditText(weightET) && checkValidEditText(ageET)) {
+                if (checkValidEditText(heightET) && checkValidEditText(weightET)
+                        && checkValidEditText(ageET)) {
                     saveConfigurationData(heightET, weightET, ageET, gender);
                     hideKeyboard(v);
                     displayHeight = view.findViewById(R.id.displayHeight);
@@ -93,17 +94,21 @@ public class PersonalInfoFragment extends Fragment {
         }
     }
 
-    protected void saveConfigurationData(EditText heightET, EditText weightET, EditText ageET, String gender) {
+    protected void saveConfigurationData(EditText heightET, EditText weightET, EditText ageET,
+                                         String gender) {
         int height = Integer.parseInt(heightET.getText().toString());
         int weight = Integer.parseInt(weightET.getText().toString());
         int age = Integer.parseInt(ageET.getText().toString());
         int calories = 2000;
         if (gender.equals("Male")) {
-            calories = (int) (1.35 * (13.397 * 0.453592 * weight + 4.799 * 2.54 * height - 5.677 * age + 88.362));
+            calories = (int)
+                    (1.35 * (13.397 * 0.453592 * weight + 4.799 * 2.54 * height - 5.677 * age + 88.362));
         } else if (gender.equals("Female")) {
-            calories = (int) (1.35 * (9.247 * 0.453592  * weight + 3.098 * 2.54 * height - 4.330 * age + 447.593));
+            calories = (int)
+                    (1.35 * (9.247 * 0.453592  * weight + 3.098 * 2.54 * height - 4.330 * age + 447.593));
         }
-        personalInfoViewModel.updateData(personalInfoViewModel.getUserData().getUsername(), height, weight, age, gender, calories);
+        personalInfoViewModel.updateData(personalInfoViewModel.getUserData().getUsername(), height,
+                weight, age, gender, calories);
         // Clear the EditText fields
         heightET.setText("");
         weightET.setText("");

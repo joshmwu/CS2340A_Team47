@@ -51,7 +51,8 @@ public class CircleVisual extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual,
+                container, false);
 
         pieChartButton = root.findViewById(R.id.goToPieChart);
 
