@@ -92,7 +92,7 @@ public class UserData extends LoginData {
     public void setCalorieGoal(int calories){
         this.calorieGoal = calories;
     }
-    public int getCalorieGoal(){
+    public int getCalorieGoal() {
         DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("calorieGoal").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
