@@ -15,16 +15,12 @@ import com.example.myapplication.models.FirebaseService;
 import com.example.myapplication.R;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import androidx.annotation.NonNull;
-
-
 
 
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddIngredientsScreenFrag extends Fragment {
     private Button addIngredientButton;
@@ -60,118 +56,152 @@ public class AddIngredientsScreenFrag extends Fragment {
         titleTV = root.findViewById(R.id.addIngredientsScreenTitle);
 
         addIngredientButton.setOnClickListener(v -> {
-            String ingName = addIngredientNameET.getText().toString();
-            int number = Integer.parseInt(addIngredientQuantityET.getText().toString());
-            int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
 
+            if (checkValidity(addIngredientNameET.getText().toString()) && checkValidity(addIngredientQuantityET.getText().toString()) && checkValidity(addIngredientCaloriesET.getText().toString())) {
+                String ingName = addIngredientNameET.getText().toString();
+                int number = Integer.parseInt(addIngredientQuantityET.getText().toString());
+                int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
 
-            DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-            DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
-            DatabaseReference ingredientRef = pantryRef.child(ingName);
+                DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+                DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+                DatabaseReference ingredientRef = pantryRef.child(addIngredientNameET.getText().toString());
 
+                //checks if it exists in pantry already
+                ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //addToPantry(ingredientRef, pantryRef, dataSnapshot);
+                        if (dataSnapshot.exists()) {
+                            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
+                                Object quantityObj = task.getResult().getValue();
+                                // quantity value exists and is an integer
+                                if (quantityObj instanceof Long) {
+                                    // set the quantity value to new value
+                                    int newQuantity = ((Long) quantityObj).intValue() + number;
+                                    pantryRef.child(ingName).child("quantity").setValue(newQuantity);
+                                }
+                            });
+                            ingredientRef.child("calories").get().addOnCompleteListener(task -> {
+                                Object caloriesObj = task.getResult().getValue();
 
-            //checks if it exists in pantry already
-            ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
-                            Object quantityObj = task.getResult().getValue();
-
-                            // height value exists and is an integer
-                            if (quantityObj instanceof Long) {
-                                // set the height value to new value
-                                int newQuantity = ((Long) quantityObj).intValue() + number;
-                                pantryRef.child(ingName).child("quantity").setValue(newQuantity);
-                            }
-                        });
-                        ingredientRef.child("calories").get().addOnCompleteListener(task -> {
-                            Object caloriesObj = task.getResult().getValue();
-
-                            // height value exists and is an integer
-                            if (caloriesObj instanceof Long) {
-                                // set the height value to new value
-                                int newCalories = ((Long) caloriesObj).intValue() + calories;
-                                pantryRef.child(ingName).child("calories").setValue(newCalories);
-                            }
-                        });
-                    } else {
-                        pantryRef.child(ingName).child("quantity").setValue(number);
-                        pantryRef.child(ingName).child("calories").setValue(calories);
+                                // calories value exists and is an integer
+                                if (caloriesObj instanceof Long) {
+                                    // set the calories value to new value
+                                    int newCalories = ((Long) caloriesObj).intValue() + calories;
+                                    pantryRef.child(ingName).child("calories").setValue(newCalories);
+                                }
+                            });
+                        } else {
+                            pantryRef.child(ingName).child("quantity").setValue(number);
+                            pantryRef.child(ingName).child("calories").setValue(calories);
+                        }
                     }
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-            addIngredientNameET.setText("");
-            addIngredientQuantityET.setText("");
-            addIngredientCaloriesET.setText("");
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
+                addIngredientNameET.setText("");
+                addIngredientQuantityET.setText("");
+                addIngredientCaloriesET.setText("");
+            } else {
+                Toast.makeText(getContext(), "Please enter a valid name, quantity, and calories to add", Toast.LENGTH_SHORT).show();
+            }
+
         });
 
         removeIngredientButton.setOnClickListener(v -> {
-            String ingName = removeIngredientNameET.getText().toString();
-            int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
+            if (checkValidity(removeIngredientNameET.getText().toString()) && checkValidity(removeIngredientQuantityET.getText().toString())) {
 
+                String ingName = removeIngredientNameET.getText().toString();
+                int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
 
-            DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-            DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
-            DatabaseReference ingredientRef = pantryRef.child(ingName);
+                DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+                DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+                DatabaseReference ingredientRef = pantryRef.child(ingName);
 
+                //checks if it exists in pantry already
+                ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
+                                Object quantityObj = task.getResult().getValue();
 
-            //checks if it exists in pantry already
-            ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
-                            Object quantityObj = task.getResult().getValue();
-
-                            if (quantityObj instanceof Long) {
-                                int newQuantity = ((Long) quantityObj).intValue() - number;
-                                pantryRef.child(ingName).child("quantity").setValue(newQuantity);
-                                if (newQuantity <= 0) {
-                                    ingredientRef.removeValue()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    System.out.println("Node removed successfully.");
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    System.err.println("Failed to remove node: " + e.getMessage());
-                                                }
-
-                                            });
+                                if (quantityObj instanceof Long) {
+                                    int newQuantity = ((Long) quantityObj).intValue() - number;
+                                    pantryRef.child(ingName).child("quantity").setValue(newQuantity);
+                                    if (newQuantity <= 0) {
+                                        ingredientRef.removeValue();
+                                    }
                                 }
-                            }
 
-                        });
+                            });
 
-                    } else {
-                        pantryRef.child(ingName).child("quantity").setValue(number);
+                        } else {
+                            pantryRef.child(ingName).child("quantity").setValue(number);
+                        }
                     }
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-            removeIngredientNameET.setText("");
-            removeIngredientQuantityET.setText("");
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+                removeIngredientNameET.setText("");
+                removeIngredientQuantityET.setText("");
+            } else {
+                Toast.makeText(getContext(), "Please enter a valid name and quantity to remove", Toast.LENGTH_SHORT).show();
+            }
         });
 
         backButton.setOnClickListener(v -> {
             replaceFragment(new IngredientsScreenFrag());
         });
 
-
-
         return root;
     }
+
+//    private void addToPantry(DatabaseReference ingredientRef, DatabaseReference pantryRef, DataSnapshot dataSnapshot) {
+//        if (dataSnapshot.exists()) {
+//            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
+//                Object quantityObj = task.getResult().getValue();
+//
+//                // quantity value exists and is an integer
+//                if (quantityObj instanceof Long) {
+//                    // set the quantity value to new value
+//                    int newQuantity = ((Long) quantityObj).intValue() + Integer.parseInt(addIngredientQuantityET.getText().toString());
+//                    pantryRef.child(addIngredientNameET.getText().toString()).child("quantity").setValue(newQuantity);
+//                }
+//            });
+//            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
+//                Object caloriesObj = task.getResult().getValue();
+//
+//                // calories value exists and is an integer
+//                if (caloriesObj instanceof Long) {
+//                    // set the calories value to new value
+//                    int newCalories = ((Long) caloriesObj).intValue() + Integer.parseInt(addIngredientCaloriesET.getText().toString());
+//                    pantryRef.child(addIngredientNameET.getText().toString()).child("calories").setValue(newCalories);
+//                }
+//            });
+//        } else {
+//            pantryRef.child(addIngredientNameET.getText().toString()).child("quantity").setValue(Integer.parseInt(addIngredientQuantityET.getText().toString()));
+//            pantryRef.child(addIngredientNameET.getText().toString()).child("calories").setValue(Integer.parseInt(addIngredientCaloriesET.getText().toString()));
+//        }
+//    }
+    private void removeFromPantry() {
+
+    }
+
+    private boolean checkValidity(String string) {
+        if (string == null) {
+            return false;
+        } else if (string.isEmpty()) {
+            return false;
+        } else if (string.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
