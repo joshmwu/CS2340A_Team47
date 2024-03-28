@@ -20,36 +20,75 @@
 
 
     <EditText
-        android:id="@+id/ingredientEditText"
+        android:id="@+id/addIngredientEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Ingredient Name"
         android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
 
         <EditText
-            android:id="@+id/ingredientQuantityEditText"
+            android:id="@+id/addIngredientQuantityEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Quantity"
             android:textSize="20sp"
             android:textColor="@android:color/black"
-            android:inputType="number" /> <!-- Set input type to number -->
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:inputType="number"
+            android:textAlignment="center"/> <!-- Set input type to number -->
 
     <EditText
-        android:id="@+id/ingredientCaloriesEditText"
+        android:id="@+id/addIngredientCaloriesEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Calories"
         android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:inputType="number" /> <!-- Set input type to number -->
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:inputType="number"
+        android:textAlignment="center"/> <!-- Set input type to number -->
 
     <Button
         android:id="@+id/addIngredientButton"
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:text="Add" />
+
+
+    <EditText
+        android:id="@+id/removeIngredientEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Ingredient Name"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/removeIngredientQuantityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:inputType="number"
+        android:textAlignment="center"/> <!-- Set input type to number -->
+
+    <Button
+        android:id="@+id/removeIngredientButton"
+        android:layout_width="131dp"
+        android:layout_height="50dp"
+        android:text="Remove" />
 
     <Button
         android:id="@+id/addIngredientsBackButton"
