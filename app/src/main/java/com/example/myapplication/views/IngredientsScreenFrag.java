@@ -33,6 +33,7 @@ public class IngredientsScreenFrag extends Fragment {
     private PersonalInfoViewModel personalInfoViewModel;
     private IngredientAdapter adapter;
     private List<String> ingredientEntries = new ArrayList<>();
+    private TextView tv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class IngredientsScreenFrag extends Fragment {
         firebaseService = FirebaseService.getInstance();
         DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
         DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
-
+        tv = root.findViewById(R.id.IngredientsTitle);
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -64,10 +65,12 @@ public class IngredientsScreenFrag extends Fragment {
                         pantryRef.child(childSnapshot.getKey()).child("quantity").get().addOnCompleteListener(task -> {
                             Object quantityObj = task.getResult().getValue();
                             if (quantityObj instanceof Long) {
+                                //tv.setText(ingredientEntries.toString());
                                 ingredientEntries.add(childSnapshot.getKey() + " - " + ((Long) quantityObj).intValue());
                                 adapter.notifyDataSetChanged();
                             }
                         });
+
                     }
                 }
             }
