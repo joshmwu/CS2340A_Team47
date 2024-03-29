@@ -2,6 +2,8 @@ package com.example.myapplication.views;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -88,7 +90,7 @@ public class RecipeScreenFrag extends Fragment {
         seeAllRecipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // go to screen that shows all the recipes
+                replaceFragment(new GlobalCookbookScreenFrag());
             }
         });
 
@@ -117,5 +119,12 @@ public class RecipeScreenFrag extends Fragment {
                 return false;
             }
         });
+    }
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
+        fragmentTransaction.commit();
     }
 }
