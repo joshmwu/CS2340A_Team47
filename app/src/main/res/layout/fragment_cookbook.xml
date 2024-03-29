@@ -31,7 +31,21 @@
             android:layout_margin="100dp" />
     </androidx.core.widget.NestedScrollView>
 
+    <EditText
+        android:id="@+id/contains"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contains"
+        android:padding="15dp"
+        android:gravity="center"
+        android:layout_margin="10dp"/>
 
+    <Spinner
+        android:id="@+id/filterSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp" />
     <Button
         android:id="@+id/filterButton"
         android:layout_width="131dp"

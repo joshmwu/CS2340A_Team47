@@ -32,14 +32,14 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String ingredientEntry = recipeEntries.get(position);
-        // String ingredientEntry = ingredientEntries.get(position);
-        // String ingredientEntry = filteredIngredientEntries.get(position);
-        // holder.bind(ingredientEntry);
+//         String ingredientEntry = recipeEntries.get(position);
+//         String ingredientEntry = filteredRecipeEntries.get(position);
+//         holder.bind(ingredientEntry);
 //        String ingredientEntry;
-//        if (filteredIngredientEntries.isEmpty()) {
-//            ingredientEntry = ingredientEntries.get(position);
+//        if (filteredRecipeEntries.isEmpty()) {
+//            ingredientEntry = recipeEntries.get(position);
 //        } else {
-//            ingredientEntry = filteredIngredientEntries.get(position);
+//            ingredientEntry = filteredRecipeEntries.get(position);
 //        }
         holder.bind(ingredientEntry);
     }
