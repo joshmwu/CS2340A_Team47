@@ -112,7 +112,6 @@ public class GlobalCookbookScreenFrag extends Fragment {
                                 if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")) {
                                     checkRecipeAvailability(childSnapshot);
                                 } else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {
-                                    tv.setText("made it");
                                     checkRecipeAvailability(childSnapshot);
                                 }
                             });
