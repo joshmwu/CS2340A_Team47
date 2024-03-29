@@ -18,6 +18,7 @@ import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
 
 
@@ -41,6 +42,9 @@ public class GlobalCookbookScreenFrag extends Fragment {
     private RecyclerView cookbookRecyclerView;
     private CookbookAdapter adapter;
     private TextView tv;
+    private PersonalInfoViewModel personalInfoViewModel;
+    private boolean canMake;
+    private boolean breakFlag;
 
 
     @Override
@@ -57,6 +61,7 @@ public class GlobalCookbookScreenFrag extends Fragment {
         cookbookRecyclerView.setAdapter(adapter);
         cookbookRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         filterButton = root.findViewById(R.id.filterButton);
+        personalInfoViewModel = PersonalInfoViewModel.getInstance();
         tv = root.findViewById(R.id.globalCookbookScreenTitle);
 
         containsFilterET = root.findViewById(R.id.contains);
@@ -69,21 +74,18 @@ public class GlobalCookbookScreenFrag extends Fragment {
 
         firebaseService = FirebaseService.getInstance();
         DatabaseReference cookbookRef = firebaseService.getFirebaseDatabase().getReference("Recipes");
-        //Log.d("MainActivity", "Activity created");
+        canMake = true;
+        breakFlag = false;
+        //populates the initial list of recipes
         cookbookRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot cookbookSnapshot) {
                 // Check if the snapshot has children
-                if (dataSnapshot.hasChildren()) {
-                    // Iterate over the children
-                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        cookbookRef.child(childSnapshot.getKey()).get().addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                cookbookEntries.add(childSnapshot.getKey());
-                                adapter.notifyDataSetChanged();
-                           }
-                        });
+                if (cookbookSnapshot.hasChildren()) {
+                    // Iterate over the children of recipes
+                    for (DataSnapshot recipesOfCookbookSnapshot : cookbookSnapshot.getChildren()) {
+                        checkRecipeAvailability(recipesOfCookbookSnapshot);
                     }
                 }
             }
@@ -94,8 +96,8 @@ public class GlobalCookbookScreenFrag extends Fragment {
             }
         });
 
-
         filterButton.setOnClickListener(v -> {
+            //changes the list of recipes based on the filter
             cookbookRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
@@ -103,20 +105,19 @@ public class GlobalCookbookScreenFrag extends Fragment {
                     cookbookEntries.clear();
                     // Check if the snapshot has children
                     if (dataSnapshot.hasChildren()) {
-                        // Iterate over the children
+                        // Iterate over the children of recipes
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             cookbookRef.child(childSnapshot.getKey()).get().addOnCompleteListener(task -> {
                                 //tv.setText(childSnapshot.getKey() + filterSpinner.getSelectedItem().toString() + " + " + ((Long) dataSnapshot.getChildrenCount()).toString());
                                 if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")) {
-                                    cookbookEntries.add(childSnapshot.getKey());
-                                    adapter.notifyDataSetChanged();
+                                    checkRecipeAvailability(childSnapshot);
                                 } else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {
-                                    cookbookEntries.add(childSnapshot.getKey());
-                                    adapter.notifyDataSetChanged();
+                                    checkRecipeAvailability(childSnapshot);
                                 }
                             });
                         }
                     }
+                    adapter.notifyDataSetChanged();
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
@@ -134,16 +135,42 @@ public class GlobalCookbookScreenFrag extends Fragment {
         return root;
     }
 
-//    private void filter(String query) {
-//        List<String> filteredList = new ArrayList<>();
-//        for (String item : originalList) {
-//            if (item.toLowerCase().contains(query.toLowerCase())) {
-//                filteredList.add(item);
-//            }
-//        }
-//        adapter.setFilter(filteredList); // Apply the filter to the adapter
-//    }
+    private void checkRecipeAvailability(DataSnapshot recipesOfCookbookSnapshot) {
+        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+        pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot pantryDataSnapshot) {
+                boolean canMake = false;
+                for (DataSnapshot ingredientsOfRecipeSnapshot : recipesOfCookbookSnapshot.getChildren()) {
+                    if (pantryDataSnapshot.hasChild(ingredientsOfRecipeSnapshot.getKey())) {
+                        long pantryQuantity = (Long) pantryDataSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue();
+                        long recipeQuantity = (Long) ingredientsOfRecipeSnapshot.getValue();
+                        if (pantryQuantity >= recipeQuantity) {
+                            canMake = true;
+                        } else {
+                            canMake = false;
+                            break;
+                        }
+                    } else {
+                        canMake = false;
+                        break;
+                    }
+                }
+                if (canMake) {
+                    cookbookEntries.add(recipesOfCookbookSnapshot.getKey());
+                } else {
+                    cookbookEntries.add(recipesOfCookbookSnapshot.getKey() + "*");
+                }
+                adapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
+    }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
