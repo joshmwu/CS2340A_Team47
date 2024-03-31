@@ -32,7 +32,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GlobalCookbookScreenFrag extends Fragment {
+public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickListener {
     private Button backButton;
 
     private Button filterButton;
@@ -46,6 +46,18 @@ public class GlobalCookbookScreenFrag extends Fragment {
     private boolean canMake;
     private boolean breakFlag;
 
+    @Override
+    public void onItemClick(int position) {
+        String recipe = cookbookEntries.get(position);
+        if (!recipe.contains("*")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("key", recipe);
+
+            Fragment recipeDetails = new RecipeDetailsFrag();
+            recipeDetails.setArguments(bundle);
+            replaceFragment(recipeDetails);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +69,7 @@ public class GlobalCookbookScreenFrag extends Fragment {
         cookbookEntries = new ArrayList<>();
 
         cookbookRecyclerView = root.findViewById(R.id.cookbookRecyclerView);
-        adapter = new CookbookAdapter(cookbookEntries);
+        adapter = new CookbookAdapter(cookbookEntries, this);
         cookbookRecyclerView.setAdapter(adapter);
         cookbookRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         filterButton = root.findViewById(R.id.filterButton);
@@ -170,6 +182,8 @@ public class GlobalCookbookScreenFrag extends Fragment {
                 // Handle errors
             }
         });
+
+
     }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
