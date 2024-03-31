@@ -35,7 +35,6 @@ public class RecipeScreenFrag extends Fragment {
     private InputRecipeViewModel recipeViewModel = InputRecipeViewModel.getInstance();
     private List<String> ingredientEntries = new ArrayList<>(); // used for display purposes
     private HashMap<String, Integer> ingredientMap = new HashMap<>(); // used for database
-    private SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
