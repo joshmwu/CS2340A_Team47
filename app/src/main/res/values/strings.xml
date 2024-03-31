@@ -16,7 +16,7 @@
     <string name="time">time</string>
     <string name="log">Log Meals for the Day</string>
     <string name="IngredientName">Ingredient Name</string>
-    <string name="AddIngredient">Add Ingredient</string>
+    <string name="AddIngredient">Add/Remove Ingredient</string>
     <string-array name="gender_options">
         <item>Male</item>
         <item>Female</item>

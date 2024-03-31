@@ -16,10 +16,12 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
 
     private List<String> recipeEntries;
     private List<String> filteredRecipeEntries;
+    private OnItemClickListener listener;
 
-    public CookbookAdapter(List<String> ingredientEntries) {
+    public CookbookAdapter(List<String> ingredientEntries, OnItemClickListener listener) {
         this.recipeEntries = ingredientEntries;
         this.filteredRecipeEntries = new ArrayList<>(ingredientEntries);
+        this.listener = listener;
     }
 
     @NonNull
@@ -43,6 +45,9 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
 //        }
         holder.bind(ingredientEntry);
     }
+    public void setOnClickListener(OnItemClickListener onClickListener) {
+        this.listener = onClickListener;
+    }
 
     @Override
     public int getItemCount() {
@@ -57,12 +62,21 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
         notifyDataSetChanged(); // Notify adapter about data change
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView recipeEntryTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recipeEntryTextView = itemView.findViewById(R.id.recipeEntryTextView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
         }
 
         public void bind(String ingredientEntry) {
