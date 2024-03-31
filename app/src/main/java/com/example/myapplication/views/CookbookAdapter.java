@@ -15,12 +15,10 @@ import java.util.ArrayList;
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHolder> {
 
     private List<String> recipeEntries;
-    private List<String> filteredRecipeEntries;
     private OnItemClickListener listener;
 
     public CookbookAdapter(List<String> ingredientEntries, OnItemClickListener listener) {
         this.recipeEntries = ingredientEntries;
-        this.filteredRecipeEntries = new ArrayList<>(ingredientEntries);
         this.listener = listener;
     }
 
@@ -34,15 +32,7 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String ingredientEntry = recipeEntries.get(position);
-//         String ingredientEntry = recipeEntries.get(position);
-//         String ingredientEntry = filteredRecipeEntries.get(position);
-//         holder.bind(ingredientEntry);
-//        String ingredientEntry;
-//        if (filteredRecipeEntries.isEmpty()) {
-//            ingredientEntry = recipeEntries.get(position);
-//        } else {
-//            ingredientEntry = filteredRecipeEntries.get(position);
-//        }
+
         holder.bind(ingredientEntry);
     }
     public void setOnClickListener(OnItemClickListener onClickListener) {
@@ -52,14 +42,6 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @Override
     public int getItemCount() {
         return recipeEntries.size();
-        // return ingredientEntries.size();
-        // return filteredIngredientEntries.size();
-    }
-
-    public void setFilter(List<String> filteredList) {
-        filteredRecipeEntries.clear(); // Clear current filtered list
-        filteredRecipeEntries.addAll(filteredList); // Add all items from the new filtered list
-        notifyDataSetChanged(); // Notify adapter about data change
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

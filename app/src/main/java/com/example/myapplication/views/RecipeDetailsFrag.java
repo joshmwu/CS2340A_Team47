@@ -14,15 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.FirebaseService;
-import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
 
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
