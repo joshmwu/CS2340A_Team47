@@ -120,7 +120,6 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
                         // Iterate over the children of recipes
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             cookbookRef.child(childSnapshot.getKey()).get().addOnCompleteListener(task -> {
-                                //tv.setText(childSnapshot.getKey() + filterSpinner.getSelectedItem().toString() + " + " + ((Long) dataSnapshot.getChildrenCount()).toString());
                                 if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")) {
                                     checkRecipeAvailability(childSnapshot);
                                 } else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {

@@ -20,7 +20,7 @@ public class LoginData {
     private FirebaseService firebaseService = FirebaseService.getInstance();
 
     public String getUsername() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(username).child("username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

@@ -34,15 +34,6 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String ingredientEntry = recipeEntries.get(position);
-//         String ingredientEntry = recipeEntries.get(position);
-//         String ingredientEntry = filteredRecipeEntries.get(position);
-//         holder.bind(ingredientEntry);
-//        String ingredientEntry;
-//        if (filteredRecipeEntries.isEmpty()) {
-//            ingredientEntry = recipeEntries.get(position);
-//        } else {
-//            ingredientEntry = filteredRecipeEntries.get(position);
-//        }
         holder.bind(ingredientEntry);
     }
     public void setOnClickListener(OnItemClickListener onClickListener) {
@@ -52,8 +43,6 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @Override
     public int getItemCount() {
         return recipeEntries.size();
-        // return ingredientEntries.size();
-        // return filteredIngredientEntries.size();
     }
 
     public void setFilter(List<String> filteredList) {

@@ -15,7 +15,7 @@ public class InputMealViewModel {
     private static int day;
     private FirebaseService firebaseService;
     Map<String, Integer> mealMap = new HashMap<>();
-    private static int totalDayCalories;
+    private int totalDayCalories=0;
 
     private InputMealViewModel() {
         mealData = new MealData();
@@ -35,17 +35,11 @@ public class InputMealViewModel {
         return mealData;
     }
     public void setMealData(String username, String mealName, int calories) {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         DatabaseReference daysRef = userRef.child(username).child("meals").child("days");
         mealMap.put(mealName, calories); // Set calories directly under mealName
         daysRef.child("" + day).setValue(mealMap);
         addCaloriesToTotal(calories);
-        //DatabaseReference usernameRef = firebaseService.getFirebaseDatabase().getReference(username);
-        //DatabaseReference mealRef = usernameRef.child("meals").push();
-        //mealRef.child("mealName").setValue(mealName);
-        //mealRef.child("calories").setValue(calories);
-        //usernameRef.child(username).child(username).child("meal").setValue(mealName);
-        //userRef.child(username).child(username).child("meal").child(mealName).child("meal calories").setValue(calories);
         this.mealData.setMealData(mealName, calories);
     }
     public int getDay() {

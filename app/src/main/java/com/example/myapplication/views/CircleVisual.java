@@ -34,39 +34,25 @@ import com.github.mikephil.charting.utils.MPPointF;
 import java.util.ArrayList;
 
 public class CircleVisual extends Fragment {
-    private EditText mealNameInputET;
-    private EditText mealCaloriesInputET;
-    private Button submitMealInfoButton;
-    private Button logMealsButton;
-    private Button pieChartButton;
-    private InputMealViewModel mealVM = InputMealViewModel.getInstance();
-    private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
-
-    private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
-    private String mealName = mealVM.getMealName();
-    private int totalCalories = mealVM.getTotalDayCalories();
+    private int calorieGoal;
+    private int totalCalories;
     private PieChart pieChart;
+    private ArrayList<PieEntry> pieEntries;
 
-    public CircleVisual() { }
+    public CircleVisual(ArrayList<PieEntry> pieEntries) {
+        this.pieEntries=pieEntries;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_circle_visual,
                 container, false);
 
-        pieChartButton = root.findViewById(R.id.goToPieChart);
-
         pieChart = (PieChart) root.findViewById(R.id.piechart);
-
-
-        ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(totalCalories, "Daily Intake"));
-        pieEntries.add(new PieEntry(calorieGoal-totalCalories, "Goal"));
 
         redrawPieChart(pieEntries, pieChart);
         root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> {
                 replaceFragment(new InputMealScreenFrag());
-                mealVM.resetTotalDayCalories();
         });
 
         return root;
