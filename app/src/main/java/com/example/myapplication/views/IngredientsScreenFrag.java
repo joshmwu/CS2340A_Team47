@@ -52,7 +52,6 @@ public class IngredientsScreenFrag extends Fragment {
         firebaseService = FirebaseService.getInstance();
         DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
         DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
-        tv = root.findViewById(R.id.IngredientsTitle);
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

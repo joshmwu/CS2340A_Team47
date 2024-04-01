@@ -36,7 +36,7 @@ public class RecipeScreenFrag extends Fragment {
     private InputRecipeViewModel recipeViewModel = InputRecipeViewModel.getInstance();
     private List<String> ingredientEntries = new ArrayList<>(); // used for display purposes
     private HashMap<String, Integer> ingredientMap = new HashMap<>(); // used for database
-    private SearchView searchView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,31 +97,7 @@ public class RecipeScreenFrag extends Fragment {
             }
         });
 
-        initSearchWidgets(view);
-
         return view;
-    }
-
-    private void initSearchWidgets(View view) {
-        searchView = view.findViewById(R.id.recipeListSearchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ArrayList<String> filteredIngredients = new ArrayList<>();
-                for (String ingredient : ingredientEntries) {
-                    if (ingredient.toLowerCase().contains(newText.toLowerCase())) {
-                        filteredIngredients.add(ingredient);
-                    }
-                }
-                adapter.setFilter(filteredIngredients);
-                return false;
-            }
-        });
     }
 
     private void replaceFragment(Fragment fragment) {

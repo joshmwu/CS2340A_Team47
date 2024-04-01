@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -24,10 +25,8 @@ import com.google.firebase.database.*;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +41,8 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
     private RecyclerView cookbookRecyclerView;
     private CookbookAdapter adapter;
     private TextView tv;
+    private Spinner filterSpinner;
     private PersonalInfoViewModel personalInfoViewModel;
-    private boolean canMake;
-    private boolean breakFlag;
 
     @Override
     public void onItemClick(int position) {
@@ -78,7 +76,7 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
 
         containsFilterET = root.findViewById(R.id.contains);
 
-        Spinner filterSpinner = root.findViewById(R.id.filterSpinner);
+        filterSpinner = root.findViewById(R.id.filterSpinner);
         ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(requireContext(),
                 R.array.filter_options, android.R.layout.simple_spinner_item);
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,8 +84,6 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
 
         firebaseService = FirebaseService.getInstance();
         DatabaseReference cookbookRef = firebaseService.getFirebaseDatabase().getReference("Recipes");
-        canMake = true;
-        breakFlag = false;
         //populates the initial list of recipes
         cookbookRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -120,11 +116,12 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
                         // Iterate over the children of recipes
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             cookbookRef.child(childSnapshot.getKey()).get().addOnCompleteListener(task -> {
-                                if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")) {
-                                    checkRecipeAvailability(childSnapshot);
-                                } else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {
+                                if (task.isSuccessful() /*&& childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")*/) {
                                     checkRecipeAvailability(childSnapshot);
                                 }
+//                                else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {
+//                                    checkRecipeAvailability(childSnapshot);
+//                                }
                             });
                         }
                     }
@@ -172,7 +169,13 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
                     cookbookEntries.add(recipesOfCookbookSnapshot.getKey());
                 } else {
                     cookbookEntries.add(recipesOfCookbookSnapshot.getKey() + "*");
+
                 }
+                Filter filter = new Filter();
+                filter.setFilteringStrategy(new ContainsFiltering(containsFilterET.getText().toString()));
+                filter.filter(cookbookEntries);
+                filter.setFilteringStrategy(new CanMakeFiltering(filterSpinner.getSelectedItem().toString()));
+                filter.filter(cookbookEntries);
                 adapter.notifyDataSetChanged();
             }
 

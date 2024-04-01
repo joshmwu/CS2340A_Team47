@@ -15,11 +15,9 @@ import java.util.ArrayList;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
 
     private List<String> ingredientEntries;
-    private List<String> filteredIngredientEntries;
 
     public IngredientAdapter(List<String> ingredientEntries) {
         this.ingredientEntries = ingredientEntries;
-        this.filteredIngredientEntries = new ArrayList<>(ingredientEntries);
     }
 
     @NonNull
@@ -40,11 +38,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         return ingredientEntries.size();
     }
 
-    public void setFilter(List<String> filteredList) {
-        filteredIngredientEntries.clear(); // Clear current filtered list
-        filteredIngredientEntries.addAll(filteredList); // Add all items from the new filtered list
-        notifyDataSetChanged(); // Notify adapter about data change
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView ingredientEntryTextView;
