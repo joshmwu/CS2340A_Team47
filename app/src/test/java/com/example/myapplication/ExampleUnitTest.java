@@ -46,12 +46,8 @@ public class ExampleUnitTest {
     }
     @Test
     public void usernameWorks() {
-//        Context Context;
-        //FirebaseApp.initializeApp(InstrumentationRegistry.getInstrumentation().targetContext);
-        //LoginScreenViewModel a = LoginScreenViewModel.getInstance();
-        //a.getLoginData().setUsername("josh");
-        when(databaseReference.child("Users")).thenReturn(databaseReference);
-        when(databaseReference.getValue()).thenReturn("")
+        LoginScreenViewModel a = LoginScreenViewModel.getInstance();
+        a.getLoginData().setPassword("josh");
         assertEquals("josh", a.getLoginData().getUsername());
     }
 
@@ -163,5 +159,12 @@ public class ExampleUnitTest {
         assertEquals(800, a.getTotalDayCalories() == 800);
     }
 
+    @Test
+    public void addNewUser() {
+        LoginScreenViewModel a = LoginScreenViewModel.getInstance();
+        a.getLoginData().setUsername("christina");
+        assertEquals("christina", a.getLoginData().getUsername().equals("christina"));
+
+    }
 
 }
