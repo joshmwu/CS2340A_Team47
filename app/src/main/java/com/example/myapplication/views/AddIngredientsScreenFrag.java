@@ -104,7 +104,9 @@ public class AddIngredientsScreenFrag extends Fragment {
                 addIngredientQuantityET.setText("");
                 addIngredientCaloriesET.setText("");
             } else {
-                Toast.makeText(getContext(), "Please enter a valid name, quantity, and calories to add", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),
+                        "Please enter a valid name, quantity, and calories to add",
+                        Toast.LENGTH_SHORT).show();
             }
 
         });
