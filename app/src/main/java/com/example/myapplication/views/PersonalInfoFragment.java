@@ -1,10 +1,7 @@
 package com.example.myapplication.views;
 
-import static androidx.core.content.ContextCompat.getSystemService;
 import static com.google.android.material.internal.ViewUtils.hideKeyboard;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +10,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,8 +66,7 @@ public class PersonalInfoFragment extends Fragment {
                     String age = "My age: " + personalInfoViewModel.getUserData().getAge();
                     displayAge.setText(age);
                     savedMessage.setText("Saved!");
-                }
-                else {
+                } else {
                     hideKeyboard(v);
                     savedMessage.setText("Please enter a valid height and weight.");
                 }
@@ -87,11 +82,7 @@ public class PersonalInfoFragment extends Fragment {
 
     private boolean checkValidEditText(EditText editText) {
         String editTextValue = editText.getText().toString().trim();
-        if (!TextUtils.isEmpty(editTextValue) && isInteger(editTextValue)) {
-            return true;
-        } else {
-            return false;
-        }
+        return !TextUtils.isEmpty(editTextValue) && isInteger(editTextValue);
     }
 
     protected void saveConfigurationData(EditText heightET, EditText weightET, EditText ageET,
@@ -102,10 +93,12 @@ public class PersonalInfoFragment extends Fragment {
         int calories = 2000;
         if (gender.equals("Male")) {
             calories = (int)
-                    (1.35 * (13.397 * 0.453592 * weight + 4.799 * 2.54 * height - 5.677 * age + 88.362));
+                    (1.35 * (13.397 * 0.453592 * weight
+                            + 4.799 * 2.54 * height - 5.677 * age + 88.362));
         } else if (gender.equals("Female")) {
             calories = (int)
-                    (1.35 * (9.247 * 0.453592  * weight + 3.098 * 2.54 * height - 4.330 * age + 447.593));
+                    (1.35 * (9.247 * 0.453592 * weight
+                            + 3.098 * 2.54 * height - 4.330 * age + 447.593));
         }
         personalInfoViewModel.updateData(personalInfoViewModel.getUserData().getUsername(), height,
                 weight, age, gender, calories);

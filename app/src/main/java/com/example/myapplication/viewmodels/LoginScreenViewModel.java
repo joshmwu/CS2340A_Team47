@@ -2,7 +2,6 @@ package com.example.myapplication.viewmodels;
 
 import android.text.Editable;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -35,52 +34,61 @@ public class LoginScreenViewModel {
     }
 
     // update methods for username, password ?
-    public void addNewUser(String username, String password){
+    public void addNewUser(String username, String password) {
         this.loginData.setUsername(username);
         DatabaseReference userRef = firebaseService.getDBReference("Users");
         userRef.child(username).child("username").setValue(username);
         userRef.child(username).child("password").setValue(password);
     }
 
-    public void checkUserValidity(String username, String password){
+    public void checkUserValidity(String username, String password) {
         DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
-        userRef.child(username).child("username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error finding username", task.getException());
-                }
-                else {
-                    if(String.valueOf(task.getResult().getValue()).equals(username)){
-                        userRef.child(username).child("password").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.e("firebase", "Error finding password", task.getException());
-                                }
-                                else {
-                                    if(String.valueOf(task.getResult().getValue()).equals(password)) {
-                                        Log.e("verified","verified");
-                                        loginData.setLoggedIn(true);
-                                    }
+        userRef.child(username).child("username").
+                get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase", "Error finding username", task.getException());
+                            } else {
+                                if (String.valueOf(task.getResult().getValue()).equals(username)) {
+                                    userRef.child(username).child("password").get(
+
+                                    ).addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull
+                                                                   Task<DataSnapshot> task) {
+                                                if (!task.isSuccessful()) {
+                                                    Log.e("firebase",
+                                                            "Error finding password",
+                                                            task.getException());
+                                                } else {
+                                                    if (String.valueOf(task.getResult(
+
+                                                    ).getValue()).equals(password)) {
+                                                        Log.e("verified", "verified");
+                                                        loginData.setLoggedIn(true);
+                                                    }
+                                                }
+                                            }
+                                        });
                                 }
                             }
-                        });
-                    }
-                }
-            }
-        });
+                        }
+                    });
         loginData.setUsername(username);
     }
+
     //returns true if its not whitespace, null, or empty
     public void updateLoginData(String user, String pass) {
         this.loginData.setUsername(user);
         this.loginData.setPassword(pass);
     }
+
     public boolean checkNoInput(Editable input) {
         return input.toString().isEmpty();
     }
+
     public boolean checkWhitespace(Editable input) {
         return !input.toString().isEmpty() && input.toString().contains(" ");
     }
