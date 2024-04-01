@@ -21,7 +21,7 @@ public class FirebaseService {
     public FirebaseDatabase getFirebaseDatabase() {
         return database;
     }
-    public DatabaseReference getDBReference(String path){
+    public DatabaseReference getDBReference(String path) {
         return this.getFirebaseDatabase().getReference(path);
     }
 }
