@@ -36,6 +36,7 @@ public class RecipeScreenFrag extends Fragment {
     private List<String> ingredientEntries = new ArrayList<>(); // used for display purposes
     private HashMap<String, Integer> ingredientMap = new HashMap<>(); // used for database
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

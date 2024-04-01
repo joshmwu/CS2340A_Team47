@@ -24,10 +24,7 @@
     </string-array>
     <string-array name="filter_options">
         <item>None</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
+        <item>Can Make</item>
+        <item>Cannot Make</item>
     </string-array>
 </resources>
