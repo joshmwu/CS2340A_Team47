@@ -38,6 +38,7 @@ public class UserData extends LoginData {
         });
         return height;
     }
+
     public int getWeight() {
         DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
@@ -58,15 +59,17 @@ public class UserData extends LoginData {
         });
         return weight;
     }
+
     public void setHeight(int height) {
         this.height = height;
     }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
     public String getGender() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("gender").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -80,20 +83,25 @@ public class UserData extends LoginData {
         });
         return gender;
     }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
-    public void setCalorieGoal(int calories){
+
+    public void setCalorieGoal(int calories) {
         this.calorieGoal = calories;
     }
+
     public int getCalorieGoal() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("calorieGoal").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

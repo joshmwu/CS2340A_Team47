@@ -74,10 +74,6 @@ public class LoginScreenViewModel {
         loginData.setUsername(username);
     }
     //returns true if its not whitespace, null, or empty
-    public void updateLoginData(String user, String pass) {
-        this.loginData.setUsername(user);
-        this.loginData.setPassword(pass);
-    }
     public boolean checkNoInput(Editable input) {
         return input.toString().isEmpty();
     }
