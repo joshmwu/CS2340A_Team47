@@ -32,15 +32,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String ingredientEntry = ingredientEntries.get(position);
-        // String ingredientEntry = ingredientEntries.get(position);
-        // String ingredientEntry = filteredIngredientEntries.get(position);
-        // holder.bind(ingredientEntry);
-//        String ingredientEntry;
-//        if (filteredIngredientEntries.isEmpty()) {
-//            ingredientEntry = ingredientEntries.get(position);
-//        } else {
-//            ingredientEntry = filteredIngredientEntries.get(position);
-//        }
         holder.bind(ingredientEntry);
     }
 
