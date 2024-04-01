@@ -87,56 +87,47 @@ public class InputMealScreenFrag extends Fragment {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
-        // redrawPieChart(pieEntries, pieChart);
 
         ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
-//        redrawLineChart(lineEntries, lineChart);
 
         submitMealInfoButton.setOnClickListener(v -> {
             mealName = String.valueOf(mealNameInputET.getText());
-            mealCalories += Integer.parseInt(mealCaloriesInputET.getText().toString());
+            mealCalories = Integer.parseInt(mealCaloriesInputET.getText().toString());
             mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
-            mealName = mealVM.getMealName();
-            mealCalories = mealVM.getMealCalories();
             pieEntries.clear();
+            int totCals = mealVM.getTotalDayCalories();
             if (mealCalories < calorieGoal) {
-                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+                pieEntries.add(new PieEntry(totCals, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - totCals, "Remaining Calories"));
             } else {
-                pieEntries.add(new PieEntry((mealCalories-calorieGoal), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry((totCals-calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
             }
             mealCalories = 0;
-           //  redrawPieChart(pieEntries, pieChart);
-            // redrawLineChart(lineEntries, lineChart);
         });
 
         logMealsButton.setOnClickListener(v -> {
-            lineEntries.add(new Entry(mealVM.getDay(), mealCalories));
+            float adjustedCals = (float) (mealVM.getTotalDayCalories()/2.0);
+            lineEntries.add(new Entry(mealVM.getDay(), mealVM.getTotalDayCalories()));
+            mealVM.resetTotalDayCalories();
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
             mealCalories = 0;
-//            if (lineEntries.size() >= 15) {
-//                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 15, lineEntries.size()), lineChart);
-//            } else if (lineEntries.size() >= 7) {
-//                redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);
-//            } else {
-//                redrawLineChart(lineEntries, lineChart);
-//            }
-            pieEntries.clear();
+            /*pieEntries.clear();
             if (mealCalories < calorieGoal) {
                 pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
             } else {
                 pieEntries.add(new PieEntry((mealCalories - calorieGoal), "Excess Caloric Intake"));
                 pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-            }
+            }*/
             //redrawPieChart(pieEntries, pieChart);
         });
 
         //
-        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual()));
-        root.findViewById(R.id.goToLineChart).setOnClickListener(v -> replaceFragment(new LineVisual()));
+        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual(pieEntries)));
+
+        root.findViewById(R.id.goToLineChart).setOnClickListener(v -> replaceFragment(new LineVisual(lineEntries)));
 
         return root;
     }
@@ -169,16 +160,4 @@ public class InputMealScreenFrag extends Fragment {
         pieData.setValueTextSize(20f);
         pieChart.setTransparentCircleRadius(60f);
     }
-
-//    private void redrawLineChart(ArrayList<Entry> lineEntries, LineChart lineChart) {
-//        LineDataSet lineDataSet = new LineDataSet(lineEntries, "Label");
-//        lineDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-//
-//        LineData lineData = new LineData(lineDataSet);
-//        lineChart.setData(lineData);
-//
-//        lineChart.getDescription().setEnabled(false);
-//        lineChart.animateY(1400, Easing.EaseInOutQuad);
-//        lineChart.invalidate();
-//    }
 }

@@ -20,7 +20,7 @@ public class UserData extends LoginData {
     private FirebaseService firebaseService = FirebaseService.getInstance();
 
     public int getHeight() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         userRef.child(getUsername()).child("height").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -39,7 +39,7 @@ public class UserData extends LoginData {
         return height;
     }
     public int getWeight() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("weight").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

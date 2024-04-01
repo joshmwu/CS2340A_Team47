@@ -78,39 +78,6 @@ public class RegisterScreen extends AppCompatActivity {
                         LoginScreen.class);
                 startActivity(intent);
                 finish();
-
-                //String usernameToken = username + "@fakemail.com";
-
-                //NOTE: workaround to use built in email/password functionality in firebase
-                /*//NOTE: password needs to be 6 or more characters long
-                mAuth.createUserWithEmailAndPassword(usernameToken, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success,
-                                    // update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(RegisterScreen.this,
-                                            "Account created, redirecting to login page",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(RegisterScreen.this,
-                                            LoginScreen.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    if (password.length() < 6) {
-                                        Toast.makeText(RegisterScreen.this,
-                                                "Choose a longer password.",
-                                                Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(RegisterScreen.this,
-                                                "Error, account creation failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });*/
             }
         });
     }
