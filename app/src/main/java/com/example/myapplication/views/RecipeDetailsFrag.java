@@ -14,15 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.FirebaseService;
-import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
 
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -33,6 +30,7 @@ public class RecipeDetailsFrag extends Fragment {
     private FirebaseService firebaseService;
     private IngredientAdapter adapter;
     private Button backButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,7 +50,8 @@ public class RecipeDetailsFrag extends Fragment {
             String recipe = bundle.getString("key");
             recipeDetailsTitle.setText(recipe);
             firebaseService = FirebaseService.getInstance();
-            DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference("Recipes").child(recipe);
+            DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
+                    "Recipes").child(recipe);
             recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,12 +60,14 @@ public class RecipeDetailsFrag extends Fragment {
                         // Iterate over the children
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             // Get the key (child node name) and value
-                            ingredientEntries.add(childSnapshot.getKey() + " - " + childSnapshot.getValue());
+                            ingredientEntries.add(childSnapshot.getKey() + " - "
+                                    + childSnapshot.getValue());
                             adapter.notifyDataSetChanged();
 
                         }
                     }
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     // Handle errors
