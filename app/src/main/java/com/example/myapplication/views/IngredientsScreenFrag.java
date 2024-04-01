@@ -64,7 +64,6 @@ public class IngredientsScreenFrag extends Fragment {
                         pantryRef.child(childSnapshot.getKey()).child("quantity").get().addOnCompleteListener(task -> {
                             Object quantityObj = task.getResult().getValue();
                             if (quantityObj instanceof Long) {
-                                //tv.setText(ingredientEntries.toString());
                                 ingredientEntries.add(childSnapshot.getKey() + " - " + ((Long) quantityObj).intValue());
                                 adapter.notifyDataSetChanged();
                             }

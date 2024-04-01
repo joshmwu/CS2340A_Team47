@@ -37,14 +37,13 @@ public class LoginScreenViewModel {
     // update methods for username, password ?
     public void addNewUser(String username, String password){
         this.loginData.setUsername(username);
-        //updateLoginData(username, password);
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         userRef.child(username).child("username").setValue(username);
         userRef.child(username).child("password").setValue(password);
     }
 
     public void checkUserValidity(String username, String password){
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(username).child("username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -75,10 +74,6 @@ public class LoginScreenViewModel {
         loginData.setUsername(username);
     }
     //returns true if its not whitespace, null, or empty
-    public void updateLoginData(String user, String pass) {
-        this.loginData.setUsername(user);
-        this.loginData.setPassword(pass);
-    }
     public boolean checkNoInput(Editable input) {
         return input.toString().isEmpty();
     }

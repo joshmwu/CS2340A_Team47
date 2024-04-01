@@ -24,36 +24,24 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class LineVisual extends Fragment {
-    private EditText mealNameInputET;
-    private EditText mealCaloriesInputET;
-    private Button submitMealInfoButton;
-    private Button logMealsButton;
-    private Button lineChartButton;
-    private InputMealViewModel mealVM = InputMealViewModel.getInstance();
-    private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
-
-    private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
-    private String mealName = mealVM.getMealName();
-    private int mealCalories = mealVM.getMealCalories();
+    private ArrayList<Entry> lineEntries;
     private LineChart lineChart;
 
 
-    public LineVisual() { }
+    public LineVisual(ArrayList<Entry> lineEntries) {
+        this.lineEntries=lineEntries;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_line_visual, container, false);
 
-        lineChartButton = root.findViewById(R.id.goToLineChart);
-
         lineChart = (LineChart) root.findViewById(R.id.linechart);
-
-
-        ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
 //
         if (lineEntries.size() >= 7) {
             redrawLineChart((ArrayList<Entry>) lineEntries.subList(lineEntries.size() - 7, lineEntries.size()), lineChart);

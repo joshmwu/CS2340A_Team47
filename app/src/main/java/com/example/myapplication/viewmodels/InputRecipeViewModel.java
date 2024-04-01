@@ -26,16 +26,11 @@ public class InputRecipeViewModel {
         return instance;
     }
     public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Recipes");
+        DatabaseReference userRef = firebaseService.getDBReference("Recipes");
         for (Map.Entry<String, Integer> entry : ingredientMap.entrySet()) {
             String ingredient = entry.getKey();
             Integer quantity = entry.getValue();
             userRef.child(name).child(ingredient).setValue(quantity);
         }
-    }
-
-
-    public void storeRecipe(Map<String, ArrayList<String>> recipeMap) {
-        //store into database
     }
 }

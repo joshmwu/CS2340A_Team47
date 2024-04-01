@@ -1,5 +1,6 @@
 package com.example.myapplication.models;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseService {
@@ -20,5 +21,7 @@ public class FirebaseService {
     public FirebaseDatabase getFirebaseDatabase() {
         return database;
     }
-
+    public DatabaseReference getDBReference(String path) {
+        return this.getFirebaseDatabase().getReference(path);
+    }
 }

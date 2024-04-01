@@ -1,7 +1,5 @@
 package com.example.myapplication.models;
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import com.github.mikephil.charting.data.Entry;
 
@@ -19,17 +17,17 @@ public class MealData {
     public ArrayList<String> getMeals() {
         return meals;
     }
-    public MealData getMealData(){
+    public MealData getMealData() {
         return this;
     }
     public ArrayList<Entry> getCaloriesByDay() {
         return caloriesByDay;
     }
 
-    public String getMealName(){
+    public String getMealName() {
         return this.mealName;
     }
-    public int getMealCalories(){
+    public int getMealCalories() {
         return this.mealCalories;
     }
     public void resetMealCalories() {
