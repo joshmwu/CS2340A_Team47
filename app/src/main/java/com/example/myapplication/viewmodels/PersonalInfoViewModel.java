@@ -1,8 +1,6 @@
 package com.example.myapplication.viewmodels;
 
 
-import android.provider.ContactsContract;
-
 import com.example.myapplication.models.FirebaseService;
 import com.example.myapplication.models.UserData;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +21,7 @@ public class PersonalInfoViewModel {
         }
         return instance;
     }
+
     public UserData getUserData() {
         return userData;
     }
@@ -31,7 +30,8 @@ public class PersonalInfoViewModel {
         return firebaseService;
     }
 
-    public void updateData(String username, int height, int weight, int age, String gender, int calorieGoal) {
+    public void updateData(String username, int height, int weight,
+                           int age, String gender, int calorieGoal) {
         this.userData.setHeight(height);
         this.userData.setWeight(weight);
         this.userData.setAge(age);
