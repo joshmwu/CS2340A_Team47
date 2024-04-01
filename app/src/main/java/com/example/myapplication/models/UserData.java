@@ -73,7 +73,7 @@ public class UserData extends LoginData {
     }
 
     public String getGender() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("gender")
                 .get()
@@ -107,7 +107,7 @@ public class UserData extends LoginData {
     }
 
     public int getCalorieGoal() {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
+        DatabaseReference userRef = firebaseService.getDBReference("Users");
         final boolean verified;
         userRef.child(getUsername()).child("calorieGoal")
                 .get()

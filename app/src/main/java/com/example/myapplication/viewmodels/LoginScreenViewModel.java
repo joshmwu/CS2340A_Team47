@@ -84,7 +84,6 @@ public class LoginScreenViewModel {
         this.loginData.setUsername(user);
         this.loginData.setPassword(pass);
     }
-
     public boolean checkNoInput(Editable input) {
         return input.toString().isEmpty();
     }

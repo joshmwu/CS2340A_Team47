@@ -34,8 +34,6 @@ import com.github.mikephil.charting.utils.MPPointF;
 import java.util.ArrayList;
 
 public class CircleVisual extends Fragment {
-    private int calorieGoal;
-    private int totalCalories;
     private PieChart pieChart;
     private ArrayList<PieEntry> pieEntries;
 
