@@ -107,26 +107,14 @@ public class InputMealScreenFrag extends Fragment {
         });
 
         logMealsButton.setOnClickListener(v -> {
-            float adjustedCals = (float) (mealVM.getTotalDayCalories()/2.0);
             lineEntries.add(new Entry(mealVM.getDay(), mealVM.getTotalDayCalories()));
             mealVM.resetTotalDayCalories();
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
             mealCalories = 0;
-            /*pieEntries.clear();
-            if (mealCalories < calorieGoal) {
-                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-            } else {
-                pieEntries.add(new PieEntry((mealCalories - calorieGoal), "Excess Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
-            }*/
-            //redrawPieChart(pieEntries, pieChart);
         });
 
-        //
         root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual(pieEntries)));
-
         root.findViewById(R.id.goToLineChart).setOnClickListener(v -> replaceFragment(new LineVisual(lineEntries)));
 
         return root;
