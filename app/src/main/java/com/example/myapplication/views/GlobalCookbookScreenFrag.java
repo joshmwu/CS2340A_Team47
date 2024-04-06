@@ -136,9 +136,7 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
         });
 
 
-        backButton.setOnClickListener(v -> {
-            replaceFragment(new RecipeScreenFrag());
-        });
+        backButton.setOnClickListener(v -> replaceFragment(new RecipeScreenFrag()));
 
         return root;
     }
