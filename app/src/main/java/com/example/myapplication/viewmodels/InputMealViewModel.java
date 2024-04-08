@@ -40,7 +40,6 @@ public class InputMealViewModel {
     }
 
     public void setMealData(String username, String mealName, int calories) {
-        firebaseService.setMealData(username, mealName, calories);
         DatabaseReference userRef = firebaseService.getDBReference("Users");
         DatabaseReference daysRef = userRef.child(username).child("meals").child("days");
         mealMap.put(mealName, calories); // Set calories directly under mealName
