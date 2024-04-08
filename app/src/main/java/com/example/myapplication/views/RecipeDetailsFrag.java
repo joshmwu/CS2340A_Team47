@@ -30,6 +30,7 @@ public class RecipeDetailsFrag extends Fragment {
     private FirebaseService firebaseService;
     private IngredientAdapter adapter;
     private Button backButton;
+    private Button cookButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +39,7 @@ public class RecipeDetailsFrag extends Fragment {
         View root = inflater.inflate(R.layout.fragment_recipe_details, container, false);
 
         backButton = root.findViewById(R.id.backButtonRecipeDetails);
+        cookButton = root.findViewById(R.id.cookRecipeButton);
         recipeDetailsTitle = root.findViewById(R.id.recipeDetailsScreenTitle);
         ingredientEntries = new ArrayList<>();
         adapter = new IngredientAdapter(ingredientEntries);
@@ -77,6 +79,11 @@ public class RecipeDetailsFrag extends Fragment {
 
 
         }
+
+        cookButton.setOnClickListener(v -> {
+            //update visualizations, meal database, calorie count, & indredients
+            // get subtracted from pantry.
+        });
 
         backButton.setOnClickListener(v -> {
             replaceFragment(new GlobalCookbookScreenFrag());
