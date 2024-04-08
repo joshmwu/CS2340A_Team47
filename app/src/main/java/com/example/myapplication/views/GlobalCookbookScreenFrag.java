@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -19,6 +18,8 @@ import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.LoginData;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
 
@@ -36,13 +37,14 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
 
     private Button filterButton;
     private EditText containsFilterET;
-    private FirebaseService firebaseService;
+    private FirebaseService firebaseService = FirebaseService.getInstance();
     private List<String> cookbookEntries;
     private RecyclerView cookbookRecyclerView;
     private CookbookAdapter adapter;
     private TextView tv;
     private Spinner filterSpinner;
-    private PersonalInfoViewModel personalInfoViewModel;
+    private PersonalInfoViewModel personalInfoViewModel = PersonalInfoViewModel.getInstance();
+    private LoginScreenViewModel loginViewModel = LoginScreenViewModel.getInstance();
 
     @Override
     public void onItemClick(int position) {
@@ -71,7 +73,6 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
         cookbookRecyclerView.setAdapter(adapter);
         cookbookRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         filterButton = root.findViewById(R.id.filterButton);
-        personalInfoViewModel = PersonalInfoViewModel.getInstance();
         tv = root.findViewById(R.id.globalCookbookScreenTitle);
 
         containsFilterET = root.findViewById(R.id.contains);
@@ -82,7 +83,6 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filterSpinner.setAdapter(adapt);
 
-        firebaseService = FirebaseService.getInstance();
         DatabaseReference cookbookRef = firebaseService.getFirebaseDatabase().getReference("Recipes");
         //populates the initial list of recipes
         cookbookRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -143,7 +143,7 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
 
     private void checkRecipeAvailability(DataSnapshot recipesOfCookbookSnapshot) {
         DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+        DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot pantryDataSnapshot) {

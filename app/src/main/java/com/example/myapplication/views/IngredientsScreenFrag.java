@@ -13,27 +13,35 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.FirebaseService;
-import com.example.myapplication.viewmodels.PersonalInfoViewModel;
-import com.google.firebase.database.*;
+
+import com.example.myapplication.models.Ingredient;
+import com.example.myapplication.models.PantryData;
+
 
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 
 public class IngredientsScreenFrag extends Fragment {
     private Button addToPantryButton;
     private RecyclerView ingRecyclerView;
-    private FirebaseService firebaseService;
-    private PersonalInfoViewModel personalInfoViewModel;
+    private PantryData pantryData = PantryData.getInstance();
     private IngredientAdapter adapter;
-    private List<String> ingredientEntries = new ArrayList<>();
+    private List<String> ingredientEntries = createIngredientEntries();
     private TextView tv;
+
+    public List<String> createIngredientEntries() {
+        ArrayList<Ingredient> ingredients = pantryData.getIngredientList();
+        List<String> ingredientEntries = new ArrayList<>();
+        for (Ingredient ingredient : ingredients) {
+            String a = ingredient.getName() + " - " + ingredient.getQuantity();
+            ingredientEntries.add(a);
+        }
+        return ingredientEntries;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,43 +49,11 @@ public class IngredientsScreenFrag extends Fragment {
         View root = inflater.inflate(R.layout.fragment_ingredients_screen, container, false);
 
         addToPantryButton = root.findViewById(R.id.addToPantryButton);
-
         ingRecyclerView = root.findViewById(R.id.ingredientsRecyclerView);
         adapter = new IngredientAdapter(ingredientEntries);
         ingRecyclerView.setAdapter(adapter);
         ingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        personalInfoViewModel = PersonalInfoViewModel.getInstance();
-
-        firebaseService = FirebaseService.getInstance();
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
-        pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Check if the snapshot has children
-                if (dataSnapshot.hasChildren()) {
-                    // Iterate over the children
-                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        // Get the key (child node name) and value
-
-                        pantryRef.child(childSnapshot.getKey()).child("quantity").get().addOnCompleteListener(task -> {
-                            Object quantityObj = task.getResult().getValue();
-                            if (quantityObj instanceof Long) {
-                                ingredientEntries.add(childSnapshot.getKey() + " - " + ((Long) quantityObj).intValue());
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
-
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle errors
-                System.err.println("Listener was cancelled");
-            }
-        });
 
         addToPantryButton.setOnClickListener(v -> {
             replaceFragment(new AddIngredientsScreenFrag());

@@ -2,7 +2,7 @@ package com.example.myapplication.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,12 +12,11 @@ import com.example.myapplication.R;
 import com.example.myapplication.databinding.HomeScreenBinding;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
-import com.google.firebase.database.DatabaseKt;
-import com.google.firebase.database.DatabaseReference;
+
 
 public class HomeScreen extends AppCompatActivity {
     private HomeScreenBinding binding;
-    private LoginScreenViewModel loginVM;
+    private LoginScreenViewModel loginVM = LoginScreenViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +25,7 @@ public class HomeScreen extends AppCompatActivity {
         Intent intent2 = getIntent();
         if (intent2 != null && intent2.hasExtra("username")) {
             String usernameHome = intent2.getStringExtra("username");
-            userInfoVM.getUserData().setUsername(usernameHome);
-            DatabaseReference userRef = PersonalInfoViewModel.getFirebaseService().getFirebaseDatabase().getReference("Users");
+            loginVM.setInitialData(usernameHome);
         }
         replaceFragment(new HomeFragment());
         findViewById(R.id.Home).setOnClickListener(v -> replaceFragment(new HomeFragment()));

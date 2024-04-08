@@ -13,14 +13,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 public class LoginScreenViewModel {
-    private static LoginScreenViewModel instance;
-    private final LoginData loginData;
-    private FirebaseService firebaseService;
+    private volatile static LoginScreenViewModel instance;
+    private final LoginData loginData = LoginData.getInstance();
+    private FirebaseService firebaseService = FirebaseService.getInstance();
 
-    public LoginScreenViewModel() {
-        loginData = new LoginData();
-        firebaseService = FirebaseService.getInstance();
-    }
+    private LoginScreenViewModel() {}
 
     public static synchronized LoginScreenViewModel getInstance() {
         if (instance == null) {
@@ -33,17 +30,13 @@ public class LoginScreenViewModel {
         return loginData;
     }
 
-    // update methods for username, password ?
     public void addNewUser(String username, String password) {
         this.loginData.setUsername(username);
-        DatabaseReference userRef = firebaseService.getDBReference("Users");
-        userRef.child(username).child("username").setValue(username);
-        userRef.child(username).child("password").setValue(password);
+        firebaseService.addUser(username, password);
     }
 
     public void checkUserValidity(String username, String password) {
         DatabaseReference userRef = firebaseService.getDBReference("Users");
-        final boolean verified;
         userRef.child(username).child("username").
                 get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
@@ -76,13 +69,11 @@ public class LoginScreenViewModel {
                             }
                         }
                     });
-        loginData.setUsername(username);
     }
 
-    //returns true if its not whitespace, null, or empty
-    public void updateLoginData(String user, String pass) {
-        this.loginData.setUsername(user);
-        this.loginData.setPassword(pass);
+    public void setInitialData(String username) {
+        firebaseService.setUsername(username); // set the local username
+        firebaseService.setAllData();
     }
     public boolean checkNoInput(Editable input) {
         return input.toString().isEmpty();
