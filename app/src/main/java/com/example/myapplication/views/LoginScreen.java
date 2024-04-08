@@ -5,17 +5,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.myapplication.models.LoginData;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.R;
 
 public class LoginScreen extends AppCompatActivity {
@@ -49,7 +42,6 @@ public class LoginScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         loginButton = findViewById(R.id.loginButton);
         registerButton = findViewById(R.id.LogCreateButton);
-        LoginData data = loginVM.getLoginData();
         Button loginQuitButton = findViewById(R.id.loginExitButton);
 
         loginQuitButton.setOnClickListener(v -> {
@@ -96,7 +88,7 @@ public class LoginScreen extends AppCompatActivity {
                     startActivity(intent2);
                 }
                 else {
-                    warningMessage.setText("Authentification failed");
+                    warningMessage.setText("Authentication failed");
                 }
             }
         });

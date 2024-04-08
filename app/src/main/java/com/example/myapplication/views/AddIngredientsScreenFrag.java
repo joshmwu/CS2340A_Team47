@@ -13,6 +13,7 @@ import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
 
@@ -32,8 +33,8 @@ public class AddIngredientsScreenFrag extends Fragment {
     private EditText removeIngredientNameET;
     private EditText removeIngredientQuantityET;
     private TextView titleTV;
-    private FirebaseService firebaseService;
-    private PersonalInfoViewModel personalInfoViewModel;
+    private FirebaseService firebaseService = FirebaseService.getInstance();
+    private LoginScreenViewModel loginViewModel = LoginScreenViewModel.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +52,6 @@ public class AddIngredientsScreenFrag extends Fragment {
         removeIngredientNameET = root.findViewById(R.id.removeIngredientEditText);
         removeIngredientQuantityET = root.findViewById(R.id.removeIngredientQuantityEditText);
 
-        personalInfoViewModel = PersonalInfoViewModel.getInstance();
-        firebaseService = FirebaseService.getInstance();
         titleTV = root.findViewById(R.id.addIngredientsScreenTitle);
 
         addIngredientButton.setOnClickListener(v -> {
@@ -63,7 +62,7 @@ public class AddIngredientsScreenFrag extends Fragment {
                 int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
 
                 DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-                DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+                DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
                 DatabaseReference ingredientRef = pantryRef.child(addIngredientNameET.getText().toString());
 
                 //checks if it exists in pantry already
@@ -118,7 +117,7 @@ public class AddIngredientsScreenFrag extends Fragment {
                 int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
 
                 DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-                DatabaseReference pantryRef = userRef.child(personalInfoViewModel.getUserData().getUsername()).child("Pantry");
+                DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
                 DatabaseReference ingredientRef = pantryRef.child(ingName);
 
                 //checks if it exists in pantry already
@@ -162,9 +161,6 @@ public class AddIngredientsScreenFrag extends Fragment {
         return root;
     }
 
-    private void removeFromPantry() {
-
-    }
 
     private boolean checkValidity(String string) {
         if (string == null) {

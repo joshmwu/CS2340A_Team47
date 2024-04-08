@@ -1,7 +1,4 @@
 package com.example.myapplication.views;
-
-import android.app.Person;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -15,12 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.FragmentInputMealScreenBinding;
-import com.example.myapplication.databinding.HomeScreenBinding;
 import com.example.myapplication.viewmodels.InputMealViewModel;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -28,14 +23,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
-import org.checkerframework.checker.units.qual.A;
-
-import java.io.*;
 import java.util.ArrayList;
 
 public class InputMealScreenFrag extends Fragment {
@@ -52,6 +41,7 @@ public class InputMealScreenFrag extends Fragment {
     private Button goToLineChart;
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
+    private LoginScreenViewModel loginVM = LoginScreenViewModel.getInstance();
 
     private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
     private String mealName = mealVM.getMealName();
@@ -70,7 +60,7 @@ public class InputMealScreenFrag extends Fragment {
         userGenderTV = root.findViewById(R.id.userGenderTextView);
         userGoalTV = root.findViewById(R.id.userGoalTextView);
 
-        welcomeUser.setText("Welcome, " + userInfoVM.getUserData().getUsername());
+        welcomeUser.setText("Welcome, " + loginVM.getLoginData().getUsername() + "!");
         userHeightTV.setText("Height: " + userInfoVM.getUserData().getHeight());
         userWeightTV.setText("Weight: " + userInfoVM.getUserData().getWeight());
         userGenderTV.setText("Gender: " + userInfoVM.getUserData().getGender());
@@ -93,7 +83,7 @@ public class InputMealScreenFrag extends Fragment {
         submitMealInfoButton.setOnClickListener(v -> {
             mealName = String.valueOf(mealNameInputET.getText());
             mealCalories = Integer.parseInt(mealCaloriesInputET.getText().toString());
-            mealVM.setMealData(userInfoVM.getUserData().getUsername(), mealName, mealCalories);
+            mealVM.setMealData(loginVM.getLoginData().getUsername(), mealName, mealCalories);
             pieEntries.clear();
             int totCals = mealVM.getTotalDayCalories();
             if (mealCalories < calorieGoal) {

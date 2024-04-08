@@ -17,10 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 
 public class PersonalInfoFragment extends Fragment {
-    private PersonalInfoViewModel personalInfoViewModel;
+    private PersonalInfoViewModel personalInfoViewModel = PersonalInfoViewModel.getInstance();
+    private LoginScreenViewModel loginViewModel = LoginScreenViewModel.getInstance();
     private EditText heightET;
     private EditText weightET;
     private EditText ageET;
@@ -35,8 +37,6 @@ public class PersonalInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_personal_info, container, false);
-
-        personalInfoViewModel = PersonalInfoViewModel.getInstance();
         heightET = view.findViewById(R.id.enterHeight);
         weightET = view.findViewById(R.id.enterWeight);
         ageET = view.findViewById(R.id.enterAge);
@@ -59,12 +59,6 @@ public class PersonalInfoFragment extends Fragment {
                     displayHeight = view.findViewById(R.id.displayHeight);
                     displayWeight = view.findViewById(R.id.displayWeight);
                     displayAge = view.findViewById(R.id.displayAge);
-                    String height = "My height: " + personalInfoViewModel.getUserData().getHeight();
-                    displayHeight.setText(height);
-                    String weight = "My weight: " + personalInfoViewModel.getUserData().getWeight();
-                    displayWeight.setText(weight);
-                    String age = "My age: " + personalInfoViewModel.getUserData().getAge();
-                    displayAge.setText(age);
                     savedMessage.setText("Saved!");
                 } else {
                     hideKeyboard(v);
@@ -100,7 +94,7 @@ public class PersonalInfoFragment extends Fragment {
                     (1.35 * (9.247 * 0.453592 * weight
                             + 3.098 * 2.54 * height - 4.330 * age + 447.593));
         }
-        personalInfoViewModel.updateData(personalInfoViewModel.getUserData().getUsername(), height,
+        personalInfoViewModel.updateData(loginViewModel.getLoginData().getUsername(), height,
                 weight, age, gender, calories);
         // Clear the EditText fields
         heightET.setText("");
