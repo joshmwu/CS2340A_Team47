@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="16dp"
     android:background="@color/orange"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".views.RecipeDetailsFrag">
 
     <TextView
@@ -14,15 +14,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="Recipe"
         android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="Recipe" />
+        android:textStyle="bold" />
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:fillViewport="true">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipeDetailsRecyclerView"
             android:layout_width="300dp"
@@ -31,7 +32,11 @@
             android:layout_margin="100dp" />
     </androidx.core.widget.NestedScrollView>
 
-
+    <Button
+        android:id="@+id/cookRecipeButton"
+        android:layout_width="131dp"
+        android:layout_height="50dp"
+        android:text="Cook" />
 
     <Button
         android:id="@+id/backButtonRecipeDetails"
