@@ -24,7 +24,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import android.util.Log;
 public class IngredientsScreenFrag extends Fragment {
     private Button addToPantryButton;
     private RecyclerView ingRecyclerView;
@@ -47,13 +47,14 @@ public class IngredientsScreenFrag extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_ingredients_screen, container, false);
-
         addToPantryButton = root.findViewById(R.id.addToPantryButton);
         ingRecyclerView = root.findViewById(R.id.ingredientsRecyclerView);
+        ingredientEntries = createIngredientEntries();
+//        Log.d("mytag", ingredientEntries.toString());
         adapter = new IngredientAdapter(ingredientEntries);
+        adapter.notifyDataSetChanged();
         ingRecyclerView.setAdapter(adapter);
         ingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
 
         addToPantryButton.setOnClickListener(v -> {
             replaceFragment(new AddIngredientsScreenFrag());

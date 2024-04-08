@@ -1,5 +1,7 @@
 package com.example.myapplication.views;
 
+import static com.google.android.material.internal.ViewUtils.hideKeyboard;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +15,8 @@ import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
+import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
-import com.example.myapplication.viewmodels.PersonalInfoViewModel;
-import com.google.firebase.database.*;
 
 
 import android.widget.Button;
@@ -33,8 +34,7 @@ public class AddIngredientsScreenFrag extends Fragment {
     private EditText removeIngredientNameET;
     private EditText removeIngredientQuantityET;
     private TextView titleTV;
-    private FirebaseService firebaseService = FirebaseService.getInstance();
-    private LoginScreenViewModel loginViewModel = LoginScreenViewModel.getInstance();
+    private IngredientsViewModel ingredientsViewModel = IngredientsViewModel.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,55 +56,23 @@ public class AddIngredientsScreenFrag extends Fragment {
 
         addIngredientButton.setOnClickListener(v -> {
 
-            if (checkValidity(addIngredientNameET.getText().toString()) && checkValidity(addIngredientQuantityET.getText().toString()) && checkValidity(addIngredientCaloriesET.getText().toString())) {
+            if (AddIngredientsScreenFrag.checkValidity(addIngredientNameET.getText().toString()) && checkValidity(addIngredientQuantityET.getText().toString()) && checkValidity(addIngredientCaloriesET.getText().toString())) {
                 String ingName = addIngredientNameET.getText().toString();
                 int number = Integer.parseInt(addIngredientQuantityET.getText().toString());
                 int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
 
-                DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-                DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
-                DatabaseReference ingredientRef = pantryRef.child(addIngredientNameET.getText().toString());
+                ingredientsViewModel.addIngredient(ingName, number, calories);
 
-                //checks if it exists in pantry already
-                ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //addToPantry(ingredientRef, pantryRef, dataSnapshot);
-                        if (dataSnapshot.exists()) {
-                            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
-                                Object quantityObj = task.getResult().getValue();
-                                // quantity value exists and is an integer
-                                if (quantityObj instanceof Long) {
-                                    // set the quantity value to new value
-                                    int newQuantity = ((Long) quantityObj).intValue() + number;
-                                    pantryRef.child(ingName).child("quantity").setValue(newQuantity);
-                                }
-                            });
-                            ingredientRef.child("calories").get().addOnCompleteListener(task -> {
-                                Object caloriesObj = task.getResult().getValue();
-
-                                // calories value exists and is an integer
-                                if (caloriesObj instanceof Long) {
-                                    // set the calories value to new value
-                                    int newCalories = ((Long) caloriesObj).intValue() + calories;
-                                    pantryRef.child(ingName).child("calories").setValue(newCalories);
-                                }
-                            });
-                        } else {
-                            pantryRef.child(ingName).child("quantity").setValue(number);
-                            pantryRef.child(ingName).child("calories").setValue(calories);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {}
-                });
                 addIngredientNameET.setText("");
                 addIngredientQuantityET.setText("");
                 addIngredientCaloriesET.setText("");
+                hideKeyboard(v);
+                Toast.makeText(getContext(),
+                        "Added!",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(),
-                        "Please enter a valid name, quantity, and calories to add",
+                        "Please enter a valid name, quantity, and calories to add.",
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -116,37 +84,12 @@ public class AddIngredientsScreenFrag extends Fragment {
                 String ingName = removeIngredientNameET.getText().toString();
                 int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
 
-                DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-                DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
-                DatabaseReference ingredientRef = pantryRef.child(ingName);
+                ingredientsViewModel.removeIngredient(ingName, number);
 
-                //checks if it exists in pantry already
-                ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            ingredientRef.child("quantity").get().addOnCompleteListener(task -> {
-                                Object quantityObj = task.getResult().getValue();
-
-                                if (quantityObj instanceof Long) {
-                                    int newQuantity = ((Long) quantityObj).intValue() - number;
-                                    pantryRef.child(ingName).child("quantity").setValue(newQuantity);
-                                    if (newQuantity <= 0) {
-                                        ingredientRef.removeValue();
-                                    }
-                                }
-
-                            });
-
-                        } else {
-                            pantryRef.child(ingName).child("quantity").setValue(number);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+                hideKeyboard(v);
+                Toast.makeText(getContext(),
+                        "Removed!",
+                        Toast.LENGTH_SHORT).show();
                 removeIngredientNameET.setText("");
                 removeIngredientQuantityET.setText("");
             } else {
@@ -162,7 +105,15 @@ public class AddIngredientsScreenFrag extends Fragment {
     }
 
 
-    private boolean checkValidity(String string) {
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.replace(R.id.flFragment, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private static boolean checkValidity(String string) {
         if (string == null) {
             return false;
         } else if (string.isEmpty()) {
@@ -172,12 +123,4 @@ public class AddIngredientsScreenFrag extends Fragment {
         }
         return true;
     }
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setReorderingAllowed(true);
-        fragmentTransaction.replace(R.id.flFragment, fragment);
-        fragmentTransaction.commit();
     }
-}
