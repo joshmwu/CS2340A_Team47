@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|top"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
     android:background="@color/orange"
     tools:context=".views.ShoppingListScreenFrag"
     >
@@ -13,11 +14,37 @@
         android:id="@+id/ShoppingListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
         android:gravity="center"
-        android:padding="30dp"
         android:textSize="35sp"
         android:textStyle="bold"
         android:text="Shopping List Screen" />
 
-</FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:fillViewport="true">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shoppingListRecyclerView"
+            android:layout_width="300dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:layout_margin="100dp" />
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/buyItemsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/addToShoppingListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add/Remove Item"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

@@ -25,6 +25,7 @@ public class FirebaseService {
     private LoginData firebaseLoginData = LoginData.getInstance();
     private UserData firebaseUserData = UserData.getInstance();
     private PantryData firebasePantryData = PantryData.getInstance();
+    private ShoppingListData firebaseShoppingListData = ShoppingListData.getInstance();
 
     private FirebaseService() {
         database = FirebaseDatabase.getInstance();
@@ -59,6 +60,7 @@ public class FirebaseService {
         setGender();
         setCalorieGoal();
         setPantry();
+        setShoppingList();
     }
 
     // LoginData: username, password
@@ -364,4 +366,80 @@ public class FirebaseService {
         }
     }
 
+    // ShoppingList Database - should be stored locally!
+
+    public void setShoppingList() {
+        ArrayList<Ingredient> listOfItems = new ArrayList<>();
+        DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        shoppingListRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
+                    String itemName = itemSnapshot.getKey();
+                    int quantity = 0; // Default value
+
+                    // Check if quantity and calories exist for the ingredient
+                    if (itemSnapshot.hasChild("quantity")) {
+                        quantity = itemSnapshot.child("quantity").getValue(Integer.class);
+                    }
+
+                    // Create Ingredient object
+                    Ingredient ingredient = new Ingredient(itemName, 0, quantity);
+                    // Do something with the Ingredient object, such as adding it to a list
+                    listOfItems.add(ingredient);
+                }
+                firebaseShoppingListData.setShoppingList(listOfItems);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle potential errors
+                System.err.println("Error reading pantry: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    public void addShoppingListItem(String name, int quantity) {
+        DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        DatabaseReference itemRef = shoppingListRef.child(name);
+        itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    itemRef.child("quantity").get().addOnCompleteListener(task -> {
+                        Object quantityObj = task.getResult().getValue();
+                        // quantity value exists and is an integer
+                        if (quantityObj instanceof Long) {
+                            // set the quantity value to new value
+                            int newQuantity = ((Long) quantityObj).intValue() + quantity;
+                            shoppingListRef.child(name).child("quantity").setValue(newQuantity)
+                                    .addOnCompleteListener(task1 -> {
+                                        // After quantity update, refresh the pantry
+                                        setShoppingList();
+                                    });
+                        }
+                    });
+                } else {
+                    shoppingListRef.child(name).child("quantity").setValue(quantity)
+                            .addOnCompleteListener(task -> {
+                                // After adding new ingredient, update the entire pantry
+                                setShoppingList();
+                            });
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+    }
+
+    public void removeShoppingListItem(String name, int quantity) {
+        DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("Pantry");
+        DatabaseReference ingredientRef = shoppingListRef.child(name);
+
+        // must implement this!
+    }
 }
