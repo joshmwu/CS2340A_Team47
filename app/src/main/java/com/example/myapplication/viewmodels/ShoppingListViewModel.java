@@ -15,8 +15,8 @@ public class ShoppingListViewModel {
         return instance;
     }
 
-    public void addShoppingListItem(String name, int quantity) {
-        firebaseService.addShoppingListItem(name, quantity);
+    public void addShoppingListItem(String name, int quantity, int calories) {
+        firebaseService.addShoppingListItem(name, quantity, calories);
     }
 
     public void removeShoppingListItem(String name, int quantity) {
