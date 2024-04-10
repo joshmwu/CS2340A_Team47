@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class AddShoppingListScreenFrag extends Fragment {
     private Button addShoppingListBackButton;
     private EditText addShoppingListEditText;
     private EditText addShoppingListQuantityEditText;
+    private EditText addShoppingListCaloriesEditText;
     private TextView titleTV;
     private ShoppingListViewModel shoppingListViewModel = ShoppingListViewModel.getInstance();
 
@@ -43,6 +45,7 @@ public class AddShoppingListScreenFrag extends Fragment {
         addShoppingListBackButton = root.findViewById(R.id.addShoppingListBackButton);
         addShoppingListEditText = root.findViewById(R.id.addShoppingListEditText);
         addShoppingListQuantityEditText = root.findViewById(R.id.addShoppingListQuantityEditText);
+        addShoppingListCaloriesEditText = root.findViewById(R.id.addShoppingListCaloriesEditText);
 
         titleTV = root.findViewById(R.id.addShoppingListScreenTitle);
 
@@ -51,9 +54,11 @@ public class AddShoppingListScreenFrag extends Fragment {
             if (AddShoppingListScreenFrag.checkValidity(addShoppingListEditText.getText().toString()) && checkValidity(addShoppingListQuantityEditText.getText().toString())) {
                 String itemName = addShoppingListEditText.getText().toString();
                 int itemQuantity = Integer.parseInt(addShoppingListQuantityEditText.getText().toString());
-                shoppingListViewModel.addShoppingListItem(itemName, itemQuantity);
+                int itemCalories = Integer.parseInt(addShoppingListCaloriesEditText.getText().toString());
+                shoppingListViewModel.addShoppingListItem(itemName, itemQuantity, itemCalories);
                 addShoppingListEditText.setText("");
                 addShoppingListQuantityEditText.setText("");
+                addShoppingListCaloriesEditText.setText("");
                 hideKeyboard(v);
                 Toast.makeText(getContext(),
                         "Added!",
@@ -61,7 +66,7 @@ public class AddShoppingListScreenFrag extends Fragment {
             } else {
                 hideKeyboard(v);
                 Toast.makeText(getContext(),
-                        "Please enter a valid name and quantity to add.",
+                        "Please enter a valid name, quantity, and calories to add.",
                         Toast.LENGTH_SHORT).show();
             }
         });

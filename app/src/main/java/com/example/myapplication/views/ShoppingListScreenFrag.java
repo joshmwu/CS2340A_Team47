@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import org.checkerframework.checker.units.qual.A;
 
@@ -67,13 +68,22 @@ public class ShoppingListScreenFrag extends Fragment {
 
         buyItemsButton.setOnClickListener(v -> {
             List<String> checkedItems = adapter.getCheckedItems();
-            for (String a : checkedItems) {
-                String name = ShoppingListScreenFrag.getItemName(a);
-                int quantity = ShoppingListScreenFrag.getItemQuantity(a);
-                ingredientsViewModel.addIngredient(name, quantity, 0); // this causes an issue
-                shoppingListViewModel.removeShoppingListItem(name, quantity);
+            if (checkedItems.size() > 0) {
+                for (String a : checkedItems) {
+                    String name = ShoppingListScreenFrag.getItemName(a);
+                    int quantity = ShoppingListScreenFrag.getItemQuantity(a);
+                    Log.d("name", name);
+                    int calories = shoppingListData.getCaloriesFromName(name);
+                    Log.d("caloriesAfter", String.valueOf(calories));
+                    ingredientsViewModel.addIngredient(name, quantity, calories); // this causes an issue, fix the calories
+                    shoppingListViewModel.removeShoppingListItem(name, quantity);
+                }
+                replaceFragment(new BoughtItemFrag());
+            } else {
+                Toast.makeText(getContext(),
+                        "Please select items to buy or add to shopping list.",
+                        Toast.LENGTH_SHORT).show();
             }
-            // remove from SP database, add to P database
         });
 
         addToShoppingListButton.setOnClickListener(v -> {

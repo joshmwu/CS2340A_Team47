@@ -375,17 +375,21 @@ public class FirebaseService {
         shoppingListRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
-                    String itemName = itemSnapshot.getKey();
+                for (DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()) {
+                    String ingredientName = ingredientSnapshot.getKey();
                     int quantity = 0; // Default value
+                    int calories = 0; // Default value
 
                     // Check if quantity and calories exist for the ingredient
-                    if (itemSnapshot.hasChild("quantity")) {
-                        quantity = itemSnapshot.child("quantity").getValue(Integer.class);
+                    if (ingredientSnapshot.hasChild("quantity")) {
+                        quantity = ingredientSnapshot.child("quantity").getValue(Integer.class);
+                    }
+                    if (ingredientSnapshot.hasChild("calories")) {
+                        calories = ingredientSnapshot.child("calories").getValue(Integer.class);
                     }
 
                     // Create Ingredient object
-                    Ingredient ingredient = new Ingredient(itemName, 0, quantity);
+                    Ingredient ingredient = new Ingredient(ingredientName, calories, quantity);
                     // Do something with the Ingredient object, such as adding it to a list
                     listOfItems.add(ingredient);
                 }
@@ -395,18 +399,19 @@ public class FirebaseService {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle potential errors
-                System.err.println("Error reading pantry: " + databaseError.getMessage());
+                System.err.println("Error reading shopping list: " + databaseError.getMessage());
             }
         });
     }
 
-    public void addShoppingListItem(String name, int quantity) {
+    public void addShoppingListItem(String name, int quantity, int calories) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
         DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
         DatabaseReference itemRef = shoppingListRef.child(name);
         itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //addToPantry(ingredientRef, pantryRef, dataSnapshot);
                 if (dataSnapshot.exists()) {
                     itemRef.child("quantity").get().addOnCompleteListener(task -> {
                         Object quantityObj = task.getResult().getValue();
@@ -421,25 +426,82 @@ public class FirebaseService {
                                     });
                         }
                     });
+                    itemRef.child("calories").get().addOnCompleteListener(task -> {
+                        Object caloriesObj = task.getResult().getValue();
+
+                        // calories value exists and is an integer
+                        if (caloriesObj instanceof Long) {
+                            // set the calories value to new value
+                            int newCalories = calories;
+                            shoppingListRef.child(name).child("calories").setValue(newCalories)
+                                    .addOnCompleteListener(task1 -> {
+                                        // After quantity update, refresh the pantry
+                                        setShoppingList();
+                                    });
+                        }
+                    });
                 } else {
-                    shoppingListRef.child(name).child("quantity").setValue(quantity)
+                    shoppingListRef.child(name).child("quantity").setValue(quantity);
+                    shoppingListRef.child(name).child("calories").setValue(calories)
                             .addOnCompleteListener(task -> {
                                 // After adding new ingredient, update the entire pantry
                                 setShoppingList();
                             });
                 }
             }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     public void removeShoppingListItem(String name, int quantity) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("Pantry");
-        DatabaseReference ingredientRef = shoppingListRef.child(name);
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        DatabaseReference itemRef = shoppingListRef.child(name);
 
-        // must implement this!
+        itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    itemRef.child("quantity").get().addOnCompleteListener(task -> {
+                        Object quantityObj = task.getResult().getValue();
+
+                        if (quantityObj instanceof Long) {
+                            int currentQuantity = ((Long) quantityObj).intValue();
+                            int newQuantity = currentQuantity - quantity;
+                            if (newQuantity <= 0) {
+                                // If the new quantity is less than or equal to 0, remove the ingredient from the shopping list
+                                itemRef.removeValue().addOnCompleteListener(removeTask -> {
+                                    if (removeTask.isSuccessful()) {
+                                        // After removing the ingredient, refresh the shopping list
+                                        setShoppingList();
+                                    } else {
+                                        // Handle the case where removing the ingredient failed
+                                    }
+                                });
+                            } else {
+                                // If the new quantity is greater than 0, update the quantity in the pantry
+                                shoppingListRef.child(name).child("quantity").setValue(newQuantity)
+                                        .addOnCompleteListener(updateTask -> {
+                                            if (updateTask.isSuccessful()) {
+                                                // After updating the quantity, refresh the pantry
+                                                setShoppingList();
+                                            } else {
+                                                // Handle the case where updating the quantity failed
+                                            }
+                                        });
+                            }
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle onCancelled if needed
+            }
+        });
     }
 }
