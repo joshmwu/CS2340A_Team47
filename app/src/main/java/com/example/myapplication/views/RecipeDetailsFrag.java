@@ -14,10 +14,13 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.FirebaseService;
+import com.example.myapplication.viewmodels.IngredientsViewModel;
+import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.google.firebase.database.*;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ public class RecipeDetailsFrag extends Fragment {
     private IngredientAdapter adapter;
     private Button backButton;
     private Button cookButton;
+    private IngredientsViewModel ingredientsViewModel = IngredientsViewModel.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +87,11 @@ public class RecipeDetailsFrag extends Fragment {
         cookButton.setOnClickListener(v -> {
             //update visualizations, meal database, calorie count, & indredients
             // get subtracted from pantry.
+            for (String a : ingredientEntries) {
+                String name = RecipeDetailsFrag.getItemName(a);
+                int quantity = RecipeDetailsFrag.getItemQuantity(a);
+                ingredientsViewModel.removeIngredient(name ,quantity);
+            }
         });
 
         backButton.setOnClickListener(v -> {
@@ -98,5 +107,21 @@ public class RecipeDetailsFrag extends Fragment {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.replace(R.id.flFragment, fragment);
         fragmentTransaction.commit();
+    }
+
+    private static String getItemName(String item) {
+        String name = "";
+        for (int i = 0; i < item.length() && !item.substring(i, i+1).equals(" "); i++) {
+            name = name + item.substring(i, i+1);
+        }
+        return name;
+    }
+
+    private static int getItemQuantity(String item) {
+        String quantity = "";
+        for (int i = item.length() - 1; i < item.length() && !item.substring(i, i+1).equals(" "); i--) {
+            quantity = item.substring(i, i+1) + quantity;
+        }
+        return Integer.valueOf(quantity);
     }
 }
