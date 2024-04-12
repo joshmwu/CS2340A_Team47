@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class CircleVisual extends Fragment {
     private PieChart pieChart;
     private ArrayList<PieEntry> pieEntries;
+    private int caloriesLeft;
 
     public CircleVisual(ArrayList<PieEntry> pieEntries) {
         this.pieEntries=pieEntries;
@@ -48,12 +49,32 @@ public class CircleVisual extends Fragment {
 
         pieChart = (PieChart) root.findViewById(R.id.piechart);
 
+//        Bundle bundle = getArguments();
+//        if (bundle != null) {
+//            int totalCalories = bundle.getInt("totalCalories", 0);
+//            // Update pie chart with new data
+//            updatePieChart(totalCalories);
+//        }
+
         redrawPieChart(pieEntries, pieChart);
         root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> {
                 replaceFragment(new InputMealScreenFrag());
         });
 
         return root;
+    }
+
+    public void updatePieChart(ArrayList<PieEntry> pieEntries) {
+        redrawPieChart(pieEntries, pieChart);
+    }
+
+    private ArrayList<PieEntry> generateUpdatedPieEntries(int caloriesLeft) {
+        // Generate pie chart entries with the new total calorie count
+        ArrayList<PieEntry> updatedPieEntries = new ArrayList<>();
+        // Add your logic to generate pie chart entries based on the new data
+        updatedPieEntries.add(new PieEntry(caloriesLeft, "Total Calories"));
+        // Add other entries as needed
+        return updatedPieEntries;
     }
 
     private void replaceFragment(Fragment fragment) {
