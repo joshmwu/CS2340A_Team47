@@ -114,20 +114,11 @@ public class RecipeDetailsFrag extends Fragment {
             for (String a : ingredientEntries) {
                 String name = RecipeDetailsFrag.getItemName(a);
                 int quantity = RecipeDetailsFrag.getItemQuantity(a);
-                ingredientsViewModel.removeIngredient(name ,quantity);
                 // query pantry for ingredient calories
+                mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
+                ingredientsViewModel.removeIngredient(name ,quantity);
             }
 
-//            // Update calorie tracking
-//            int totalCaloriesConsumed = calculateTotalCaloriesConsumed();
-//            int calorieLeft = calorieGoal - totalCaloriesConsumed;
-//            // updateCalorieCountInUserData(totalCalories);
-//
-//            // Update chart visualizations
-//            updatePieChart(calorieLeft);
-
-
-            mealCalories = 300;//inputMealViewModel.getMealCalories();
             String recipe = "";
             if (bundle != null) {
                 recipe = bundle.getString("key");
@@ -186,31 +177,6 @@ public class RecipeDetailsFrag extends Fragment {
             quantity = item.substring(i, i+1) + quantity;
         }
         return Integer.valueOf(quantity);
-    }
-
-
-
-    private int getPantryCalories() {
-        int totalCalories = 0;
-        for (Ingredient ingredient : pantryData.getIngredientList()) {
-            int quantity = ingredient.getQuantity();
-            int caloriesPerServing = ingredient.getCalories();
-            totalCalories += (caloriesPerServing * quantity);
-        }
-        return totalCalories;
-    }
-
-    private void updatePieChart(int calorieLeft) {
-        // Update pieEntries list with new data
-        pieEntries.clear();
-        pieEntries.add(new PieEntry(calorieGoal, "Day's Caloric Intake"));
-        pieEntries.add(new PieEntry(calorieGoal - calorieLeft, "Remaining Calories"));
-
-        // Get the CircleVisual fragment and update the pie chart
-        CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager().findFragmentById(R.id.goToPieChart);
-        if (circleVisualFragment != null) {
-            circleVisualFragment.updatePieChart(pieEntries);
-        }
     }
 
     private ArrayList<PieEntry> generateUpdatedPieEntries(int calorieLeft) {

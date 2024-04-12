@@ -12,7 +12,9 @@ import android.renderscript.ScriptGroup;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.example.myapplication.models.Ingredient;
 import com.example.myapplication.models.LoginData;
+import com.example.myapplication.models.PantryData;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
@@ -21,6 +23,8 @@ import com.example.myapplication.views.LoginScreen;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -164,7 +168,18 @@ public class ExampleUnitTest {
         LoginScreenViewModel a = LoginScreenViewModel.getInstance();
         a.getLoginData().setUsername("christina");
         assertEquals("christina", a.getLoginData().getUsername().equals("christina"));
+    }
 
+    ////  SPRINT FOUR JUNITS!!!!!! ////
+    @Test
+    public void getPantryCalories() {
+        PantryData pantryData = PantryData.getInstance();
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient("spam", 100, 2));
+        ingredients.add(new Ingredient("eggs", 50, 3));
+        pantryData.setIngredientList(ingredients);
+        int actualCal = pantryData.getCaloriesFromName("spam");
+        assertEquals(100,actualCal);
     }
 
 }
