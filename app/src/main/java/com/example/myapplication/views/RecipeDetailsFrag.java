@@ -8,14 +8,22 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.FirebaseService;
+import com.example.myapplication.models.Ingredient;
+import com.example.myapplication.models.PantryData;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
+import com.example.myapplication.viewmodels.LoginScreenViewModel;
+import com.example.myapplication.viewmodels.PersonalInfoViewModel;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieEntry;
 import com.google.firebase.database.*;
 
 import android.widget.Button;
@@ -35,6 +43,17 @@ public class RecipeDetailsFrag extends Fragment {
     private Button backButton;
     private Button cookButton;
     private IngredientsViewModel ingredientsViewModel = IngredientsViewModel.getInstance();
+    private InputMealViewModel inputMealViewModel = InputMealViewModel.getInstance();
+    private ArrayList<PieEntry> pieEntries = new ArrayList<>();
+    private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
+    private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
+    private InputMealViewModel mealVM = InputMealViewModel.getInstance();
+    private int mealCalories;
+    private PieChart pieChart;
+    private LoginScreenViewModel loginVM = LoginScreenViewModel.getInstance();
+    private String mealName = mealVM.getMealName();
+    private PantryData pantryData = PantryData.getInstance();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +69,10 @@ public class RecipeDetailsFrag extends Fragment {
         recipeDetailsRecyclerView = root.findViewById(R.id.recipeDetailsRecyclerView);
         recipeDetailsRecyclerView.setAdapter(adapter);
         recipeDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        ArrayList<PieEntry> pieEntries = new ArrayList<>();
+        pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -87,11 +110,42 @@ public class RecipeDetailsFrag extends Fragment {
         cookButton.setOnClickListener(v -> {
             //update visualizations, meal database, calorie count, & indredients
             // get subtracted from pantry.
+            Log.d("ingredientEntries", ingredientEntries.toString());
             for (String a : ingredientEntries) {
                 String name = RecipeDetailsFrag.getItemName(a);
                 int quantity = RecipeDetailsFrag.getItemQuantity(a);
+                // query pantry for ingredient calories
+                mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
                 ingredientsViewModel.removeIngredient(name ,quantity);
             }
+
+            String recipe = "";
+            if (bundle != null) {
+                recipe = bundle.getString("key");
+            }
+
+
+            mealVM.setMealData(loginVM.getLoginData().getUsername(), recipe, mealCalories);
+            pieEntries.clear();
+            int totCals = mealVM.getTotalDayCalories();
+            if (mealCalories < calorieGoal) {
+                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+            } else {
+                pieEntries.add(new PieEntry((totCals - mealCalories), "Excess Caloric Intake"));
+                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+            }
+            mealCalories = 0;
+
+            CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager().findFragmentById(R.id.goToPieChart);
+            if (circleVisualFragment != null) {
+                // Call the method and pass the required parameters
+                int calorieLeft = totCals - mealCalories;
+                ArrayList<PieEntry> updatedPieEntries = generateUpdatedPieEntries(calorieLeft);
+                circleVisualFragment.updatePieChart(updatedPieEntries);
+            }
+
+
         });
 
         backButton.setOnClickListener(v -> {
@@ -124,4 +178,14 @@ public class RecipeDetailsFrag extends Fragment {
         }
         return Integer.valueOf(quantity);
     }
+
+    private ArrayList<PieEntry> generateUpdatedPieEntries(int calorieLeft) {
+        // Generate pie chart entries with the new total calorie count
+        ArrayList<PieEntry> updatedPieEntries = new ArrayList<>();
+        // Add your logic to generate pie chart entries based on the new data
+        updatedPieEntries.add(new PieEntry(calorieLeft, "Total Calories"));
+        // Add other entries as needed
+        return updatedPieEntries;
+    }
+
 }

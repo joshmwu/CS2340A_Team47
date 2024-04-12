@@ -1,5 +1,7 @@
 package com.example.myapplication.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class PantryData {
@@ -24,5 +26,17 @@ public class PantryData {
 
     public void setIngredientList(ArrayList<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
+    }
+
+    public int getCaloriesFromName(String name) {
+        int calories = 0;
+        for (Ingredient a : ingredientList) {
+            Log.d("calories", String.valueOf(a.getCalories()));
+            if (a.getName().equals(name)) {
+                calories = a.getCalories();
+            }
+        }
+        Log.d("End of getcalories", "test");
+        return calories;
     }
 }

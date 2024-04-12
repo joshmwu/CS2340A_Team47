@@ -48,6 +48,7 @@ public class CircleVisual extends Fragment {
 
         pieChart = (PieChart) root.findViewById(R.id.piechart);
 
+
         redrawPieChart(pieEntries, pieChart);
         root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> {
                 replaceFragment(new InputMealScreenFrag());
@@ -55,6 +56,11 @@ public class CircleVisual extends Fragment {
 
         return root;
     }
+
+    public void updatePieChart(ArrayList<PieEntry> pieEntries) {
+        redrawPieChart(pieEntries, pieChart);
+    }
+
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
