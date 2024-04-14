@@ -56,7 +56,7 @@ public class AddIngredientsScreenFrag extends Fragment {
 
         addIngredientButton.setOnClickListener(v -> {
 
-            if (AddIngredientsScreenFrag.checkValidity(addIngredientNameET.getText().toString()) && checkValidity(addIngredientQuantityET.getText().toString()) && checkValidity(addIngredientCaloriesET.getText().toString())) {
+            if (IngredientsViewModel.checkValidity(addIngredientNameET.getText().toString()) && IngredientsViewModel.checkValidity(addIngredientQuantityET.getText().toString()) && IngredientsViewModel.checkValidity(addIngredientCaloriesET.getText().toString())) {
                 String ingName = addIngredientNameET.getText().toString();
                 int number = Integer.parseInt(addIngredientQuantityET.getText().toString());
                 int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
@@ -79,7 +79,7 @@ public class AddIngredientsScreenFrag extends Fragment {
         });
 
         removeIngredientButton.setOnClickListener(v -> {
-            if (checkValidity(removeIngredientNameET.getText().toString()) && checkValidity(removeIngredientQuantityET.getText().toString())) {
+            if (IngredientsViewModel.checkValidity(removeIngredientNameET.getText().toString()) && IngredientsViewModel.checkValidity(removeIngredientQuantityET.getText().toString())) {
 
                 String ingName = removeIngredientNameET.getText().toString();
                 int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
@@ -104,7 +104,6 @@ public class AddIngredientsScreenFrag extends Fragment {
         return root;
     }
 
-
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -113,14 +112,4 @@ public class AddIngredientsScreenFrag extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private static boolean checkValidity(String string) {
-        if (string == null) {
-            return false;
-        } else if (string.isEmpty()) {
-            return false;
-        } else if (string.isBlank()) {
-            return false;
-        }
-        return true;
-    }
-    }
+}

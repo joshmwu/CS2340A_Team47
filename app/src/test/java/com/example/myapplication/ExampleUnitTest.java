@@ -15,15 +15,19 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.example.myapplication.models.Ingredient;
 import com.example.myapplication.models.LoginData;
 import com.example.myapplication.models.PantryData;
+import com.example.myapplication.models.ShoppingListData;
+import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
+import com.example.myapplication.viewmodels.ShoppingListViewModel;
 import com.example.myapplication.views.IngredientAdapter;
 import com.example.myapplication.views.LoginScreen;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 
 /**
@@ -182,4 +186,21 @@ public class ExampleUnitTest {
         assertEquals(100,actualCal);
     }
 
+    @Test
+    public void addToShoppingList(){
+        ShoppingListData shoppingListData = ShoppingListData.getInstance();
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient("horseradish", 30, 5));
+        ingredients.add(new Ingredient("pickled ginger", 40, 2));
+        shoppingListData.setShoppingList(ingredients);
+        assertEquals(ingredients, shoppingListData.getShoppingList());
+    }
+
+    @Test
+    public void shoppingIngredientValidityCheck(){
+        String ingredientName = " Hoisin Sauce_";
+        String ingredientName2 = "  ";
+        assertEquals(false, IngredientsViewModel.checkValidity(ingredientName2));
+        assertEquals(true, IngredientsViewModel.checkValidity(ingredientName));
+    }
 }
