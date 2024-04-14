@@ -27,4 +27,14 @@ public class IngredientsViewModel {
     public void removeIngredient(String name, int quantity) {
         firebaseService.removeIngredient(name, quantity);
     }
+    public static boolean checkValidity(String string) {
+        if (string == null) {
+            return false;
+        } else if (string.isEmpty()) {
+            return false;
+        } else if (string.isBlank()) {
+            return false;
+        }
+        return true;
+    }
 }
