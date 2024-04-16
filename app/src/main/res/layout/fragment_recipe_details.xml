@@ -20,8 +20,8 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="340dp"
+        android:layout_height="378dp"
         android:fillViewport="true">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -37,6 +37,12 @@
         android:layout_width="131dp"
         android:layout_height="50dp"
         android:text="Cook" />
+
+    <Button
+        android:id="@+id/addRecipeToShoppingListButton"
+        android:layout_width="131dp"
+        android:layout_height="100dp"
+        android:text="Add to Shopping List" />
 
     <Button
         android:id="@+id/backButtonRecipeDetails"
