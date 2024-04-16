@@ -23,6 +23,7 @@ import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.example.myapplication.viewmodels.ShoppingListViewModel;
 import com.example.myapplication.views.IngredientAdapter;
 import com.example.myapplication.views.LoginScreen;
+import com.example.myapplication.views.RecipeDetailsFrag;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -202,5 +203,13 @@ public class ExampleUnitTest {
         String ingredientName2 = "  ";
         assertEquals(false, IngredientsViewModel.checkValidity(ingredientName2));
         assertEquals(true, IngredientsViewModel.checkValidity(ingredientName));
+    }
+
+    @Test
+    public void getItemQuantityCheck() {
+        String item = "Chicken 10";
+        int expectedQuantity = 10;
+        int actualQuantity = RecipeDetailsFrag.getItemQuantity(item);
+        assertEquals(expectedQuantity, actualQuantity);
     }
 }
