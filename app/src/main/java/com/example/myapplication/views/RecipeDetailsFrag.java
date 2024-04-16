@@ -171,7 +171,7 @@ public class RecipeDetailsFrag extends Fragment {
         return name;
     }
 
-    private static int getItemQuantity(String item) {
+    public static int getItemQuantity(String item) {
         String quantity = "";
         for (int i = item.length() - 1; i < item.length() && !item.substring(i, i+1).equals(" "); i--) {
             quantity = item.substring(i, i+1) + quantity;
@@ -187,5 +187,4 @@ public class RecipeDetailsFrag extends Fragment {
         // Add other entries as needed
         return updatedPieEntries;
     }
-
 }
