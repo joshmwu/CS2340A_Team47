@@ -21,6 +21,7 @@ import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
+import com.example.myapplication.viewmodels.ShoppingListViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieEntry;
@@ -42,10 +43,12 @@ public class RecipeDetailsFrag extends Fragment {
     private IngredientAdapter adapter;
     private Button backButton;
     private Button cookButton;
+    private Button addSListButton;
     private IngredientsViewModel ingredientsViewModel = IngredientsViewModel.getInstance();
     private InputMealViewModel inputMealViewModel = InputMealViewModel.getInstance();
     private ArrayList<PieEntry> pieEntries = new ArrayList<>();
     private PersonalInfoViewModel userInfoVM = PersonalInfoViewModel.getInstance();
+    private ShoppingListViewModel shoppingListVM = ShoppingListViewModel.getInstance();
     private int calorieGoal = userInfoVM.getUserData().getCalorieGoal();
     private InputMealViewModel mealVM = InputMealViewModel.getInstance();
     private int mealCalories;
@@ -63,6 +66,7 @@ public class RecipeDetailsFrag extends Fragment {
 
         backButton = root.findViewById(R.id.backButtonRecipeDetails);
         cookButton = root.findViewById(R.id.cookRecipeButton);
+        addSListButton = root.findViewById(R.id.addRecipeToShoppingListButton);
         recipeDetailsTitle = root.findViewById(R.id.recipeDetailsScreenTitle);
         ingredientEntries = new ArrayList<>();
         adapter = new IngredientAdapter(ingredientEntries);
@@ -77,6 +81,9 @@ public class RecipeDetailsFrag extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String recipe = bundle.getString("key");
+            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
+                recipe = recipe.substring(0, recipe.length()-1);
+            }
             recipeDetailsTitle.setText(recipe);
             firebaseService = FirebaseService.getInstance();
             DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
@@ -110,43 +117,87 @@ public class RecipeDetailsFrag extends Fragment {
         cookButton.setOnClickListener(v -> {
             //update visualizations, meal database, calorie count, & indredients
             // get subtracted from pantry.
-            Log.d("ingredientEntries", ingredientEntries.toString());
-            for (String a : ingredientEntries) {
-                String name = RecipeDetailsFrag.getItemName(a);
-                int quantity = RecipeDetailsFrag.getItemQuantity(a);
-                // query pantry for ingredient calories
-                mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
-                ingredientsViewModel.removeIngredient(name ,quantity);
-            }
-
             String recipe = "";
             if (bundle != null) {
                 recipe = bundle.getString("key");
             }
+            if (!recipe.contains("*")) {
+                Log.d("ingredientEntries", ingredientEntries.toString());
+                for (String a : ingredientEntries) {
+                    String name = RecipeDetailsFrag.getItemName(a);
+                    int quantity = RecipeDetailsFrag.getItemQuantity(a);
+                    // query pantry for ingredient calories
+                    mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
+                    ingredientsViewModel.removeIngredient(name ,quantity);
+                }
 
+                mealVM.setMealData(loginVM.getLoginData().getUsername(), recipe, mealCalories);
+                pieEntries.clear();
+                int totCals = mealVM.getTotalDayCalories();
+                if (mealCalories < calorieGoal) {
+                    pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
+                    pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+                } else {
+                    pieEntries.add(new PieEntry((totCals - mealCalories), "Excess Caloric Intake"));
+                    pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+                }
+                mealCalories = 0;
 
-            mealVM.setMealData(loginVM.getLoginData().getUsername(), recipe, mealCalories);
-            pieEntries.clear();
-            int totCals = mealVM.getTotalDayCalories();
-            if (mealCalories < calorieGoal) {
-                pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
-            } else {
-                pieEntries.add(new PieEntry((totCals - mealCalories), "Excess Caloric Intake"));
-                pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+                CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager().findFragmentById(R.id.goToPieChart);
+                if (circleVisualFragment != null) {
+                    // Call the method and pass the required parameters
+                    int calorieLeft = totCals - mealCalories;
+                    ArrayList<PieEntry> updatedPieEntries = generateUpdatedPieEntries(calorieLeft);
+                    circleVisualFragment.updatePieChart(updatedPieEntries);
+                }
+                Toast.makeText(getContext(),
+                        "Meal Cooked!",
+                        Toast.LENGTH_SHORT).show();
             }
-            mealCalories = 0;
-
-            CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager().findFragmentById(R.id.goToPieChart);
-            if (circleVisualFragment != null) {
-                // Call the method and pass the required parameters
-                int calorieLeft = totCals - mealCalories;
-                ArrayList<PieEntry> updatedPieEntries = generateUpdatedPieEntries(calorieLeft);
-                circleVisualFragment.updatePieChart(updatedPieEntries);
+            else{
+                Toast.makeText(getContext(),
+                        "Insufficient ingredients in pantry to cook this recipe.",
+                        Toast.LENGTH_SHORT).show();
             }
 
 
         });
+        
+        //DONT DELETE WILL FINISH IMPLEMENTATION LATER
+        /*addSListButton.setOnClickListener(v -> {
+            String recipe = bundle.getString("key");
+            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
+                recipe = recipe.substring(0, recipe.length()-1);
+            }
+            firebaseService = FirebaseService.getInstance();
+            DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
+                    "Recipes").child(recipe);
+            recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Check if the snapshot has children
+                    if (dataSnapshot.hasChildren()) {
+                        // Iterate over the children
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            // Get the key (child node name) and value
+                            //ingredientEntries.add(childSnapshot.getKey() + " - "
+                            //        + childSnapshot.getValue());
+                            shoppingListVM.addShoppingListItem(childSnapshot.getKey(), (Integer) childSnapshot.getValue(), 100);
+                            adapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(getContext(),
+                                "Successfully added items to shopping list.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle errors
+                    System.err.println("Listener was cancelled");
+                }
+            });
+        });*/
 
         backButton.setOnClickListener(v -> {
             replaceFragment(new GlobalCookbookScreenFrag());

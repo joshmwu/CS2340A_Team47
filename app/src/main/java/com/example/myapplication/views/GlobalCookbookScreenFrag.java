@@ -49,14 +49,11 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
     @Override
     public void onItemClick(int position) {
         String recipe = cookbookEntries.get(position);
-        if (!recipe.contains("*")) {
-            Bundle bundle = new Bundle();
-            bundle.putString("key", recipe);
-
-            Fragment recipeDetails = new RecipeDetailsFrag();
-            recipeDetails.setArguments(bundle);
-            replaceFragment(recipeDetails);
-        }
+        Bundle bundle = new Bundle();
+        bundle.putString("key", recipe);
+        Fragment recipeDetails = new RecipeDetailsFrag();
+        recipeDetails.setArguments(bundle);
+        replaceFragment(recipeDetails);
     }
 
     @Override
