@@ -109,33 +109,11 @@ public class InputMealScreenFrag extends Fragment {
 
         return root;
     }
-
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.replace(R.id.flFragment, fragment);
         fragmentTransaction.commit();
-    }
-
-    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
-        PieDataSet pieDataSet = new PieDataSet(enters, "Label");
-        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-
-        PieData pieData = new PieData(pieDataSet);
-        pieChart.setData(pieData);
-
-        pieChart.getDescription().setEnabled(false);
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
-        pieChart.invalidate();
-
-        //pieChart.setUsePercentValues(true);
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.TRANSPARENT);
-
-        pieDataSet.setSliceSpace(1f);
-        pieData.setValueTextColor(Color.WHITE);
-        pieData.setValueTextSize(20f);
-        pieChart.setTransparentCircleRadius(60f);
     }
 }

@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,10 @@ public class FirebaseService {
     private UserData firebaseUserData = UserData.getInstance();
     private PantryData firebasePantryData = PantryData.getInstance();
     private ShoppingListData firebaseShoppingListData = ShoppingListData.getInstance();
+    private static IngredientFactory currentFactory;
+    
+    //can be used for filtering or when a list of calorie classifications is needed
+    private List<String> lowMediumHighCalories;
 
     private FirebaseService() {
         database = FirebaseDatabase.getInstance();
@@ -241,10 +246,21 @@ public class FirebaseService {
                         calories = ingredientSnapshot.child("calories").getValue(Integer.class);
                     }
 
+                    if (calories < 200) {
+                        currentFactory = new LowCalorieIngredientFactory();
+                    } else if (calories < 500) {
+                        currentFactory = new MediumCalorieIngredientFactory();
+                    } else {
+                        currentFactory = new HighCalorieIngredientFactory();
+                    }
+                    IngredientType currentIngredient = currentFactory.createIngredient();
+                    lowMediumHighCalories.add(currentIngredient.getDetails() + ingredientName);
+
                     // Create Ingredient object
                     Ingredient ingredient = new Ingredient(ingredientName, calories, quantity);
                     // Do something with the Ingredient object, such as adding it to a list
                     listOfIngredients.add(ingredient);
+
                 }
                 firebasePantryData.setIngredientList(listOfIngredients);
             }
