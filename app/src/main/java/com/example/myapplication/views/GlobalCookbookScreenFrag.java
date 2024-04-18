@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.util.Log;
 
 public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickListener {
     private Button backButton;
@@ -141,6 +142,7 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
     private void checkRecipeAvailability(DataSnapshot recipesOfCookbookSnapshot) {
         DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
         DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
+        Log.d("mytag", "made it here 1");
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot pantryDataSnapshot) {
@@ -148,7 +150,12 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
                 for (DataSnapshot ingredientsOfRecipeSnapshot : recipesOfCookbookSnapshot.getChildren()) {
                     if (pantryDataSnapshot.hasChild(ingredientsOfRecipeSnapshot.getKey())) {
                         long pantryQuantity = (Long) pantryDataSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue();
-                        long recipeQuantity = (Long) ingredientsOfRecipeSnapshot.getValue();
+                        Log.d("mytag", ingredientsOfRecipeSnapshot.toString());
+                        Log.d("mytag", ingredientsOfRecipeSnapshot.child("quantity").toString());
+//                        Log.d("mytag", ingredientsOfRecipeSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue(Integer.class).toString());
+//                        int recipeQuantity = ingredientsOfRecipeSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue(Integer.class);
+                        long recipeQuantity = (Long) ingredientsOfRecipeSnapshot.child("quantity").getValue();
+//                        long recipeQuantity = 0;
                         if (pantryQuantity >= recipeQuantity) {
                             canMake = true;
                         } else {
