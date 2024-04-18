@@ -16,6 +16,7 @@ import com.example.myapplication.models.Ingredient;
 import com.example.myapplication.models.LoginData;
 import com.example.myapplication.models.PantryData;
 import com.example.myapplication.models.ShoppingListData;
+import com.example.myapplication.models.MealData;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
@@ -40,8 +41,11 @@ import java.util.ArrayList;
 public class ExampleUnitTest {
 
     private LoginScreenViewModel loginScreenViewModel;
+    private InputMealViewModel inputMealViewModel;
     private Context mockContext;
     private DatabaseReference databaseReference;
+
+    private MealData mealData;
 
     public void setup() {
         // Mock the context
@@ -175,6 +179,7 @@ public class ExampleUnitTest {
         assertEquals("christina", a.getLoginData().getUsername().equals("christina"));
     }
 
+
     ////  SPRINT FOUR JUNITS!!!!!! ////
     @Test
     public void getPantryCalories() {
@@ -188,7 +193,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void addToShoppingList(){
+    public void addToShoppingList() {
         ShoppingListData shoppingListData = ShoppingListData.getInstance();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient("horseradish", 30, 5));
@@ -212,4 +217,32 @@ public class ExampleUnitTest {
         int actualQuantity = RecipeDetailsFrag.getItemQuantity(item);
         assertEquals(expectedQuantity, actualQuantity);
     }
+
+    @Test
+    public void setMealData() {
+        mealData = new MealData();
+        mealData.setMealData("pasta", 150);
+        assertEquals("pasta", mealData.getMealName());
+        assertEquals(150, mealData.getMealCalories());
+        assertTrue(mealData.getMeals().contains("pasta"));
+    }
+
+    @Test
+    public void getMeals() {
+        mealData = new MealData();
+        mealData.setMealData("teriyaki chicken", 300);
+        mealData.setMealData("kung pao chicken", 400);
+        assertEquals(2, mealData.getMeals().size());
+        assertTrue(mealData.getMeals().contains("teriyaki chicken"));
+        assertTrue(mealData.getMeals().contains("kung pao chicken"));
+    }
+
+    @Test
+    public void resetMealCalories() {
+        mealData = new MealData();
+        mealData.setMealData("peking duck", 400);
+        mealData.resetMealCalories();
+        assertEquals(0, mealData.getMealCalories());
+    }
+
 }
