@@ -9,15 +9,134 @@
     tools:context=".views.HomeFragment"
     >
 
-    <TextView
-        android:id="@+id/HomeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:gravity="center"
-        android:padding="30dp"
-        android:text="Home Screen"
-        android:textSize="35sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/inputMealScreenTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Input Meal Screen" />
+        <TextView
+            android:id="@+id/welcomeUser"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Welcome, " />
+        <TextView
+            android:id="@+id/userHeightTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Height" />
+        <TextView
+            android:id="@+id/userWeightTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Weight" />
+        <TextView
+            android:id="@+id/userGenderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Gender" />
+        <TextView
+            android:id="@+id/userGoalTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Calorie Goal"
+            />
+        <EditText
+            android:id="@+id/mealNameEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:autofillHints="Meal Name"
+            android:hint="@string/mealname"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="10sp" />
+
+        <EditText
+            android:id="@+id/mealCaloriesEditText"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_margin="20dp"
+            android:autofillHints="Calories"
+            android:hint="@string/calories"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/submitMealInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@string/submit" />
+
+        <Button
+            android:id="@+id/logMealsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@string/log" />
+
+        <Button
+            android:id="@+id/goToPieChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Go To Pie Chart" />
+
+        <Button
+            android:id="@+id/goToLineChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Go To Line Chart" />
+    </LinearLayout>
 
 </FrameLayout>

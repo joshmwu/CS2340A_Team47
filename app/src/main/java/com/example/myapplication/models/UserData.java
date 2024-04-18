@@ -31,7 +31,6 @@ public class UserData {
         return instance;
     }
 
-
     public int getHeight() {
         return height;
     }
