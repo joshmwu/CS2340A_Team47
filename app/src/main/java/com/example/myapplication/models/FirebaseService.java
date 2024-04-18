@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -372,15 +374,33 @@ public class FirebaseService {
             }
         });
     }
-    // Recipe Database - does not need to be stored locally
-    public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
-        DatabaseReference userRef = this.getDBReference("Recipes");
-        for (Map.Entry<String, Integer> entry : ingredientMap.entrySet()) {
-            String ingredient = entry.getKey();
-            Integer quantity = entry.getValue();
-            userRef.child(name).child(ingredient).setValue(quantity);
+//    PAST IMPLEMENTATION
+//    // Recipe Database - does not need to be stored locally
+//    public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
+//        DatabaseReference userRef = this.getDBReference("Recipes");
+//        for (Map.Entry<String, Integer> entry : ingredientMap.entrySet()) {
+//            String ingredient = entry.getKey();
+//            Integer quantity = entry.getValue();
+//            userRef.child(name).child(ingredient).setValue(quantity);
+//        }
+//    }
+
+//  NEW IMPLEMENTATION*
+    public void addNewRecipe(String recipeName, ArrayList<String[]> ingredientMap) {
+        DatabaseReference recipesRef = this.getFirebaseDatabase().getReference("Recipes");
+        DatabaseReference specificRecipeRef = recipesRef.child(recipeName);
+        for (String[] ingredientDetails : ingredientMap) {
+            Log.d("mytagreal", ingredientDetails[0]);
+            Log.d("mytagreal", ingredientDetails[1]);
+            Log.d("mytagreal", ingredientDetails[2]);
+            String ingredientName = ingredientDetails[0];
+            specificRecipeRef.child(ingredientName).child("quantity").setValue(Integer.parseInt(ingredientDetails[1]));
+            specificRecipeRef.child(ingredientName).child("calories").setValue(Integer.parseInt(ingredientDetails[2]));
         }
     }
+//  *NEW IMPLEMENTATION
+
+
 
     // ShoppingList Database - should be stored locally!
 

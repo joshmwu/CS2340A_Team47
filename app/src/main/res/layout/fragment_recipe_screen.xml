@@ -35,12 +35,21 @@
 
         <EditText
             android:id="@+id/ingredientEditText"
-            android:layout_width="0dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:hint="Ingredient Name"
             android:textSize="20sp"
             android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/calorieEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="Calories"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/quantityEditText"
