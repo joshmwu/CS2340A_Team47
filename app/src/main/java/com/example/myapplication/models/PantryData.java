@@ -39,4 +39,15 @@ public class PantryData {
         Log.d("End of getcalories", "test");
         return calories;
     }
+    public int getQuantityFromName(String name) {
+        int quantity = 0;
+        for (Ingredient a : ingredientList) {
+            Log.d("calories", String.valueOf(a.getQuantity()));
+            if (a.getName().equals(name)) {
+                quantity = a.getQuantity();
+            }
+        }
+        Log.d("End of getquantity", "test");
+        return quantity;
+    }
 }
