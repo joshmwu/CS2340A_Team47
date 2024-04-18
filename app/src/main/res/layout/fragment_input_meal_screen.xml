@@ -137,6 +137,22 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="Go To Line Chart" />
+        <TextView
+            android:id="@+id/inputMealScreenMessageTV"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="" />
+        <TextView
+            android:id="@+id/inputMealMealTV"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:text="" />
     </LinearLayout>
 
 
