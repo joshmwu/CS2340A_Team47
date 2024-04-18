@@ -81,9 +81,9 @@ public class RecipeDetailsFrag extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String recipe = bundle.getString("key");
-            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
-                recipe = recipe.substring(0, recipe.length()-1);
-            }
+//            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
+//                recipe = recipe.substring(0, recipe.length()-1);
+//            }
             recipeDetailsTitle.setText(recipe);
             firebaseService = FirebaseService.getInstance();
             DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
@@ -167,7 +167,7 @@ public class RecipeDetailsFrag extends Fragment {
         //DONT DELETE WILL FINISH IMPLEMENTATION LATER
         addSListButton.setOnClickListener(v -> {
             String recipe = bundle.getString("key");
-            if (!recipe.contains("*")) {
+            if (recipe.contains("*")) {
                 if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")) {
                     recipe = recipe.substring(0, recipe.length()-1);
                 }
@@ -184,9 +184,17 @@ public class RecipeDetailsFrag extends Fragment {
                                 // Get the key (child node name) and value
                                 //ingredientEntries.add(childSnapshot.getKey() + " - "
                                 //        + childSnapshot.getValue());
+                                Log.d("checking", childSnapshot.child("quantity").getValue().toString());
+                                Log.d("checking", ((Integer)pantryData.getQuantityFromName(childSnapshot.getKey())).toString());
+                                long recipeRequiredQuantity = (Long) childSnapshot.child("quantity").getValue();
+                                long currentPantryQuantity = pantryData.getQuantityFromName(childSnapshot.getKey());
+                                if (recipeRequiredQuantity > currentPantryQuantity) {
+                                    int addToShoppingList = ((Long)(recipeRequiredQuantity - currentPantryQuantity)).intValue();
+                                    shoppingListVM.addShoppingListItem(childSnapshot.getKey(), addToShoppingList, ((Long)childSnapshot.child("calories").getValue()).intValue());
+                                }
 
-                                shoppingListVM.addShoppingListItem(childSnapshot.getKey(), (Integer) childSnapshot.child("quantity").getValue(), (Integer) childSnapshot.child("calories").getValue());
-                                adapter.notifyDataSetChanged();
+//
+//                                adapter.notifyDataSetChanged();
                             }
                             Toast.makeText(getContext(),
                                     "Successfully added items to shopping list.",
