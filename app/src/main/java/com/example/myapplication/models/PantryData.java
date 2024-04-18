@@ -42,7 +42,7 @@ public class PantryData {
     public int getQuantityFromName(String name) {
         int quantity = 0;
         for (Ingredient a : ingredientList) {
-            Log.d("calories", String.valueOf(a.getQuantity()));
+            Log.d("quantity", String.valueOf(a.getQuantity()));
             if (a.getName().equals(name)) {
                 quantity = a.getQuantity();
             }
