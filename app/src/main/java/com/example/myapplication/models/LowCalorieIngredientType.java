@@ -5,3 +5,4 @@ public class LowCalorieIngredientType implements IngredientType {
         return "Low Calorie Ingredient: ";
     }
 }
+

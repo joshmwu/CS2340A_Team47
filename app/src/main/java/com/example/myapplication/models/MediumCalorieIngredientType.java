@@ -5,3 +5,5 @@ public class MediumCalorieIngredientType implements IngredientType {
         return "Medium Calorie Ingredient: ";
     }
 }
+
+
