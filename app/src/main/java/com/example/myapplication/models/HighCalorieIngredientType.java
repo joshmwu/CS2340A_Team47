@@ -5,3 +5,5 @@ public class HighCalorieIngredientType implements IngredientType {
         return "High Calorie Ingredient: ";
     }
 }
+
+

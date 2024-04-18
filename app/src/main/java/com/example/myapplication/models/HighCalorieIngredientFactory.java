@@ -6,3 +6,5 @@ public class HighCalorieIngredientFactory implements IngredientFactory {
         return new HighCalorieIngredientType();
     }
 }
+
+

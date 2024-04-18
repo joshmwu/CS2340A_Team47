@@ -30,7 +30,7 @@ public class FirebaseService {
     private static IngredientFactory currentFactory;
     
     //can be used for filtering or when a list of calorie classifications is needed
-    private List<String> lowMediumHighCalories;
+    private List<String> lowMediumHighCalories = new ArrayList<>();
 
     private FirebaseService() {
         database = FirebaseDatabase.getInstance();

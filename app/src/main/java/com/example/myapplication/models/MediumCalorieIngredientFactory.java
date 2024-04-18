@@ -6,3 +6,5 @@ public class MediumCalorieIngredientFactory implements IngredientFactory {
         return new MediumCalorieIngredientType();
     }
 }
+
+

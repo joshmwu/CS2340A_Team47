@@ -6,3 +6,4 @@ public class LowCalorieIngredientFactory implements IngredientFactory {
         return new LowCalorieIngredientType();
     }
 }
+
