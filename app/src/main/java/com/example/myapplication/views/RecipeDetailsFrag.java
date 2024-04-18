@@ -97,7 +97,7 @@ public class RecipeDetailsFrag extends Fragment {
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             // Get the key (child node name) and value
                             ingredientEntries.add(childSnapshot.getKey() + " - "
-                                    + childSnapshot.getValue());
+                                    + childSnapshot.child("quantity").getValue());
                             adapter.notifyDataSetChanged();
 
                         }
@@ -126,10 +126,12 @@ public class RecipeDetailsFrag extends Fragment {
                 for (String a : ingredientEntries) {
                     String name = RecipeDetailsFrag.getItemName(a);
                     int quantity = RecipeDetailsFrag.getItemQuantity(a);
+
                     // query pantry for ingredient calories
                     mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
-                    ingredientsViewModel.removeIngredient(name ,quantity);
+                    ingredientsViewModel.removeIngredient(name, quantity);
                 }
+                Log.d("caloriestag", ((Integer)mealCalories).toString());
 
                 mealVM.setMealData(loginVM.getLoginData().getUsername(), recipe, mealCalories);
                 pieEntries.clear();
@@ -153,8 +155,7 @@ public class RecipeDetailsFrag extends Fragment {
                 Toast.makeText(getContext(),
                         "Meal Cooked!",
                         Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else{
                 Toast.makeText(getContext(),
                         "Insufficient ingredients in pantry to cook this recipe.",
                         Toast.LENGTH_SHORT).show();
@@ -164,40 +165,48 @@ public class RecipeDetailsFrag extends Fragment {
         });
         
         //DONT DELETE WILL FINISH IMPLEMENTATION LATER
-        /*addSListButton.setOnClickListener(v -> {
+        addSListButton.setOnClickListener(v -> {
             String recipe = bundle.getString("key");
-            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
-                recipe = recipe.substring(0, recipe.length()-1);
-            }
-            firebaseService = FirebaseService.getInstance();
-            DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
-                    "Recipes").child(recipe);
-            recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // Check if the snapshot has children
-                    if (dataSnapshot.hasChildren()) {
-                        // Iterate over the children
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            // Get the key (child node name) and value
-                            //ingredientEntries.add(childSnapshot.getKey() + " - "
-                            //        + childSnapshot.getValue());
-                            shoppingListVM.addShoppingListItem(childSnapshot.getKey(), (Integer) childSnapshot.getValue(), 100);
-                            adapter.notifyDataSetChanged();
-                        }
-                        Toast.makeText(getContext(),
-                                "Successfully added items to shopping list.",
-                                Toast.LENGTH_SHORT).show();
-                    }
+            if (!recipe.contains("*")) {
+                if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")) {
+                    recipe = recipe.substring(0, recipe.length()-1);
                 }
+                firebaseService = FirebaseService.getInstance();
+                DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
+                        "Recipes").child(recipe);
+                recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Check if the snapshot has children
+                        if (dataSnapshot.hasChildren()) {
+                            // Iterate over the children
+                            for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                                // Get the key (child node name) and value
+                                //ingredientEntries.add(childSnapshot.getKey() + " - "
+                                //        + childSnapshot.getValue());
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    // Handle errors
-                    System.err.println("Listener was cancelled");
-                }
-            });
-        });*/
+                                shoppingListVM.addShoppingListItem(childSnapshot.getKey(), (Integer) childSnapshot.child("quantity").getValue(), (Integer) childSnapshot.child("calories").getValue());
+                                adapter.notifyDataSetChanged();
+                            }
+                            Toast.makeText(getContext(),
+                                    "Successfully added items to shopping list.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle errors
+                        System.err.println("Listener was cancelled");
+                    }
+                });
+            } else {
+                Toast.makeText(getContext(),
+                        "Ingredients in pantry are sufficient to cook this recipe.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
         backButton.setOnClickListener(v -> {
             replaceFragment(new GlobalCookbookScreenFrag());
