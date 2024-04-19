@@ -17,7 +17,8 @@ import java.util.ArrayList;
 public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ViewHolder> {
 
     private List<String> shoppingListEntries;
-    private SparseBooleanArray itemStateArray = new SparseBooleanArray(); // to store state of each checkbox
+    // to store state of each checkbox
+    private SparseBooleanArray itemStateArray = new SparseBooleanArray();
 
     public ShoppingListAdapter(List<String> shoppingListEntries) {
         this.shoppingListEntries = shoppingListEntries;
@@ -26,7 +27,8 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shopping_list_entry, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_shopping_list_entry, parent, false);
         return new ViewHolder(view);
     }
 
@@ -41,6 +43,16 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         return shoppingListEntries.size();
     }
 
+    public List<String> getCheckedItems() {
+        List<String> checkedItems = new ArrayList<>();
+        for (int i = 0; i < shoppingListEntries.size(); i++) {
+            if (itemStateArray.get(i, false)) {
+                checkedItems.add(shoppingListEntries.get(i));
+            }
+        }
+        return checkedItems;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CheckBox checkbox;
         private TextView shoppingListItemEntryTextView;
@@ -48,7 +60,8 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checkbox = itemView.findViewById(R.id.shoppingListItemCheckbox);
-            shoppingListItemEntryTextView = itemView.findViewById(R.id.shoppingListItemEntryTextView);
+            shoppingListItemEntryTextView = itemView
+                    .findViewById(R.id.shoppingListItemEntryTextView);
 
             // Set OnClickListener for checkbox
             checkbox.setOnClickListener(new View.OnClickListener() {
@@ -68,16 +81,8 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
         public void bind(String ingredientEntry, int position) {
             shoppingListItemEntryTextView.setText(ingredientEntry);
-            checkbox.setChecked(itemStateArray.get(position, false)); // Set checkbox state based on itemStateArray
+            // Set checkbox state based on itemStateArray
+            checkbox.setChecked(itemStateArray.get(position, false));
         }
-    }
-    public List<String> getCheckedItems() {
-        List<String> checkedItems = new ArrayList<>();
-        for (int i = 0; i < shoppingListEntries.size(); i++) {
-            if (itemStateArray.get(i, false)) {
-                checkedItems.add(shoppingListEntries.get(i));
-            }
-        }
-        return checkedItems;
     }
 }

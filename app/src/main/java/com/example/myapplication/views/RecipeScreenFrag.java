@@ -1,7 +1,5 @@
 package com.example.myapplication.views;
 
-import static com.google.android.material.internal.ViewUtils.hideKeyboard;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,14 +16,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputRecipeViewModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import android.widget.SearchView;
 
 public class RecipeScreenFrag extends Fragment {
     private EditText recipeNameEditText;
@@ -59,32 +53,35 @@ public class RecipeScreenFrag extends Fragment {
         adapter = new IngredientAdapter(ingredientEntries);
         selectedIngredientsRecyclerView.setAdapter(adapter);
         selectedIngredientsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//      PAST IMPLEMENTATION
-//        addIngredientButton.setOnClickListener(v -> {
-//            String ingredient = ingredientEditText.getText().toString().trim();
-//            String calories = caloriesEditText.getText().toString().trim();
-//            String quantity = quantityEditText.getText().toString().trim();
-//            if (!ingredient.isEmpty() && !calories.isEmpty() && !quantity.isEmpty() && !ingredient.contains("-")) {
-//                String ingredientEntry = ingredient + " - " + quantity + " - " + calories;
-//                ingredientEntries.add(ingredientEntry);
-//                adapter.notifyDataSetChanged();
-//                // add to hashmap
-//                ingredientMap.put(ingredient, Integer.valueOf(quantity));
-//                // Clear EditText fields after adding ingredient
-//                ingredientEditText.setText("");
-//                quantityEditText.setText("");
-//            } else {
-//                Toast.makeText(getContext(), "Please enter a valid name and quantity.",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        //      PAST IMPLEMENTATION
+        //        addIngredientButton.setOnClickListener(v -> {
+        //            String ingredient = ingredientEditText.getText().toString().trim();
+        //            String calories = caloriesEditText.getText().toString().trim();
+        //            String quantity = quantityEditText.getText().toString().trim();
+        //            if (!ingredient.isEmpty() && !calories.isEmpty() &&
+        //            !quantity.isEmpty() && !ingredient.contains("-")) {
+        //                String ingredientEntry = ingredient + " - " + quantity + " - " + calories;
+        //                ingredientEntries.add(ingredientEntry);
+        //                adapter.notifyDataSetChanged();
+        //                // add to hashmap
+        //                ingredientMap.put(ingredient, Integer.valueOf(quantity));
+        //                // Clear EditText fields after adding ingredient
+        //                ingredientEditText.setText("");
+        //                quantityEditText.setText("");
+        //            } else {
+        //                Toast.makeText(getContext(), "Please enter a valid name and quantity.",
+        //                        Toast.LENGTH_SHORT).show();
+        //            }
+        //        });
 
 
         addIngredientButton.setOnClickListener(v -> {
             String ingredient = ingredientEditText.getText().toString().trim();
             String quantity = quantityEditText.getText().toString().trim();
             String calories = caloriesEditText.getText().toString().trim();
-            if (!ingredient.isEmpty() && !calories.isEmpty() && !quantity.isEmpty() && !ingredient.contains("-")) {
+            if (!ingredient.isEmpty() && !calories.isEmpty()
+                    && !quantity.isEmpty()
+                    && !ingredient.contains("-")) {
                 String ingredientEntry = ingredient + " - " + quantity + " - " + calories;
                 ingredientEntries.add(ingredientEntry);
                 adapter.notifyDataSetChanged();
@@ -101,25 +98,25 @@ public class RecipeScreenFrag extends Fragment {
                         Toast.LENGTH_SHORT).show();
             }
         });
-//  OLD IMPLEMENTATION
-//        submitRecipeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String recipeName = recipeNameEditText.getText().toString().trim();
-//                if (!recipeName.isEmpty()) {
-//                    ingredientEntries.clear();
-//                    adapter.notifyDataSetChanged();
-//                    recipeNameEditText.setText("");
-//                    ingredientEditText.setText("");
-//                    quantityEditText.setText("");
-//                    recipeViewModel.addNewRecipe(recipeName, ingredientMap);
-//                    Toast.makeText(getContext(), "Submitted!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getContext(), "Please enter a name for your recipe.",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        //  OLD IMPLEMENTATION
+        //        submitRecipeButton.setOnClickListener(new View.OnClickListener() {
+        //            @Override
+        //            public void onClick(View v) {
+        //                String recipeName = recipeNameEditText.getText().toString().trim();
+        //                if (!recipeName.isEmpty()) {
+        //                    ingredientEntries.clear();
+        //                    adapter.notifyDataSetChanged();
+        //                    recipeNameEditText.setText("");
+        //                    ingredientEditText.setText("");
+        //                    quantityEditText.setText("");
+        //                    recipeViewModel.addNewRecipe(recipeName, ingredientMap);
+        //                    Toast.makeText(getContext(), "Submitted!", Toast.LENGTH_SHORT).show();
+        //                } else {
+        //                    Toast.makeText(getContext(), "Please enter a name for your recipe.",
+        //                            Toast.LENGTH_SHORT).show();
+        //                }
+        //            }
+        //        });
 
         submitRecipeButton.setOnClickListener(v -> {
             String recipeName = recipeNameEditText.getText().toString().trim();
