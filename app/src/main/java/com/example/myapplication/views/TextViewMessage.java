@@ -2,7 +2,6 @@ package com.example.myapplication.views;
 
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class TextViewMessage implements Observer {
     private TextView textViewMessage;
