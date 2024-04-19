@@ -1,25 +1,14 @@
 package com.example.myapplication.models;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.example.myapplication.viewmodels.LoginScreenViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-
 
 public class LoginData {
     // private instance variables and methods associated with logging in
-    private volatile static LoginData instance;
+    private static volatile  LoginData instance;
     private String username;
     private String password;
     private boolean loggedIn;
 
-    private LoginData() {}
+    private LoginData() { }
     public static LoginData getInstance() {
         if (instance == null) {
             synchronized (LoginData.class) {

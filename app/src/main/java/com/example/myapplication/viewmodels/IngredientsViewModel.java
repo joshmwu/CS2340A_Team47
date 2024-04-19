@@ -6,7 +6,7 @@ import com.example.myapplication.models.PantryData;
 public class IngredientsViewModel {
     private static IngredientsViewModel instance;
     private FirebaseService firebaseService = FirebaseService.getInstance();
-    private IngredientsViewModel() {}
+    private IngredientsViewModel() { }
     private PantryData pantryData = PantryData.getInstance();
 
     public static synchronized IngredientsViewModel getInstance() {
