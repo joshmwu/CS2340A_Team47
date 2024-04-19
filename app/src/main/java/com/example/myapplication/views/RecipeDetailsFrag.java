@@ -153,8 +153,6 @@ public class RecipeDetailsFrag extends Fragment {
                     ArrayList<PieEntry> updatedPieEntries = generateUpdatedPieEntries(calorieLeft);
                     circleVisualFragment.updatePieChart(updatedPieEntries);
                 }
-                ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
-                lineEntries.add(new Entry(mealVM.getDay(), mealVM.getTotalDayCalories()));
                 Toast.makeText(getContext(),
                         "Meal Cooked!",
                         Toast.LENGTH_SHORT).show();
