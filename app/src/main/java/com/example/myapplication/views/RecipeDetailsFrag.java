@@ -118,7 +118,7 @@ public class RecipeDetailsFrag extends Fragment {
                 for (String a : ingredientEntries) {
                     String name = RecipeDetailsFrag.getItemName(a);
                     int quantity = RecipeDetailsFrag.getItemQuantity(a);
-                    mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
+                    mealCalories += (pantryData.getCaloriesFromName(name));
                     ingredientsViewModel.removeIngredient(name, quantity);
                 }
                 Log.d("caloriestag", ((Integer) mealCalories).toString());
@@ -126,10 +126,10 @@ public class RecipeDetailsFrag extends Fragment {
                 pieEntries.clear();
                 int totCals = mealVM.getTotalDayCalories();
                 if (mealCalories < calorieGoal) {
-                    pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-                    pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Remaining Calories"));
+                    pieEntries.add(new PieEntry(totCals, "Day's Caloric Intake"));
+                    pieEntries.add(new PieEntry(calorieGoal - totCals, "Remaining Calories"));
                 } else {
-                    pieEntries.add(new PieEntry((totCals - mealCalories), "Excess Caloric Intake"));
+                    pieEntries.add(new PieEntry((totCals - calorieGoal), "Excess Caloric Intake"));
                     pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
                 }
                 mealCalories = 0;
