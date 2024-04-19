@@ -1,7 +1,4 @@
 package com.example.myapplication.views;
-import com.google.firebase.database.DatabaseReference;
-
-import java.util.List;
 
 public class ContainsFiltering implements FilteringStrategy {
     private String contained;

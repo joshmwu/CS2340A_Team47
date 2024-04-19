@@ -15,16 +15,13 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.FirebaseService;
-import com.example.myapplication.models.Ingredient;
 import com.example.myapplication.models.PantryData;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.example.myapplication.viewmodels.ShoppingListViewModel;
-import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieEntry;
 import com.google.firebase.database.*;
 
@@ -76,11 +73,9 @@ public class RecipeDetailsFrag extends Fragment {
         recipeDetailsRecyclerView.setAdapter(adapter);
         recipeDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         totalCaloriesTV = root.findViewById(R.id.totalCaloriesTV);
-
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
         pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
-
         Bundle bundle = getArguments();
         if (bundle != null) {
             String recipe = bundle.getString("key");
@@ -112,15 +107,12 @@ public class RecipeDetailsFrag extends Fragment {
                     }
 
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     // Handle errors
                     System.err.println("Listener was cancelled");
                 }
             });
-
-
         }
 
         cookButton.setOnClickListener(v -> {

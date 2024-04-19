@@ -17,10 +17,6 @@ public class InputRecipeViewModel {
         }
         return instance;
     }
-    //  OLD IMPLEMENTATION
-    //    public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
-    //        firebaseService.addNewRecipe(name, ingredientMap);
-    //    }
 
     public void addNewRecipe(String name, ArrayList<String[]> ingredientMap) {
         firebaseService.addNewRecipe(name, ingredientMap);

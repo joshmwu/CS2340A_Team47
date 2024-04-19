@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,24 +12,9 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 
-import com.example.myapplication.models.Ingredient;
-import com.example.myapplication.models.PantryData;
-import com.example.myapplication.models.ShoppingListData;
-import com.example.myapplication.viewmodels.IngredientsViewModel;
-import com.example.myapplication.viewmodels.ShoppingListViewModel;
 
 
 import android.widget.Button;
-import android.widget.TextView;
-
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
-
-import android.util.Log;
-
-import org.checkerframework.checker.units.qual.A;
-
 public class BoughtItemFrag extends Fragment {
     private Button backButton;
     @Override

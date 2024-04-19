@@ -11,12 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
-import com.example.myapplication.viewmodels.LoginScreenViewModel;
 
 
 import android.widget.Button;
@@ -56,7 +54,10 @@ public class AddIngredientsScreenFrag extends Fragment {
 
         addIngredientButton.setOnClickListener(v -> {
 
-            if (IngredientsViewModel.checkValidity(addIngredientNameET.getText().toString()) && IngredientsViewModel.checkValidity(addIngredientQuantityET.getText().toString()) && IngredientsViewModel.checkValidity(addIngredientCaloriesET.getText().toString())) {
+            if (IngredientsViewModel.checkValidity(addIngredientNameET.getText()
+                    .toString()) && IngredientsViewModel.checkValidity(addIngredientQuantityET
+                    .getText().toString()) && IngredientsViewModel
+                    .checkValidity(addIngredientCaloriesET.getText().toString())) {
                 String ingName = addIngredientNameET.getText().toString();
                 int number = Integer.parseInt(addIngredientQuantityET.getText().toString());
                 int calories = Integer.parseInt(addIngredientCaloriesET.getText().toString());
@@ -79,7 +80,9 @@ public class AddIngredientsScreenFrag extends Fragment {
         });
 
         removeIngredientButton.setOnClickListener(v -> {
-            if (IngredientsViewModel.checkValidity(removeIngredientNameET.getText().toString()) && IngredientsViewModel.checkValidity(removeIngredientQuantityET.getText().toString())) {
+            if (IngredientsViewModel.checkValidity(removeIngredientNameET
+                    .getText().toString()) && IngredientsViewModel
+                    .checkValidity(removeIngredientQuantityET.getText().toString())) {
 
                 String ingName = removeIngredientNameET.getText().toString();
                 int number = Integer.parseInt(removeIngredientQuantityET.getText().toString());
@@ -93,7 +96,9 @@ public class AddIngredientsScreenFrag extends Fragment {
                 removeIngredientNameET.setText("");
                 removeIngredientQuantityET.setText("");
             } else {
-                Toast.makeText(getContext(), "Please enter a valid name and quantity to remove", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),
+                        "Please enter a valid name and quantity to remove", Toast.LENGTH_SHORT)
+                        .show();
             }
         });
 

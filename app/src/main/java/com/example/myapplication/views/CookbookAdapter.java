@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHolder> {
 
@@ -25,7 +24,8 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recipe_entry, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_recipe_entry, parent, false);
         return new ViewHolder(view);
     }
 
