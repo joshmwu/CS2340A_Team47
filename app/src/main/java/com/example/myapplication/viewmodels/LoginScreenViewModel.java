@@ -6,11 +6,11 @@ import com.example.myapplication.models.FirebaseService;
 import com.example.myapplication.models.LoginData;
 
 public class LoginScreenViewModel {
-    private volatile static LoginScreenViewModel instance;
+    private static volatile LoginScreenViewModel instance;
     private final LoginData loginData = LoginData.getInstance();
     private FirebaseService firebaseService = FirebaseService.getInstance();
 
-    private LoginScreenViewModel() {}
+    private LoginScreenViewModel() { }
 
     public static synchronized LoginScreenViewModel getInstance() {
         if (instance == null) {
