@@ -60,9 +60,7 @@ public class RecipeDetailsFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_recipe_details, container, false);
-
         backButton = root.findViewById(R.id.backButtonRecipeDetails);
         cookButton = root.findViewById(R.id.cookRecipeButton);
         addSListButton = root.findViewById(R.id.addRecipeToShoppingListButton);
@@ -75,13 +73,13 @@ public class RecipeDetailsFrag extends Fragment {
         totalCaloriesTV = root.findViewById(R.id.totalCaloriesTV);
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-        pieEntries.add(new PieEntry(calorieGoal-mealCalories, "Daily Goal"));
+        pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Daily Goal"));
         Bundle bundle = getArguments();
         if (bundle != null) {
             String recipe = bundle.getString("key");
             recipeDetailsTitle.setText(recipe);
-            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
-                recipe = recipe.substring(0, recipe.length()-1);
+            if (recipe.substring(recipe.length() - 1, recipe.length()).equals("*")) {
+                recipe = recipe.substring(0, recipe.length() - 1);
             }
             firebaseService = FirebaseService.getInstance();
             DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
@@ -92,20 +90,16 @@ public class RecipeDetailsFrag extends Fragment {
                     // Check if the snapshot has children
                     if (dataSnapshot.hasChildren()) {
                         int totalMealCalories = 0;
-                        // Iterate over the children
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            // Get the key (child node name) and value
                             ingredientEntries.add(childSnapshot.getKey() + " - "
-                                    + childSnapshot.child("quantity").getValue() + " - " +
-                                    childSnapshot.child("calories").getValue());
+                                    + childSnapshot.child("quantity").getValue() + " - "
+                                    + childSnapshot.child("calories").getValue());
                             totalMealCalories += ((Long) childSnapshot
                                     .child("calories").getValue()).intValue();
                             adapter.notifyDataSetChanged();
-
                         }
                         totalCaloriesTV.setText("Calories: " + totalMealCalories);
                     }
-
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
@@ -114,10 +108,7 @@ public class RecipeDetailsFrag extends Fragment {
                 }
             });
         }
-
         cookButton.setOnClickListener(v -> {
-            //update visualizations, meal database, calorie count, & indredients
-            // get subtracted from pantry.
             String recipe = "";
             if (bundle != null) {
                 recipe = bundle.getString("key");
@@ -127,13 +118,10 @@ public class RecipeDetailsFrag extends Fragment {
                 for (String a : ingredientEntries) {
                     String name = RecipeDetailsFrag.getItemName(a);
                     int quantity = RecipeDetailsFrag.getItemQuantity(a);
-
-                    // query pantry for ingredient calories
                     mealCalories += (pantryData.getCaloriesFromName(name) * quantity);
                     ingredientsViewModel.removeIngredient(name, quantity);
                 }
-                Log.d("caloriestag", ((Integer)mealCalories).toString());
-
+                Log.d("caloriestag", ((Integer) mealCalories).toString());
                 mealVM.setMealData(loginVM.getLoginData().getUsername(), recipe, mealCalories);
                 pieEntries.clear();
                 int totCals = mealVM.getTotalDayCalories();
@@ -146,9 +134,9 @@ public class RecipeDetailsFrag extends Fragment {
                 }
                 mealCalories = 0;
 
-                CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager().findFragmentById(R.id.goToPieChart);
+                CircleVisual circleVisualFragment = (CircleVisual) getParentFragmentManager()
+                        .findFragmentById(R.id.goToPieChart);
                 if (circleVisualFragment != null) {
-                    // Call the method and pass the required parameters
                     int calorieLeft = totCals - mealCalories;
                     ArrayList<PieEntry> updatedPieEntries = generateUpdatedPieEntries(calorieLeft);
                     circleVisualFragment.updatePieChart(updatedPieEntries);
@@ -156,21 +144,19 @@ public class RecipeDetailsFrag extends Fragment {
                 Toast.makeText(getContext(),
                         "Meal Cooked!",
                         Toast.LENGTH_SHORT).show();
-            } else{
+            } else {
                 Toast.makeText(getContext(),
                         "Insufficient ingredients in pantry to cook this recipe.",
                         Toast.LENGTH_SHORT).show();
             }
-
-
         });
         
         //DONT DELETE WILL FINISH IMPLEMENTATION LATER
         addSListButton.setOnClickListener(v -> {
             String recipe = bundle.getString("key");
             if (recipe.contains("*")) {
-                if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")) {
-                    recipe = recipe.substring(0, recipe.length()-1);
+                if (recipe.substring(recipe.length() - 1, recipe.length()).equals("*")) {
+                    recipe = recipe.substring(0, recipe.length() - 1);
                 }
                 firebaseService = FirebaseService.getInstance();
                 DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
@@ -185,28 +171,30 @@ public class RecipeDetailsFrag extends Fragment {
                                 // Get the key (child node name) and value
                                 //ingredientEntries.add(childSnapshot.getKey() + " - "
                                 //        + childSnapshot.getValue());
-                                Log.d("checking", childSnapshot.child("quantity").getValue().toString());
-                                Log.d("checking", ((Integer)pantryData.getQuantityFromName(childSnapshot.getKey())).toString());
-                                long recipeRequiredQuantity = (Long) childSnapshot.child("quantity").getValue();
-                                long currentPantryQuantity = pantryData.getQuantityFromName(childSnapshot.getKey());
+                                Log.d("checking", childSnapshot.child("quantity")
+                                        .getValue().toString());
+                                Log.d("checking", ((Integer) pantryData
+                                        .getQuantityFromName(childSnapshot.getKey())).toString());
+                                long recipeRequiredQuantity = (Long) childSnapshot
+                                        .child("quantity").getValue();
+                                long currentPantryQuantity = pantryData
+                                        .getQuantityFromName(childSnapshot.getKey());
                                 if (recipeRequiredQuantity > currentPantryQuantity) {
-                                    int addToShoppingList = ((Long)(recipeRequiredQuantity - currentPantryQuantity)).intValue();
-                                    shoppingListVM.addShoppingListItem(childSnapshot.getKey(), addToShoppingList, ((Long)childSnapshot.child("calories").getValue()).intValue());
+                                    int addToShoppingList = ((Long) (recipeRequiredQuantity
+                                            - currentPantryQuantity)).intValue();
+                                    shoppingListVM.addShoppingListItem(childSnapshot.getKey(),
+                                            addToShoppingList, ((Long) childSnapshot
+                                                    .child("calories").getValue()).intValue());
                                 }
-
-//
-//                                adapter.notifyDataSetChanged();
                             }
                             Toast.makeText(getContext(),
                                     "Successfully added items to shopping list.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        // Handle errors
-                        System.err.println("Listener was cancelled");
+                        System.err.println("Listener was cancelled"); // handles errors
                     }
                 });
             } else {
@@ -214,9 +202,7 @@ public class RecipeDetailsFrag extends Fragment {
                         "Ingredients in pantry are sufficient to cook this recipe.",
                         Toast.LENGTH_SHORT).show();
             }
-
         });
-
         backButton.setOnClickListener(v -> {
             replaceFragment(new GlobalCookbookScreenFrag());
         });
@@ -234,16 +220,17 @@ public class RecipeDetailsFrag extends Fragment {
 
     private static String getItemName(String item) {
         String name = "";
-        for (int i = 0; i < item.length() && !item.substring(i, i+1).equals(" "); i++) {
-            name = name + item.substring(i, i+1);
+        for (int i = 0; i < item.length() && !item.substring(i, i + 1).equals(" "); i++) {
+            name = name + item.substring(i, i + 1);
         }
         return name;
     }
 
     public static int getItemQuantity(String item) {
         String quantity = "";
-        for (int i = item.length() - 1; i < item.length() && !item.substring(i, i+1).equals(" "); i--) {
-            quantity = item.substring(i, i+1) + quantity;
+        for (int i = item.length() - 1; i < item.length()
+                && !item.substring(i, i + 1).equals(" "); i--) {
+            quantity = item.substring(i, i + 1) + quantity;
         }
         return Integer.valueOf(quantity);
     }
