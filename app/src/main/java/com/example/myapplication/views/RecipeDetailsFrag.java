@@ -45,6 +45,7 @@ public class RecipeDetailsFrag extends Fragment {
     private Button backButton;
     private Button cookButton;
     private Button addSListButton;
+    private TextView totalCaloriesTV;
     private IngredientsViewModel ingredientsViewModel = IngredientsViewModel.getInstance();
     private InputMealViewModel inputMealViewModel = InputMealViewModel.getInstance();
     private ArrayList<PieEntry> pieEntries = new ArrayList<>();
@@ -74,6 +75,7 @@ public class RecipeDetailsFrag extends Fragment {
         recipeDetailsRecyclerView = root.findViewById(R.id.recipeDetailsRecyclerView);
         recipeDetailsRecyclerView.setAdapter(adapter);
         recipeDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        totalCaloriesTV = root.findViewById(R.id.totalCaloriesTV);
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
@@ -82,10 +84,10 @@ public class RecipeDetailsFrag extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String recipe = bundle.getString("key");
-//            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
-//                recipe = recipe.substring(0, recipe.length()-1);
-//            }
             recipeDetailsTitle.setText(recipe);
+            if(recipe.substring(recipe.length()-1,recipe.length()).equals("*")){
+                recipe = recipe.substring(0, recipe.length()-1);
+            }
             firebaseService = FirebaseService.getInstance();
             DatabaseReference recipeRef = firebaseService.getFirebaseDatabase().getReference(
                     "Recipes").child(recipe);
@@ -94,15 +96,21 @@ public class RecipeDetailsFrag extends Fragment {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // Check if the snapshot has children
                     if (dataSnapshot.hasChildren()) {
+                        int totalMealCalories = 0;
                         // Iterate over the children
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             // Get the key (child node name) and value
                             ingredientEntries.add(childSnapshot.getKey() + " - "
-                                    + childSnapshot.child("quantity").getValue());
+                                    + childSnapshot.child("quantity").getValue() + " - " +
+                                    childSnapshot.child("calories").getValue());
+                            totalMealCalories += ((Long) childSnapshot
+                                    .child("calories").getValue()).intValue();
                             adapter.notifyDataSetChanged();
 
                         }
+                        totalCaloriesTV.setText("Calories: " + totalMealCalories);
                     }
+
                 }
 
                 @Override
