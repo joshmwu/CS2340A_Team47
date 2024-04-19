@@ -149,8 +149,8 @@ public class ExampleUnitTest {
     @Test
     public void getMealName() {
         InputMealViewModel a = InputMealViewModel.getInstance();
-        a.getMealData().setMealData("burrito", 500);
-        assertEquals("burrito", a.getMealData().getMealName().equals("burrito"));
+        a.getMealData().setMealData("tacos", 500);
+        assertEquals("tacos", a.getMealData().getMealName().equals("tacos"));
     }
 
     @Test
@@ -272,7 +272,7 @@ public class ExampleUnitTest {
 
     @Test
     public void getIngredientCalories() {
-        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        Ingredient ingredient = new Ingredient("butter", 50, 5);
         assertEquals(50, ingredient.getCalories());
     }
 
