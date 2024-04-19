@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 import android.content.Context;
 import android.renderscript.ScriptGroup;
 
@@ -52,16 +51,6 @@ public class ExampleUnitTest {
     private MealData mealData;
     private Ingredient ingredient;
 
-    public void setup() {
-        // Mock the context
-        FirebaseDatabase firebaseDatabase = mock(FirebaseDatabase.class);
-        databaseReference = mock(DatabaseReference.class);
-        when(firebaseDatabase.getReference()).thenReturn(databaseReference);
-        // Assuming FirebaseApp needs to be initialized
-        //FirebaseApp.initializeApp(mockContext);
-        // Initialize your ViewModel
-        //loginScreenViewModel = LoginScreenViewModel.getInstance();
-    }
     @Test
     public void usernameWorks() {
         LoginScreenViewModel a = LoginScreenViewModel.getInstance();
