@@ -1,5 +1,4 @@
 package com.example.myapplication.views;
-import java.util.ArrayList;
 
 import java.util.List;
 public class Filter {

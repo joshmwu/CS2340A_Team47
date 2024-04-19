@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
 
@@ -23,7 +22,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ingredient_entry, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_ingredient_entry, parent, false);
         return new ViewHolder(view);
     }
 

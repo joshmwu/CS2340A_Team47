@@ -52,7 +52,8 @@ public class InputMealScreenFrag extends Fragment implements Subject {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_input_meal_screen, container, false);
+        ViewGroup root = (ViewGroup) inflater
+                .inflate(R.layout.fragment_input_meal_screen, container, false);
 
         welcomeUser = root.findViewById(R.id.welcomeUser);
         userHeightTV = root.findViewById(R.id.userHeightTextView);
@@ -86,7 +87,8 @@ public class InputMealScreenFrag extends Fragment implements Subject {
         ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
 
         submitMealInfoButton.setOnClickListener(v -> {
-            if (mealNameInputET.getText().toString().isBlank() || mealNameInputET.getText().toString().isBlank()) {
+            if (mealNameInputET.getText().toString().isBlank()
+                    || mealNameInputET.getText().toString().isBlank()) {
                 notifyObserver("");
                 mealNameInputET.setText("");
                 mealCaloriesInputET.setText("");
@@ -98,9 +100,11 @@ public class InputMealScreenFrag extends Fragment implements Subject {
                 int totCals = mealVM.getTotalDayCalories();
                 if (mealCalories < calorieGoal) {
                     pieEntries.add(new PieEntry(totCals, "Day's Caloric Intake"));
-                    pieEntries.add(new PieEntry(calorieGoal - totCals, "Remaining Calories"));
+                    pieEntries.add(new PieEntry(calorieGoal - totCals,
+                            "Remaining Calories"));
                 } else {
-                    pieEntries.add(new PieEntry((totCals-calorieGoal), "Excess Caloric Intake"));
+                    pieEntries.add(new PieEntry((totCals - calorieGoal),
+                            "Excess Caloric Intake"));
                     pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
                 }
                 mealCalories = 0;
@@ -119,8 +123,10 @@ public class InputMealScreenFrag extends Fragment implements Subject {
             mealCalories = 0;
         });
 
-        root.findViewById(R.id.goToPieChart).setOnClickListener(v -> replaceFragment(new CircleVisual(pieEntries)));
-        root.findViewById(R.id.goToLineChart).setOnClickListener(v -> replaceFragment(new LineVisual(lineEntries)));
+        root.findViewById(R.id.goToPieChart)
+                .setOnClickListener(v -> replaceFragment(new CircleVisual(pieEntries)));
+        root.findViewById(R.id.goToLineChart)
+                .setOnClickListener(v -> replaceFragment(new LineVisual(lineEntries)));
 
         return root;
     }

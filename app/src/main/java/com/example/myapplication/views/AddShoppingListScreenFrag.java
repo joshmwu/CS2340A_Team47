@@ -8,16 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
-import com.example.myapplication.viewmodels.IngredientsViewModel;
-import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.ShoppingListViewModel;
 
 
@@ -51,10 +47,14 @@ public class AddShoppingListScreenFrag extends Fragment {
 
         addShoppingListButton.setOnClickListener(v -> {
 
-            if (AddShoppingListScreenFrag.checkValidity(addShoppingListEditText.getText().toString()) && checkValidity(addShoppingListQuantityEditText.getText().toString())) {
+            if (AddShoppingListScreenFrag.checkValidity(addShoppingListEditText
+                    .getText().toString()) && checkValidity(addShoppingListQuantityEditText
+                    .getText().toString())) {
                 String itemName = addShoppingListEditText.getText().toString();
-                int itemQuantity = Integer.parseInt(addShoppingListQuantityEditText.getText().toString());
-                int itemCalories = Integer.parseInt(addShoppingListCaloriesEditText.getText().toString());
+                int itemQuantity = Integer.parseInt(addShoppingListQuantityEditText
+                        .getText().toString());
+                int itemCalories = Integer.parseInt(addShoppingListCaloriesEditText
+                        .getText().toString());
                 shoppingListViewModel.addShoppingListItem(itemName, itemQuantity, itemCalories);
                 addShoppingListEditText.setText("");
                 addShoppingListQuantityEditText.setText("");
