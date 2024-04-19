@@ -13,10 +13,14 @@ import android.renderscript.ScriptGroup;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.myapplication.models.Ingredient;
+import com.example.myapplication.models.IngredientType;
 import com.example.myapplication.models.LoginData;
+import com.example.myapplication.models.MediumCalorieIngredientFactory;
+import com.example.myapplication.models.MediumCalorieIngredientType;
 import com.example.myapplication.models.PantryData;
 import com.example.myapplication.models.ShoppingListData;
 import com.example.myapplication.models.MealData;
+import com.example.myapplication.models.Ingredient;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.InputMealViewModel;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
@@ -46,6 +50,7 @@ public class ExampleUnitTest {
     private DatabaseReference databaseReference;
 
     private MealData mealData;
+    private Ingredient ingredient;
 
     public void setup() {
         // Mock the context
@@ -179,6 +184,34 @@ public class ExampleUnitTest {
         assertEquals("christina", a.getLoginData().getUsername().equals("christina"));
     }
 
+    @Test
+    public void setMealData() {
+        MealData mealData = new MealData();
+        mealData.setMealData("pasta", 150);
+        assertEquals("pasta", mealData.getMealName());
+        assertEquals(150, mealData.getMealCalories());
+        assertTrue(mealData.getMeals().contains("pasta"));
+    }
+
+    @Test
+    public void getMeals() {
+        MealData mealData = new MealData();
+        mealData.setMealData("teriyaki chicken", 300);
+        mealData.setMealData("kung pao chicken", 400);
+        assertEquals(2, mealData.getMeals().size());
+        assertTrue(mealData.getMeals().contains("teriyaki chicken"));
+        assertTrue(mealData.getMeals().contains("kung pao chicken"));
+    }
+
+    @Test
+    public void resetMealCalories() {
+        MealData mealData = new MealData();
+        mealData.setMealData("peking duck", 400);
+        mealData.resetMealCalories();
+        assertEquals(0, mealData.getMealCalories());
+    }
+
+
 
     ////  SPRINT FOUR JUNITS!!!!!! ////
     @Test
@@ -219,30 +252,61 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void setMealData() {
-        mealData = new MealData();
-        mealData.setMealData("pasta", 150);
-        assertEquals("pasta", mealData.getMealName());
-        assertEquals(150, mealData.getMealCalories());
-        assertTrue(mealData.getMeals().contains("pasta"));
+    public void createFactoryIngredient() {
+        MediumCalorieIngredientFactory factory = new MediumCalorieIngredientFactory();
+        IngredientType ingredient = factory.createIngredient();
+        assertNotNull(ingredient);
+        assertTrue(ingredient instanceof MediumCalorieIngredientType);
     }
 
     @Test
-    public void getMeals() {
-        mealData = new MealData();
-        mealData.setMealData("teriyaki chicken", 300);
-        mealData.setMealData("kung pao chicken", 400);
-        assertEquals(2, mealData.getMeals().size());
-        assertTrue(mealData.getMeals().contains("teriyaki chicken"));
-        assertTrue(mealData.getMeals().contains("kung pao chicken"));
+    public void getShoppingListCalories() {
+        ShoppingListData shoppingList = ShoppingListData.getInstance();
+        Ingredient sugar = new Ingredient("sugar", 50, 5);
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(sugar);
+        shoppingList.setShoppingList(ingredients);
+        assertEquals(50, shoppingList.getCaloriesFromName("sugar"));
+        assertEquals(0, shoppingList.getCaloriesFromName("pepper"));
     }
 
     @Test
-    public void resetMealCalories() {
-        mealData = new MealData();
-        mealData.setMealData("peking duck", 400);
-        mealData.resetMealCalories();
-        assertEquals(0, mealData.getMealCalories());
+    public void getIngredientCalories() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        assertEquals(50, ingredient.getCalories());
+    }
+
+    @Test
+    public void setIngredientCalories() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        ingredient.setCalories(70);
+        assertEquals(70, ingredient.getCalories());
+    }
+
+    @Test
+    public void getIngredientName() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        assertEquals("sugar", ingredient.getName());
+    }
+
+    @Test
+    public void setIngredientName() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        ingredient.setName("salt");
+        assertEquals("salt", ingredient.getName());
+    }
+
+    @Test
+    public void getIngredientQuantity() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        assertEquals(5, ingredient.getQuantity());
+    }
+
+    @Test
+    public void setIngredientQuantity() {
+        Ingredient ingredient = new Ingredient("sugar", 50, 5);
+        ingredient.setQuantity(200);
+        assertEquals(200, ingredient.getQuantity());
     }
 
 }
