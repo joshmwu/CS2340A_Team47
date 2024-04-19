@@ -32,6 +32,15 @@
             android:layout_margin="100dp" />
     </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/totalCaloriesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Calories: "
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/cookRecipeButton"
         android:layout_width="131dp"
