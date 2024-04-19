@@ -5,9 +5,9 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class PantryData {
-    private volatile static PantryData instance;
+    private static volatile PantryData instance;
     private ArrayList<Ingredient> ingredientList;
-    private PantryData() {}
+    private PantryData() { }
 
     public static PantryData getInstance() {
         if (instance == null) {

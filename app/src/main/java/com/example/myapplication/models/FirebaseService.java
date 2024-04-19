@@ -1,9 +1,7 @@
 package com.example.myapplication.models;
 
-import static java.security.AccessController.getContext;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -15,9 +13,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -30,7 +25,7 @@ public class FirebaseService {
     private PantryData firebasePantryData = PantryData.getInstance();
     private ShoppingListData firebaseShoppingListData = ShoppingListData.getInstance();
     private static IngredientFactory currentFactory;
-    
+
     //can be used for filtering or when a list of calorie classifications is needed
     private List<String> lowMediumHighCalories = new ArrayList<>();
 
@@ -48,6 +43,7 @@ public class FirebaseService {
     public FirebaseDatabase getFirebaseDatabase() {
         return database;
     }
+
     public DatabaseReference getDBReference(String path) {
         return this.getFirebaseDatabase().getReference(path);
     }
@@ -71,7 +67,8 @@ public class FirebaseService {
     }
 
     // LoginData: username, password
-    public void setUsername(String username) { // this one must be the first in order to retrieve all other data
+    // this one must be the first in order to retrieve all other data
+    public void setUsername(String username) {
         firebaseLoginData.setUsername(username);
     }
 
@@ -103,22 +100,33 @@ public class FirebaseService {
                             Log.e("firebase", "Error finding username", task.getException());
                         } else {
                             DataSnapshot usernameSnapshot = task.getResult();
-                            if (usernameSnapshot.exists() && String.valueOf(usernameSnapshot.getValue()).equals(username)) {
-                                userRef.child(username).child("password")
-                                        .get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                                if (!task.isSuccessful()) {
-                                                    Log.e("firebase", "Error finding password", task.getException());
-                                                } else {
-                                                    DataSnapshot passwordSnapshot = task.getResult();
-                                                    if (passwordSnapshot.exists() && String.valueOf(passwordSnapshot.getValue()).equals(password)) {
-                                                        Log.e("verified", "verified");
-                                                        firebaseLoginData.setLoggedIn(true);
+                            if (usernameSnapshot.exists() && String.valueOf(usernameSnapshot
+                                    .getValue())
+                                    .equals(username)) {
+                                userRef.child(username)
+                                        .child("password")
+                                        .get()
+                                        .addOnCompleteListener(
+                                                new OnCompleteListener<DataSnapshot>() {
+                                                @Override
+                                            public void onComplete(@NonNull
+                                                                   Task<DataSnapshot> task) {
+                                                    if (!task.isSuccessful()) {
+                                                        Log.e("firebase",
+                                                            "Error finding password",
+                                                            task.getException());
+                                                    } else {
+                                                        DataSnapshot passwordSnapshot =
+                                                            task.getResult();
+                                                        if (passwordSnapshot.exists() && String
+                                                            .valueOf(passwordSnapshot.getValue())
+                                                            .equals(password)) {
+                                                            Log.e("verified", "verified");
+                                                            firebaseLoginData.setLoggedIn(true);
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        });
+                                            });
                             }
                         }
                     }
@@ -218,7 +226,9 @@ public class FirebaseService {
                     }
                 });
     }
-    public void updatePersonalData(String username, int height, int weight, int age, String gender, int calorieGoal) {
+
+    public void updatePersonalData(String username, int height, int weight, int age, String gender,
+                                   int calorieGoal) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
         userRef.child(username).child("height").setValue(height);
         userRef.child(username).child("weight").setValue(weight);
@@ -231,7 +241,8 @@ public class FirebaseService {
     public void setPantry() {
         ArrayList<Ingredient> listOfIngredients = new ArrayList<>();
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(firebaseLoginData.getUsername()).child("Pantry");
+        DatabaseReference pantryRef = userRef.child(firebaseLoginData
+                .getUsername()).child("Pantry");
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -277,7 +288,8 @@ public class FirebaseService {
 
     public void addIngredient(String name, int quantity, int calories) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(firebaseLoginData.getUsername()).child("Pantry");
+        DatabaseReference pantryRef = userRef.child(firebaseLoginData.getUsername())
+                .child("Pantry");
         DatabaseReference ingredientRef = pantryRef.child(name);
         ingredientRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -320,14 +332,17 @@ public class FirebaseService {
                             });
                 }
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
     }
 
     public void removeIngredient(String name, int quantity) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(firebaseLoginData.getUsername()).child("Pantry");
+        DatabaseReference pantryRef = userRef.child(firebaseLoginData.getUsername())
+                .child("Pantry");
         DatabaseReference ingredientRef = pantryRef.child(name);
 
         // Check if the ingredient exists in the pantry
@@ -342,24 +357,22 @@ public class FirebaseService {
                             int currentQuantity = ((Long) quantityObj).intValue();
                             int newQuantity = currentQuantity - quantity;
                             if (newQuantity <= 0) {
-                                // If the new quantity is less than or equal to 0, remove the ingredient from the pantry
+                                // If the new quantity is less than or equal to 0,
+                                // remove the ingredient from the pantry
                                 ingredientRef.removeValue().addOnCompleteListener(removeTask -> {
                                     if (removeTask.isSuccessful()) {
                                         // After removing the ingredient, refresh the pantry
                                         setPantry();
-                                    } else {
-                                        // Handle the case where removing the ingredient failed
                                     }
                                 });
                             } else {
-                                // If the new quantity is greater than 0, update the quantity in the pantry
+                                // If the new quantity is greater than 0, update the
+                                // quantity in the pantry
                                 pantryRef.child(name).child("quantity").setValue(newQuantity)
                                         .addOnCompleteListener(updateTask -> {
                                             if (updateTask.isSuccessful()) {
                                                 // After updating the quantity, refresh the pantry
                                                 setPantry();
-                                            } else {
-                                                // Handle the case where updating the quantity failed
                                             }
                                         });
                             }
@@ -374,18 +387,18 @@ public class FirebaseService {
             }
         });
     }
-//    PAST IMPLEMENTATION
-//    // Recipe Database - does not need to be stored locally
-//    public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
-//        DatabaseReference userRef = this.getDBReference("Recipes");
-//        for (Map.Entry<String, Integer> entry : ingredientMap.entrySet()) {
-//            String ingredient = entry.getKey();
-//            Integer quantity = entry.getValue();
-//            userRef.child(name).child(ingredient).setValue(quantity);
-//        }
-//    }
+    //    PAST IMPLEMENTATION
+    //    // Recipe Database - does not need to be stored locally
+    //    public void addNewRecipe(String name, HashMap<String, Integer> ingredientMap) {
+    //        DatabaseReference userRef = this.getDBReference("Recipes");
+    //        for (Map.Entry<String, Integer> entry : ingredientMap.entrySet()) {
+    //            String ingredient = entry.getKey();
+    //            Integer quantity = entry.getValue();
+    //            userRef.child(name).child(ingredient).setValue(quantity);
+    //        }
+    //    }
 
-//  NEW IMPLEMENTATION*
+    //  NEW IMPLEMENTATION*
     public void addNewRecipe(String recipeName, ArrayList<String[]> ingredientMap) {
         DatabaseReference recipesRef = this.getFirebaseDatabase().getReference("Recipes");
         DatabaseReference specificRecipeRef = recipesRef.child(recipeName);
@@ -394,12 +407,13 @@ public class FirebaseService {
             Log.d("mytagreal", ingredientDetails[1]);
             Log.d("mytagreal", ingredientDetails[2]);
             String ingredientName = ingredientDetails[0];
-            specificRecipeRef.child(ingredientName).child("quantity").setValue(Integer.parseInt(ingredientDetails[1]));
-            specificRecipeRef.child(ingredientName).child("calories").setValue(Integer.parseInt(ingredientDetails[2]));
+            specificRecipeRef.child(ingredientName).child("quantity")
+                    .setValue(Integer.parseInt(ingredientDetails[1]));
+            specificRecipeRef.child(ingredientName).child("calories")
+                    .setValue(Integer.parseInt(ingredientDetails[2]));
         }
     }
-//  *NEW IMPLEMENTATION
-
+    // *NEW IMPLEMENTATION
 
 
     // ShoppingList Database - should be stored locally!
@@ -407,7 +421,8 @@ public class FirebaseService {
     public void setShoppingList() {
         ArrayList<Ingredient> listOfItems = new ArrayList<>();
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername())
+                .child("ShoppingList");
         shoppingListRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -418,10 +433,12 @@ public class FirebaseService {
 
                     // Check if quantity and calories exist for the ingredient
                     if (ingredientSnapshot.hasChild("quantity")) {
-                        quantity = ingredientSnapshot.child("quantity").getValue(Integer.class);
+                        quantity = ingredientSnapshot.child("quantity")
+                                .getValue(Integer.class);
                     }
                     if (ingredientSnapshot.hasChild("calories")) {
-                        calories = ingredientSnapshot.child("calories").getValue(Integer.class);
+                        calories = ingredientSnapshot.child("calories")
+                                .getValue(Integer.class);
                     }
 
                     // Create Ingredient object
@@ -442,7 +459,8 @@ public class FirebaseService {
 
     public void addShoppingListItem(String name, int quantity, int calories) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername())
+                .child("ShoppingList");
         DatabaseReference itemRef = shoppingListRef.child(name);
         itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -455,7 +473,8 @@ public class FirebaseService {
                         if (quantityObj instanceof Long) {
                             // set the quantity value to new value
                             int newQuantity = ((Long) quantityObj).intValue() + quantity;
-                            shoppingListRef.child(name).child("quantity").setValue(newQuantity)
+                            shoppingListRef.child(name).child("quantity")
+                                    .setValue(newQuantity)
                                     .addOnCompleteListener(task1 -> {
                                         // After quantity update, refresh the pantry
                                         setShoppingList();
@@ -469,7 +488,8 @@ public class FirebaseService {
                         if (caloriesObj instanceof Long) {
                             // set the calories value to new value
                             int newCalories = calories;
-                            shoppingListRef.child(name).child("calories").setValue(newCalories)
+                            shoppingListRef.child(name).child("calories")
+                                    .setValue(newCalories)
                                     .addOnCompleteListener(task1 -> {
                                         // After quantity update, refresh the pantry
                                         setShoppingList();
@@ -494,7 +514,8 @@ public class FirebaseService {
 
     public void removeShoppingListItem(String name, int quantity) {
         DatabaseReference userRef = this.getFirebaseDatabase().getReference("Users");
-        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername()).child("ShoppingList");
+        DatabaseReference shoppingListRef = userRef.child(firebaseLoginData.getUsername())
+                .child("ShoppingList");
         DatabaseReference itemRef = shoppingListRef.child(name);
 
         itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -508,24 +529,23 @@ public class FirebaseService {
                             int currentQuantity = ((Long) quantityObj).intValue();
                             int newQuantity = currentQuantity - quantity;
                             if (newQuantity <= 0) {
-                                // If the new quantity is less than or equal to 0, remove the ingredient from the shopping list
+                                // If the new quantity is less than or equal to 0, remove the
+                                // ingredient from the shopping list
                                 itemRef.removeValue().addOnCompleteListener(removeTask -> {
                                     if (removeTask.isSuccessful()) {
                                         // After removing the ingredient, refresh the shopping list
                                         setShoppingList();
-                                    } else {
-                                        // Handle the case where removing the ingredient failed
                                     }
                                 });
                             } else {
-                                // If the new quantity is greater than 0, update the quantity in the pantry
-                                shoppingListRef.child(name).child("quantity").setValue(newQuantity)
+                                // If the new quantity is greater than 0, update the
+                                // quantity in the pantry
+                                shoppingListRef.child(name).child("quantity")
+                                        .setValue(newQuantity)
                                         .addOnCompleteListener(updateTask -> {
                                             if (updateTask.isSuccessful()) {
                                                 // After updating the quantity, refresh the pantry
                                                 setShoppingList();
-                                            } else {
-                                                // Handle the case where updating the quantity failed
                                             }
                                         });
                             }
