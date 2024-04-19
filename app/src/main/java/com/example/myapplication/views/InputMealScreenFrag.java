@@ -81,8 +81,15 @@ public class InputMealScreenFrag extends Fragment implements Subject {
         lineChart = (LineChart) root.findViewById(R.id.linechart);
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        pieEntries.add(new PieEntry(mealCalories, "Day's Caloric Intake"));
-        pieEntries.add(new PieEntry(calorieGoal - mealCalories, "Daily Goal"));
+        if (mealVM.getTotalDayCalories() < calorieGoal) {
+            pieEntries.add(new PieEntry(mealVM.getTotalDayCalories(), "Day's Caloric Intake"));
+            pieEntries.add(new PieEntry(calorieGoal - mealVM.getTotalDayCalories(),
+                    "Remaining Calories"));
+        } else {
+            pieEntries.add(new PieEntry((mealVM.getTotalDayCalories() - calorieGoal),
+                    "Excess Caloric Intake"));
+            pieEntries.add(new PieEntry(calorieGoal, "Day's Calorie Goal"));
+        }
 
         ArrayList<Entry> lineEntries = mealVM.getMealData().getCaloriesByDay();
 
@@ -98,7 +105,7 @@ public class InputMealScreenFrag extends Fragment implements Subject {
                 mealVM.setMealData(loginVM.getLoginData().getUsername(), mealName, mealCalories);
                 pieEntries.clear();
                 int totCals = mealVM.getTotalDayCalories();
-                if (mealCalories < calorieGoal) {
+                if (totCals < calorieGoal) {
                     pieEntries.add(new PieEntry(totCals, "Day's Caloric Intake"));
                     pieEntries.add(new PieEntry(calorieGoal - totCals,
                             "Remaining Calories"));
@@ -117,6 +124,7 @@ public class InputMealScreenFrag extends Fragment implements Subject {
 
         logMealsButton.setOnClickListener(v -> {
             lineEntries.add(new Entry(mealVM.getDay(), mealVM.getTotalDayCalories()));
+            pieEntries.clear();
             mealVM.resetTotalDayCalories();
             mealVM.setDay(mealVM.getDay() + 1);
             mealName = null;
