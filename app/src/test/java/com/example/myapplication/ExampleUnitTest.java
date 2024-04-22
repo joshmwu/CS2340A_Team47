@@ -2,8 +2,6 @@ package com.example.myapplication;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.*;
 import android.content.Context;
@@ -40,7 +38,6 @@ import java.util.ArrayList;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-@RunWith(RobolectricTestRunner.class)
 public class ExampleUnitTest {
 
     private LoginScreenViewModel loginScreenViewModel;
