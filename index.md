@@ -5,4 +5,4 @@ GreenPlate is designed to create sustainable eating and shopping habits by helpi
 
 ## Design & Architecture
 
-![dcd](https://ibb.co/2Y0r6vV)
+![dcd](./images/dcd)
