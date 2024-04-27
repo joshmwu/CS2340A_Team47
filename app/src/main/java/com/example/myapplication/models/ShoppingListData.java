@@ -5,9 +5,9 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class ShoppingListData {
-    private volatile static ShoppingListData instance;
+    private static volatile ShoppingListData instance;
     private ArrayList<Ingredient> shoppingList;
-    private ShoppingListData() {}
+    private ShoppingListData() { }
 
     public static ShoppingListData getInstance() {
         if (instance == null) {

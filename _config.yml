@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'github-pages', group: :jekyll_plugins
+
+theme: jekyll-theme-minimal
+title: CS2340A TEAM 47

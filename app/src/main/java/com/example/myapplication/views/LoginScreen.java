@@ -86,8 +86,7 @@ public class LoginScreen extends AppCompatActivity {
                     Intent intent2 = new Intent(LoginScreen.this, HomeScreen.class);
                     intent2.putExtra("username", usernameLocal);
                     startActivity(intent2);
-                }
-                else {
+                } else {
                     warningMessage.setText("Authentication failed");
                 }
             }

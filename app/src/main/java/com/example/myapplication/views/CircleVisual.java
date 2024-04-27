@@ -10,26 +10,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.EditText;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.HomeScreenBinding;
-import com.example.myapplication.viewmodels.InputMealViewModel;
-import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
 
@@ -38,7 +27,7 @@ public class CircleVisual extends Fragment {
     private ArrayList<PieEntry> pieEntries;
 
     public CircleVisual(ArrayList<PieEntry> pieEntries) {
-        this.pieEntries=pieEntries;
+        this.pieEntries = pieEntries;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +40,7 @@ public class CircleVisual extends Fragment {
 
         redrawPieChart(pieEntries, pieChart);
         root.findViewById(R.id.goBackToInputButton).setOnClickListener(v -> {
-                replaceFragment(new InputMealScreenFrag());
+            replaceFragment(new InputMealScreenFrag());
         });
 
         return root;
@@ -70,7 +59,7 @@ public class CircleVisual extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart){
+    private void redrawPieChart(ArrayList<PieEntry> enters, PieChart pieChart) {
         PieDataSet pieDataSet = new PieDataSet(enters, "Label");
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
 

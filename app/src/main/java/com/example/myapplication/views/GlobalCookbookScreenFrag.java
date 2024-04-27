@@ -18,7 +18,6 @@ import com.example.myapplication.models.FirebaseService;
 
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.LoginData;
 import com.example.myapplication.viewmodels.LoginScreenViewModel;
 import com.example.myapplication.viewmodels.PersonalInfoViewModel;
 import com.google.firebase.database.*;
@@ -81,7 +80,8 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filterSpinner.setAdapter(adapt);
 
-        DatabaseReference cookbookRef = firebaseService.getFirebaseDatabase().getReference("Recipes");
+        DatabaseReference cookbookRef = firebaseService.getFirebaseDatabase()
+                .getReference("Recipes");
         //populates the initial list of recipes
         cookbookRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -113,14 +113,12 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
                     if (dataSnapshot.hasChildren()) {
                         // Iterate over the children of recipes
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            cookbookRef.child(childSnapshot.getKey()).get().addOnCompleteListener(task -> {
-                                if (task.isSuccessful() /*&& childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals("None")*/) {
-                                    checkRecipeAvailability(childSnapshot);
-                                }
-//                                else if (task.isSuccessful() && childSnapshot.getKey().contains(containsFilterET.getText().toString()) && filterSpinner.getSelectedItem().toString().equals(((Long) childSnapshot.getChildrenCount()).toString())) {
-//                                    checkRecipeAvailability(childSnapshot);
-//                                }
-                            });
+                            cookbookRef.child(childSnapshot.getKey()).get()
+                                    .addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
+                                            checkRecipeAvailability(childSnapshot);
+                                        }
+                                    });
                         }
                     }
                     adapter.notifyDataSetChanged();
@@ -140,22 +138,26 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
     }
 
     private void checkRecipeAvailability(DataSnapshot recipesOfCookbookSnapshot) {
-        DatabaseReference userRef = firebaseService.getFirebaseDatabase().getReference("Users");
-        DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername()).child("Pantry");
+        DatabaseReference userRef = firebaseService
+                .getFirebaseDatabase().getReference("Users");
+        DatabaseReference pantryRef = userRef.child(loginViewModel.getLoginData().getUsername())
+                .child("Pantry");
         Log.d("mytag", "made it here 1");
         pantryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot pantryDataSnapshot) {
                 boolean canMake = false;
-                for (DataSnapshot ingredientsOfRecipeSnapshot : recipesOfCookbookSnapshot.getChildren()) {
+                for (DataSnapshot ingredientsOfRecipeSnapshot
+                        : recipesOfCookbookSnapshot.getChildren()) {
                     if (pantryDataSnapshot.hasChild(ingredientsOfRecipeSnapshot.getKey())) {
-                        long pantryQuantity = (Long) pantryDataSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue();
+                        long pantryQuantity = (Long) pantryDataSnapshot
+                                .child(ingredientsOfRecipeSnapshot.getKey())
+                                .child("quantity").getValue();
                         Log.d("mytag", ingredientsOfRecipeSnapshot.toString());
-                        Log.d("mytag", ingredientsOfRecipeSnapshot.child("quantity").toString());
-//                        Log.d("mytag", ingredientsOfRecipeSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue(Integer.class).toString());
-//                        int recipeQuantity = ingredientsOfRecipeSnapshot.child(ingredientsOfRecipeSnapshot.getKey()).child("quantity").getValue(Integer.class);
-                        long recipeQuantity = (Long) ingredientsOfRecipeSnapshot.child("quantity").getValue();
-//                        long recipeQuantity = 0;
+                        Log.d("mytag", ingredientsOfRecipeSnapshot
+                                .child("quantity").toString());
+                        long recipeQuantity = (Long) ingredientsOfRecipeSnapshot
+                                .child("quantity").getValue();
                         if (pantryQuantity >= recipeQuantity) {
                             canMake = true;
                         } else {
@@ -174,9 +176,11 @@ public class GlobalCookbookScreenFrag extends Fragment implements OnItemClickLis
 
                 }
                 Filter filter = new Filter();
-                filter.setFilteringStrategy(new ContainsFiltering(containsFilterET.getText().toString()));
+                filter.setFilteringStrategy(new ContainsFiltering(containsFilterET
+                        .getText().toString()));
                 filter.filter(cookbookEntries);
-                filter.setFilteringStrategy(new CanMakeFiltering(filterSpinner.getSelectedItem().toString()));
+                filter.setFilteringStrategy(new CanMakeFiltering(filterSpinner
+                        .getSelectedItem().toString()));
                 filter.filter(cookbookEntries);
                 adapter.notifyDataSetChanged();
             }

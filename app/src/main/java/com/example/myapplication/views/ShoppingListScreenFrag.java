@@ -15,23 +15,19 @@ import android.view.ViewGroup;
 import com.example.myapplication.R;
 
 import com.example.myapplication.models.Ingredient;
-import com.example.myapplication.models.PantryData;
 import com.example.myapplication.models.ShoppingListData;
 import com.example.myapplication.viewmodels.IngredientsViewModel;
 import com.example.myapplication.viewmodels.ShoppingListViewModel;
 
 
 import android.widget.Button;
-import android.widget.TextView;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.util.Log;
 import android.widget.Toast;
 
-import org.checkerframework.checker.units.qual.A;
 
 public class ShoppingListScreenFrag extends Fragment {
     private Button addToShoppingListButton;
@@ -75,7 +71,8 @@ public class ShoppingListScreenFrag extends Fragment {
                     Log.d("name", name);
                     int calories = shoppingListData.getCaloriesFromName(name);
                     Log.d("caloriesAfter", String.valueOf(calories));
-                    ingredientsViewModel.addIngredient(name, quantity, calories); // this causes an issue, fix the calories
+                    // this causes an issue, fix the calories
+                    ingredientsViewModel.addIngredient(name, quantity, calories);
                     shoppingListViewModel.removeShoppingListItem(name, quantity);
                 }
                 replaceFragment(new BoughtItemFrag());
@@ -103,15 +100,16 @@ public class ShoppingListScreenFrag extends Fragment {
 
     private static String getItemName(String item) {
         String name = "";
-        for (int i = 0; i < item.length() && !item.substring(i, i+1).equals(" "); i++) {
-            name = name + item.substring(i, i+1);
+        for (int i = 0; i < item.length() && !item.substring(i, i + 1).equals(" "); i++) {
+            name = name + item.substring(i, i + 1);
         }
         return name;
     }
     private static int getItemQuantity(String item) {
         String quantity = "";
-        for (int i = item.length() - 1; i < item.length() && !item.substring(i, i+1).equals(" "); i--) {
-            quantity = item.substring(i, i+1) + quantity;
+        for (int i = item.length() - 1; i < item.length() && !item.substring(i, i + 1)
+                .equals(" "); i--) {
+            quantity = item.substring(i, i + 1) + quantity;
         }
         return Integer.valueOf(quantity);
     }

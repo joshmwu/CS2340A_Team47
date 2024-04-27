@@ -1,24 +1,14 @@
 package com.example.myapplication.models;
 
-
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-
 public class UserData {
-    private volatile static UserData instance;
+    private static volatile UserData instance;
     private int height;
     private int weight;
     private int age;
     private String gender = "No Input";
     private int calorieGoal = 2000; //default value
 
-    private UserData() {}
+    private UserData() { }
 
     public static UserData getInstance() {
         if (instance == null) {

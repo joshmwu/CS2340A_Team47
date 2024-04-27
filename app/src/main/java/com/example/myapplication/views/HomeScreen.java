@@ -31,9 +31,12 @@ public class HomeScreen extends AppCompatActivity {
         findViewById(R.id.Home).setOnClickListener(v -> replaceFragment(new HomeFragment()));
         findViewById(R.id.Meal).setOnClickListener(v -> replaceFragment(new InputMealScreenFrag()));
         findViewById(R.id.Recipe).setOnClickListener(v -> replaceFragment(new RecipeScreenFrag()));
-        findViewById(R.id.Ingredients).setOnClickListener(v -> replaceFragment(new IngredientsScreenFrag()));
-        findViewById(R.id.Shopping).setOnClickListener(v -> replaceFragment(new ShoppingListScreenFrag()));
-        findViewById(R.id.PersonalInfo).setOnClickListener(v -> replaceFragment(new PersonalInfoFragment()));
+        findViewById(R.id.Ingredients)
+                .setOnClickListener(v -> replaceFragment(new IngredientsScreenFrag()));
+        findViewById(R.id.Shopping)
+                .setOnClickListener(v -> replaceFragment(new ShoppingListScreenFrag()));
+        findViewById(R.id.PersonalInfo)
+                .setOnClickListener(v -> replaceFragment(new PersonalInfoFragment()));
     }
 
     private void replaceFragment(Fragment fragment) {
